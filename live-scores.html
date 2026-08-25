@@ -6,6 +6,12 @@
   <meta name="theme-color" content="#11160f">
   <title>Live Scores | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .scores-table { width:100%; border-collapse:separate; border-spacing:0; margin-top:1.5rem; }
+    .scores-table th { text-align:left; color:var(--acid); text-transform:uppercase; letter-spacing:.08em; padding:.9rem 1.5rem .9rem 1rem; border-bottom:1px solid var(--line); }
+    .scores-table td { padding:.9rem 1.5rem .9rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); }
+    .scores-table th:last-child, .scores-table td:last-child { text-align:right; width:180px; }
+  </style>
 </head>
 <body>
   <header>
@@ -30,7 +36,7 @@
 
     <section class="about">
       <h2>Warm-Up Scores</h2>
-      <table>
+      <table class="scores-table">
         <thead><tr><th>Maniac</th><th>Warm-Up Points</th></tr></thead>
         <tbody>
           <tr><td>Andrasta Iceni</td><td>2</td></tr>
