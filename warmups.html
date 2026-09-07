@@ -6,12 +6,92 @@
   <meta name="theme-color" content="#11160f">
   <title>2026 Warm-Ups | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .warmup-week { margin-top: 4rem; }
+    .deadline { margin: 1.5rem 0 0; padding: 1.1rem 1.25rem; border: 1px solid var(--acid); background: rgba(168,198,108,.05); color: var(--ink); }
+    .warmup-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2rem; }
+    .warmup-film { border: 1px solid var(--line); background: rgba(255,255,255,.018); overflow: hidden; }
+    .warmup-film > img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; background: #080a08; }
+    .warmup-film-body { padding: 1rem 1.1rem 1.25rem; }
+    .warmup-film h3 { margin: .25rem 0 .4rem; color: var(--ink); font-size: 1.2rem; }
+    .warmup-rx { margin: 0; color: var(--acid); text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; font-weight: 700; }
+    .warmup-meta { margin: 0; color: var(--muted); }
+    .warmup-points { margin: .75rem 0 0; color: var(--acid); font-size: 1.25rem; font-weight: 700; }
+    .warmup-score-grid h3 { margin: .55rem 0 0; color: var(--acid); text-transform: uppercase; letter-spacing: .08em; font-size: 1rem; }
+    .warmup-warning { margin-bottom: 1rem; }
+    @media (max-width:760px) { .warmup-grid { grid-template-columns: 1fr; } .warmup-film > img { max-height: 580px; object-fit: contain; } }
+  </style>
 </head>
 <body>
   <header><div class="wrap"><nav aria-label="Primary"><a class="brand" href="index.html">Halloween Horror Movie Marathon Madness</a><div class="navlinks">
   <a href="rules.html">Rules</a><a href="scoring.html">Scoring</a><a href="challenges.html">Challenges</a><a href="warmups.html" aria-current="page">Warm-Ups</a><a href="live-scores.html">Live Scores</a>
 </div></nav></div></header>
-  <main class="wrap"><img src="Madness Hallway.jfif" alt="The Madness Runs the Asylum banner" style="display:block;width:100%;height:auto;margin-bottom:1.5rem;border:1px solid var(--line);"><p class="kicker">Begins Monday, September 7, 2026</p><h1 class="page-title">Warm-Ups</h1><p class="subhead">Three warm-up weeks before the main game begins Sunday, September 27.</p></main>
+
+  <main class="wrap">
+    <img src="Madness Hallway.jfif" alt="The Madness Runs the Asylum banner" style="display:block;width:100%;height:auto;margin-bottom:1.5rem;border:1px solid var(--line);">
+    <p class="kicker">Begins Monday, September 7, 2026</p>
+    <h1 class="page-title">Warm-Ups</h1>
+    <p class="subhead">Three warm-up weeks before the main game begins Sunday, September 27.</p>
+
+    <section class="content-section warmup-week" aria-labelledby="week-one-title">
+      <p class="kicker">Warm-Up Week One · Nurse Nevermore's Prescription</p>
+      <h2 class="section-title" id="week-one-title">Psychiatric Comedy Triple Feature</h2>
+      <p class="section-intro">Your prescription this week is to watch any one, any two, or all three of the films below. Every film is a base-2 feature, but this Week One challenge uses the special prescription payout shown below.</p>
+
+      <div class="deadline">
+        <strong>Challenge window:</strong> Valid through <strong>Saturday, September 12, 2026 at 11:59 PM</strong> in each Maniac's local time zone.
+      </div>
+
+      <div class="warmup-grid">
+        <article class="warmup-film">
+          <img src="https://whats-after-the-movie-ti152.sevalla.storage/movies/Futurama%3A-Bender%E2%80%99s%C2%A0Game-nsRKt_A7JlFRkQ.jpg" alt="Futurama: Bender's Game poster" loading="lazy">
+          <div class="warmup-film-body">
+            <p class="warmup-rx">Prescription #1</p>
+            <h3>Futurama: Bender's Game</h3>
+            <p class="warmup-meta">2008 · 88 minutes · Base 2</p>
+            <p class="warmup-points">7 points</p>
+          </div>
+        </article>
+
+        <article class="warmup-film">
+          <img src="https://cdn.posteritati.com/posters/000/000/037/344/nice-dreams-md-web.jpg" alt="Cheech &amp; Chong's Nice Dreams poster" loading="lazy">
+          <div class="warmup-film-body">
+            <p class="warmup-rx">Prescription #2</p>
+            <h3>Cheech &amp; Chong's Nice Dreams</h3>
+            <p class="warmup-meta">1981 · 88 minutes · Base 2</p>
+            <p class="warmup-points">7 points</p>
+          </div>
+        </article>
+
+        <article class="warmup-film">
+          <img src="https://www.posterpalace.com/cdn/shop/products/what-about-bob-us-one-sheet-1991-original-release-posterpalacecom-814955.jpg?v=1671385290&amp;width=1920" alt="What About Bob? poster" loading="lazy">
+          <div class="warmup-film-body">
+            <p class="warmup-rx">Prescription #3</p>
+            <h3>What About Bob?</h3>
+            <p class="warmup-meta">1991 · 99 minutes · Base 2</p>
+            <p class="warmup-points">7 points</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="score-grid warmup-score-grid" aria-label="Week One Warm-Up scoring">
+        <div class="score-card"><span class="score-number">7</span><h3>1 Film</h3><p>Watch any one of the three.</p></div>
+        <div class="score-card"><span class="score-number">14</span><h3>2 Films</h3><p>Watch any two of the three.</p></div>
+        <div class="score-card"><span class="score-number">21</span><h3>All 3 Films</h3><p>Complete Nurse Nevermore's full prescription.</p></div>
+      </div>
+
+      <div class="notice compact-notice">
+        <h2>How to claim your points</h2>
+        <p>Watch your chosen film or films during the Week One challenge window. Once you have finished, comment on the <strong>Week One Warm-Up post</strong> and Nurse Nevermore will update your score on the scoreboard.</p>
+        <p>The <strong>7 / 14 / 21 point prescription</strong> is the special Week One challenge payout and replaces the films' ordinary Madness values for this challenge.</p>
+      </div>
+
+      <div class="rule-callout warmup-warning">
+        <strong>Possible side effects:</strong> temporary delusions, uncontrollable snack cravings, compulsive baby-stepping, sudden fear of robotomy, inappropriate attachment to your therapist, padded-room fantasies, and the overwhelming urge to yell “I'M SAILING!”
+      </div>
+    </section>
+  </main>
+
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
 </body>
 </html>
