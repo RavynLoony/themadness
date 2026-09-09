@@ -11,9 +11,15 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .scores-table { width:100%; border-collapse:separate; border-spacing:0; margin-top:1.5rem; }
-    .scores-table th { text-align:left; color:var(--acid); text-transform:uppercase; letter-spacing:.08em; padding:.9rem 1.5rem .9rem 1rem; border-bottom:1px solid var(--line); }
-    .scores-table td { padding:.9rem 1.5rem .9rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); }
-    .scores-table th:last-child, .scores-table td:last-child { text-align:right; width:180px; }
+    .scores-table th { text-align:left; color:var(--acid); text-transform:uppercase; letter-spacing:.08em; padding:.9rem 1rem; border-bottom:1px solid var(--line); }
+    .scores-table td { padding:.9rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+    .scores-table th:last-child, .scores-table td:last-child { text-align:right; width:150px; }
+    .score-breakdown { line-height:1.45; }
+    .score-breakdown strong { color:var(--text); }
+    @media (max-width: 700px) {
+      .scores-table th, .scores-table td { padding:.75rem .6rem; }
+      .scores-table th:last-child, .scores-table td:last-child { width:auto; }
+    }
   </style>
 </head>
 <body>
@@ -26,7 +32,7 @@
           <a href="scoring.html">Scoring</a>
           <a href="challenges.html">Challenges</a>
           <a href="warmups.html">Warm-Ups</a>
-          <a href="live-scores.html?v=20260826-jenni" aria-current="page">Live Scores</a>
+          <a href="live-scores.html?v=20260909-week1" aria-current="page">Live Scores</a>
         </div>
       </nav>
     </div>
@@ -39,32 +45,37 @@
 
     <section class="about">
       <h2>Warm-Up Scores</h2>
+      <p>Each row shows exactly where the banked points came from.</p>
       <table class="scores-table">
-        <thead><tr><th>Maniac</th><th>Warm-Up Points</th></tr></thead>
+        <thead>
+          <tr><th>Maniac</th><th>Warm-Up Point Breakdown</th><th>Total Warm-Up Points</th></tr>
+        </thead>
         <tbody>
-          <tr><td>Áine M. Coyotl</td><td>2</td></tr>
-          <tr><td>Andrasta Iceni</td><td>2</td></tr>
-          <tr><td>Cathleen Marshall</td><td>2</td></tr>
-          <tr><td>Chris Qualls</td><td>2</td></tr>
-          <tr><td>Elizabeth Katherine Gray</td><td>2</td></tr>
-          <tr><td>Erica Andrus</td><td>2</td></tr>
-          <tr><td>Giovanni Deldio</td><td>2</td></tr>
-          <tr><td>Gnat Marie</td><td>2</td></tr>
-          <tr><td>Harriet Branch</td><td>2</td></tr>
-          <tr><td>Jenni Johnson</td><td>2</td></tr>
-          <tr><td>Kathleen Gibney</td><td>2</td></tr>
-          <tr><td>Laura Sue</td><td>2</td></tr>
-          <tr><td>Lisa Harshman Weaver</td><td>2</td></tr>
-          <tr><td>Newt White</td><td>2</td></tr>
-          <tr><td>Shaun Berkey</td><td>2</td></tr>
-          <tr><td>Winslow Leach</td><td>2</td></tr>
-          <tr><td>Zee Campbell</td><td>2</td></tr>
+          <tr><td>Áine M. Coyotl</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Andrasta Iceni</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Cathleen Marshall</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Chris Qualls</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Elizabeth Katherine Gray</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Erica Andrus</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points<br><strong>Week 1 Prescription:</strong> <em>Futurama: Bender’s Game</em> + <em>Cheech &amp; Chong’s Nice Dreams</em> (2 titles) = 15 points</td><td>17</td></tr>
+          <tr><td>Giovanni Deldio</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Gnat Marie</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Harriet Branch</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Jenni Johnson</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Kathleen Gibney</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Kermarie Graves</td><td class="score-breakdown"><strong>Week 1 Prescription:</strong> <em>Cheech &amp; Chong’s Nice Dreams</em> (1 title) = 6 points</td><td>6</td></tr>
+          <tr><td>Laura Sue</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Lisa Harshman Weaver</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Lynniall Johnson</td><td class="score-breakdown"><strong>Week 1 Prescription:</strong> <em>What About Bob?</em> + <em>Cheech &amp; Chong’s Nice Dreams</em> (2 titles) = 15 points</td><td>15</td></tr>
+          <tr><td>Newt White</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Shaun Berkey</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Winslow Leach</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
+          <tr><td>Zee Campbell</td><td class="score-breakdown"><strong>Theme Reveal:</strong> 2 points</td><td>2</td></tr>
         </tbody>
       </table>
     </section>
   </main>
 
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
-  <!-- live-scores refresh 2026-08-26: Jenni Johnson 2 -->
+  <!-- live-scores refresh 2026-09-09: Week 1 prescription scoring -->
 </body>
 </html>
