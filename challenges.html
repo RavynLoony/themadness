@@ -6,6 +6,42 @@
   <meta name="theme-color" content="#11160f">
   <title>2026 Challenges | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #special-countdown.expired-warning {
+      display: inline-block;
+      padding: .35rem .6rem;
+      border: 2px solid #ff2b2b;
+      border-radius: 6px;
+      background: #190000;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      box-shadow: 0 0 0 2px #5b0000, 0 0 16px rgba(255,43,43,.7);
+      animation: asylum-alert .7s steps(1,end) infinite;
+    }
+
+    @keyframes asylum-alert {
+      0%, 49% {
+        background: #190000;
+        color: #fff;
+        border-color: #ff2b2b;
+        box-shadow: 0 0 0 2px #5b0000, 0 0 16px rgba(255,43,43,.8);
+      }
+      50%, 100% {
+        background: #fff4c2;
+        color: #460000;
+        border-color: #ffb000;
+        box-shadow: 0 0 0 2px #714900, 0 0 22px rgba(255,176,0,.85);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #special-countdown.expired-warning {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <header><div class="wrap"><nav aria-label="Primary"><a class="brand" href="index.html">Halloween Horror Movie Marathon Madness</a><div class="navlinks">
@@ -93,11 +129,17 @@
       if (!countdown) return;
 
       const deadline = new Date('2026-09-16T00:01:00-07:00').getTime();
+      let expired = false;
 
       function updateCountdown() {
         const remaining = deadline - Date.now();
         if (remaining <= 0) {
-          countdown.textContent = 'EXPIRED';
+          countdown.textContent = '⚠ 5150 SPECIAL EXPIRED ⚠';
+          countdown.classList.add('expired-warning');
+          if (!expired) {
+            expired = true;
+            countdown.setAttribute('aria-label', '5150 Special expired');
+          }
           return;
         }
 
