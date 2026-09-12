@@ -7,7 +7,7 @@
   <title>2026 Challenges | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    #special-countdown.expired-warning {
+    .expired-warning {
       display: inline-block;
       padding: .35rem .6rem;
       border: 2px solid #ff2b2b;
@@ -37,7 +37,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      #special-countdown.expired-warning {
+      .expired-warning {
         animation: none;
       }
     }
@@ -85,6 +85,7 @@
       <p><strong>Futurama: Bender's Game (2008)</strong> · <strong>Cheech &amp; Chong's Nice Dreams (1981)</strong> · <strong>What About Bob? (1991)</strong></p>
       <p><strong>1 film = 6 points · 2 films = 15 points · all 3 films = 25 points</strong></p>
       <p>Valid through <strong>Saturday, September 12, 2026 at 11:59 PM</strong> in each Maniac's local time zone.</p>
+      <p><strong>Time remaining in your local time zone:</strong> <span id="prescription-countdown" aria-live="polite">calculating…</span></p>
       <p><a href="warmups.html">View the full Week One Warm-Up prescription →</a></p>
     </section>
 
@@ -125,34 +126,48 @@
 
   <script>
     (function () {
-      const countdown = document.getElementById('special-countdown');
-      if (!countdown) return;
+      function setupCountdown(id, deadline, expiredText, expiredLabel) {
+        const countdown = document.getElementById(id);
+        if (!countdown) return;
+        let expired = false;
 
-      const deadline = new Date('2026-09-16T00:01:00-07:00').getTime();
-      let expired = false;
-
-      function updateCountdown() {
-        const remaining = deadline - Date.now();
-        if (remaining <= 0) {
-          countdown.textContent = '⚠ 5150 SPECIAL EXPIRED ⚠';
-          countdown.classList.add('expired-warning');
-          if (!expired) {
-            expired = true;
-            countdown.setAttribute('aria-label', '5150 Special expired');
+        function updateCountdown() {
+          const remaining = deadline - Date.now();
+          if (remaining <= 0) {
+            countdown.textContent = expiredText;
+            countdown.classList.add('expired-warning');
+            if (!expired) {
+              expired = true;
+              countdown.setAttribute('aria-label', expiredLabel);
+            }
+            return;
           }
-          return;
+
+          const days = Math.floor(remaining / 86400000);
+          const hours = Math.floor((remaining % 86400000) / 3600000);
+          const minutes = Math.floor((remaining % 3600000) / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+
+          countdown.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
         }
 
-        const days = Math.floor(remaining / 86400000);
-        const hours = Math.floor((remaining % 86400000) / 3600000);
-        const minutes = Math.floor((remaining % 3600000) / 60000);
-        const seconds = Math.floor((remaining % 60000) / 1000);
-
-        countdown.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
       }
 
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      setupCountdown(
+        'special-countdown',
+        new Date('2026-09-16T00:01:00-07:00').getTime(),
+        '⚠ 5150 SPECIAL EXPIRED ⚠',
+        '5150 Special expired'
+      );
+
+      setupCountdown(
+        'prescription-countdown',
+        new Date(2026, 8, 13, 0, 0, 0).getTime(),
+        '⚠ WEEK ONE PRESCRIPTION EXPIRED ⚠',
+        'Week One prescription expired'
+      );
     }());
   </script>
 </body>
