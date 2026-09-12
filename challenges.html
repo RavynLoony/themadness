@@ -47,6 +47,41 @@
       letter-spacing: .05em;
     }
 
+    .show-art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .show-art-card {
+      margin: 0;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.2rem;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      background: #090c09;
+      text-align: center;
+    }
+
+    .show-art-card img {
+      display: block;
+      width: min(100%, 320px);
+      height: auto;
+      max-height: 150px;
+      object-fit: contain;
+      margin: auto;
+    }
+
+    .show-art-card figcaption {
+      margin-top: .8rem;
+      font-size: .85rem;
+    }
+
     @keyframes asylum-alert {
       0%, 49% {
         background: #190000;
@@ -84,18 +119,18 @@
       <h2>Premiere Week Challenge</h2>
       <p>Watch the premieres of <strong>Halloween Wars Season 16</strong>, dropping <strong>Sunday, September 13</strong>, and <strong>Halloween Baking Championship Season 12</strong>, dropping <strong>Monday, September 14</strong>.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0;">
-        <figure style="margin:0;">
+      <div class="show-art-grid">
+        <figure class="show-art-card">
           <a href="https://www.foodnetwork.com/shows/holiday-wars/photos/meet-the-competitors-of-halloween-wars-season-sixteen">
-            <img src="https://images.weserv.nl/?url=https%3A%2F%2Ffood.fnr.sndimg.com%2Fcontent%2Fdam%2Fimages%2Ffood%2Ffullset%2F2026%2F08%2F19%2F2%2FHW1601_0240.jpg.rend.hgtvcom.791.594.85.suffix%2F1787263141881.webp&amp;output=jpg" alt="Halloween Wars Season 16 cast, host and judges" loading="eager" referrerpolicy="no-referrer" style="width:100%;display:block;border-radius:12px;aspect-ratio:4/3;object-fit:cover;">
+            <img src="https://us1-prod-images.disco-api.com/2026/09/10/b6361a8f-9b01-3eea-9164-dbb8cd178746.png?w=544" alt="Halloween Wars logo" loading="eager">
           </a>
-          <figcaption style="font-size:.85rem;margin-top:.4rem;">Halloween Wars Season 16 · Official Food Network photo by Kim Raff</figcaption>
+          <figcaption><strong>Halloween Wars Season 16</strong><br>Official Food Network show art · tap for the Season 16 gallery</figcaption>
         </figure>
-        <figure style="margin:0;">
+        <figure class="show-art-card">
           <a href="https://www.foodnetwork.com/shows/halloween-baking-championship/photos/meet-the-competitors-of-halloween-baking-championship-season-twelve">
-            <img src="https://images.weserv.nl/?url=https%3A%2F%2Ffood.fnr.sndimg.com%2Fcontent%2Fdam%2Fimages%2Ffood%2Ffullset%2F2026%2F08%2F19%2F1%2FHL1201_0026.jpg.rend.hgtvcom.791.594.85.suffix%2F1787259056750.webp&amp;output=jpg" alt="Halloween Baking Championship Season 12 competitors" loading="eager" referrerpolicy="no-referrer" style="width:100%;display:block;border-radius:12px;aspect-ratio:4/3;object-fit:cover;">
+            <img src="https://us1-prod-images.disco-api.com/2026/09/09/ee1b725b-e29e-3fc4-980d-e85f3a273b4d.png?w=544" alt="Halloween Baking Championship logo" loading="eager">
           </a>
-          <figcaption style="font-size:.85rem;margin-top:.4rem;">Halloween Baking Championship Season 12 · Official Food Network photo by Rob Pryce</figcaption>
+          <figcaption><strong>Halloween Baking Championship Season 12</strong><br>Official Food Network show art · tap for the Season 12 gallery</figcaption>
         </figure>
       </div>
 
