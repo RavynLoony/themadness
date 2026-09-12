@@ -22,8 +22,9 @@
       <h2>Premiere Week Challenge</h2>
       <p>Watch the premieres of <strong>Halloween Wars Season 16</strong>, dropping <strong>Sunday, September 13</strong>, and <strong>Halloween Baking Championship Season 12</strong>, dropping <strong>Monday, September 14</strong>.</p>
       <p><strong>Watch 1 premiere = 5 points · Watch both premieres = 12 points</strong></p>
-      <p>Claim your points in the comments on <strong>Liz's 5150 Special post</strong> in the Madness Facebook group.</p>
-      <p>This special expires <strong>Wednesday, September 16, 2026 at 12:01 AM</strong>.</p>
+      <p>Claim your points in the comments on the <strong>Head Hauntress's 5150 Special post</strong> in the Madness Facebook group.</p>
+      <p>This special expires <strong>Wednesday, September 16, 2026 at 12:01 AM Pacific</strong>.</p>
+      <p><strong>Time remaining:</strong> <span id="special-countdown" aria-live="polite">calculating…</span></p>
     </section>
 
     <section class="notice compact-notice">
@@ -69,5 +70,32 @@
   </main>
 
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
+
+  <script>
+    (function () {
+      const countdown = document.getElementById('special-countdown');
+      if (!countdown) return;
+
+      const deadline = new Date('2026-09-16T00:01:00-07:00').getTime();
+
+      function updateCountdown() {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) {
+          countdown.textContent = 'EXPIRED';
+          return;
+        }
+
+        const days = Math.floor(remaining / 86400000);
+        const hours = Math.floor((remaining % 86400000) / 3600000);
+        const minutes = Math.floor((remaining % 3600000) / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+
+        countdown.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }());
+  </script>
 </body>
 </html>
