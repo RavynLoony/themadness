@@ -128,7 +128,7 @@
 
       <p><strong>Watch 1 premiere = 5 points · Watch both premieres = 12 points</strong></p>
       <p>Claim your points in the comments on the <strong>Head Hauntress's 5150 Special post</strong> in the Madness Facebook group.</p>
-      <p>This special expires <strong>Wednesday, September 16, 2026 at 12:01 AM Pacific</strong>.</p>
+      <p>This special expires <strong>Wednesday, September 16, 2026 at 12:01 AM in each Maniac's local time zone</strong>.</p>
       <div class="countdown-panel">
         <span class="countdown-label">5150 Special countdown</span>
         <span id="special-countdown" class="countdown-value" aria-live="polite">calculating…</span>
@@ -216,7 +216,7 @@
 
       setupCountdown(
         'special-countdown',
-        new Date('2026-09-16T00:01:00-07:00').getTime(),
+        new Date(2026, 8, 16, 0, 1, 0).getTime(),
         '⚠ 5150 SPECIAL EXPIRED ⚠',
         '5150 Special expired'
       );
