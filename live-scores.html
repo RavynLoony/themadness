@@ -18,9 +18,16 @@
     .score-breakdown strong { color:var(--text); }
     .score-math { margin:.45rem 0 .2rem; padding-left:1.1rem; }
     .score-math li { margin:.15rem 0; }
+    .score-sort { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; margin:1.25rem 0 .25rem; }
+    .score-sort-label { color:var(--muted); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    .score-sort button { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.02); color:var(--acid); padding:.55rem .8rem; font:inherit; font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; }
+    .score-sort button:hover, .score-sort button:focus-visible, .score-sort button[aria-pressed="true"] { border-color:var(--acid); background:rgba(168,198,108,.1); color:var(--ink); }
     @media (max-width: 700px) {
       .scores-table th, .scores-table td { padding:.75rem .6rem; }
       .scores-table th:last-child, .scores-table td:last-child { width:auto; }
+      .score-sort { align-items:stretch; }
+      .score-sort-label { width:100%; }
+      .score-sort button { flex:1 1 145px; }
     }
   </style>
 </head>
@@ -34,7 +41,7 @@
           <a href="scoring.html">Scoring</a>
           <a href="challenges.html">Challenges</a>
           <a href="warmups.html">Warm-Ups</a>
-          <a href="live-scores.html?v=20260913-week1-completions" aria-current="page">Live Scores</a>
+          <a href="live-scores.html?v=20260913-sortable" aria-current="page">Live Scores</a>
         </div>
       </nav>
     </div>
@@ -48,6 +55,11 @@
     <section class="about">
       <h2>Warm-Up Scores</h2>
       <p>Each row shows exactly where the banked points came from.</p>
+      <div class="score-sort" aria-label="Sort live scores">
+        <span class="score-sort-label">Sort by</span>
+        <button type="button" data-sort="name" aria-pressed="true">First Name A–Z</button>
+        <button type="button" data-sort="score" aria-pressed="false">Score High → Low</button>
+      </div>
       <table class="scores-table">
         <thead>
           <tr><th>Maniac</th><th>Warm-Up Point Breakdown</th><th>Total Warm-Up Points</th></tr>
@@ -83,6 +95,28 @@
   </main>
 
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
-  <!-- live-scores refresh 2026-09-13: Week 1 completion sweep -->
+  <script>
+    (() => {
+      const tbody = document.querySelector('.scores-table tbody');
+      const buttons = [...document.querySelectorAll('.score-sort button')];
+      if (!tbody || !buttons.length) return;
+
+      const rows = () => [...tbody.querySelectorAll('tr')];
+      const nameOf = row => row.cells[0].textContent.trim();
+      const scoreOf = row => Number.parseFloat(row.cells[2].textContent.trim()) || 0;
+      const byName = (a, b) => nameOf(a).localeCompare(nameOf(b), undefined, { sensitivity: 'base' });
+
+      const sortRows = mode => {
+        const sorted = rows().sort(mode === 'score'
+          ? (a, b) => scoreOf(b) - scoreOf(a) || byName(a, b)
+          : byName);
+        sorted.forEach(row => tbody.appendChild(row));
+        buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.sort === mode)));
+      };
+
+      buttons.forEach(button => button.addEventListener('click', () => sortRows(button.dataset.sort)));
+    })();
+  </script>
+  <!-- live-scores refresh 2026-09-13: sortable by first name or high score -->
 </body>
 </html>
