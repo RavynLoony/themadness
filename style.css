@@ -241,6 +241,14 @@ h1 {
 }
 .mini-card p { margin:0; color:var(--muted); }
 .event-columns { columns:2 280px; }
+
+img[alt="Shock Treatment 1981 movie poster"] {
+  content: url("https://cdn.posteritati.com/posters/000/000/021/257/shock-treatment-md-web.jpg") !important;
+}
+img[alt="Hairspray 1988 John Waters movie poster"] {
+  content: url("https://www.cinemaclock.com/images/posters/1000x1500/78/hairspray-1988-us-poster.jpg") !important;
+}
+
 footer { border-top:1px solid var(--line); color:var(--muted); padding:1.5rem 0 3rem; font-size:.9rem; }
 @media (max-width:760px) {
   main { padding-top:2.5rem; }
