@@ -113,25 +113,7 @@
   <main class="wrap">
     <p class="kicker">2026 · Year 18</p>
     <h1 class="page-title">Challenges</h1>
-    <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
-
-    <section class="notice compact-notice">
-      <p class="kicker">HEAD HAUNTRESS · WARM-UP WEEK TWO SPECIAL</p>
-      <h2>LEGION BINGE · 115 BANKED POINTS</h2>
-      <p><strong>BINGE <em>LEGION</em> (2017–2019)</strong> during this limited Week Two Warm-Up special.</p>
-      <p><strong>EVERY EPISODE = 4 POINTS</strong> at the one-hour TV AUTOMATIC TRIPLE BONUS value.</p>
-      <p><strong>27 EPISODES × 4 = 108 POINTS</strong></p>
-      <p><strong>FINISH ALL THREE SEASONS = +7 COMPLETION BONUS</strong></p>
-      <p><strong>MAXIMUM = 115 BANKED POINTS</strong></p>
-      <div class="rule-callout">
-        <strong>DEADLINE:</strong> This special expires at the RULE POST on <strong>Monday, September 21, 2026 at 8:00 PM PACIFIC TIME</strong>. This deadline is a specific Pacific-time exception; it is <strong>not</strong> based on each Maniac's local time zone.
-      </div>
-      <div class="countdown-panel">
-        <span class="countdown-label">LEGION SPECIAL DEADLINE · 8:00 PM PACIFIC TIME</span>
-        <span id="legion-countdown" class="countdown-value" aria-live="polite">calculating…</span>
-      </div>
-      <p>After the special expires, <strong><em>Legion</em> remains fully accepted</strong> for THE MADNESS and episodes are scored by the <strong>normal point system</strong>. The 4-point-per-episode special and +7 completion bonus no longer apply.</p>
-    </section>
+    <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points. Active challenges are listed by nearest deadline first.</p>
 
     <section class="notice compact-notice">
       <p class="kicker">5150 Special · Limited Time</p>
@@ -183,6 +165,24 @@
         <span id="prescription-countdown" class="countdown-value" aria-live="polite">calculating…</span>
       </div>
       <p><a href="warmups.html">VIEW THE FULL WEEK TWO PRESCRIPTION →</a></p>
+    </section>
+
+    <section class="notice compact-notice">
+      <p class="kicker">HEAD HAUNTRESS · WARM-UP WEEK TWO SPECIAL</p>
+      <h2>LEGION BINGE · 115 BANKED POINTS</h2>
+      <p><strong>BINGE <em>LEGION</em> (2017–2019)</strong> during this limited Week Two Warm-Up special.</p>
+      <p><strong>EVERY EPISODE = 4 POINTS</strong> at the one-hour TV AUTOMATIC TRIPLE BONUS value.</p>
+      <p><strong>27 EPISODES × 4 = 108 POINTS</strong></p>
+      <p><strong>FINISH ALL THREE SEASONS = +7 COMPLETION BONUS</strong></p>
+      <p><strong>MAXIMUM = 115 BANKED POINTS</strong></p>
+      <div class="rule-callout">
+        <strong>DEADLINE:</strong> This special expires at the RULE POST on <strong>Monday, September 21, 2026 at 8:00 PM PACIFIC TIME</strong>. This deadline is a specific Pacific-time exception; it is <strong>not</strong> based on each Maniac's local time zone.
+      </div>
+      <div class="countdown-panel">
+        <span class="countdown-label">LEGION SPECIAL DEADLINE · 8:00 PM PACIFIC TIME</span>
+        <span id="legion-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+      <p>After the special expires, <strong><em>Legion</em> remains fully accepted</strong> for THE MADNESS and episodes are scored by the <strong>normal point system</strong>. The 4-point-per-episode special and +7 completion bonus no longer apply.</p>
     </section>
 
     <section class="content-section">
@@ -252,13 +252,6 @@
       }
 
       setupCountdown(
-        'legion-countdown',
-        Date.parse('2026-09-21T20:00:00-07:00'),
-        '⚠ LEGION SPECIAL EXPIRED ⚠',
-        'Legion Week Two special expired'
-      );
-
-      setupCountdown(
         'special-countdown',
         new Date(2026, 8, 16, 0, 1, 0).getTime(),
         '⚠ 5150 SPECIAL EXPIRED ⚠',
@@ -270,6 +263,13 @@
         new Date(2026, 8, 20, 0, 0, 0).getTime(),
         '⚠ WEEK TWO PRESCRIPTION EXPIRED ⚠',
         'Week Two prescription expired'
+      );
+
+      setupCountdown(
+        'legion-countdown',
+        Date.parse('2026-09-21T20:00:00-07:00'),
+        '⚠ LEGION SPECIAL EXPIRED ⚠',
+        'Legion Week Two special expired'
       );
     }());
   </script>
