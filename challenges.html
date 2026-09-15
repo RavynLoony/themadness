@@ -124,7 +124,11 @@
       <p><strong>FINISH ALL THREE SEASONS = +7 COMPLETION BONUS</strong></p>
       <p><strong>MAXIMUM = 115 BANKED POINTS</strong></p>
       <div class="rule-callout">
-        <strong>DEADLINE:</strong> This special expires <strong>Monday, September 21, 2026 at the RULE POST</strong>.
+        <strong>DEADLINE:</strong> This special expires at the RULE POST on <strong>Monday, September 21, 2026 at 8:00 PM PACIFIC TIME</strong>. This deadline is a specific Pacific-time exception; it is <strong>not</strong> based on each Maniac's local time zone.
+      </div>
+      <div class="countdown-panel">
+        <span class="countdown-label">LEGION SPECIAL DEADLINE · 8:00 PM PACIFIC TIME</span>
+        <span id="legion-countdown" class="countdown-value" aria-live="polite">calculating…</span>
       </div>
       <p>After the special expires, <strong><em>Legion</em> remains fully accepted</strong> for THE MADNESS and episodes are scored by the <strong>normal point system</strong>. The 4-point-per-episode special and +7 completion bonus no longer apply.</p>
     </section>
@@ -246,6 +250,13 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
       }
+
+      setupCountdown(
+        'legion-countdown',
+        Date.parse('2026-09-21T20:00:00-07:00'),
+        '⚠ LEGION SPECIAL EXPIRED ⚠',
+        'Legion Week Two special expired'
+      );
 
       setupCountdown(
         'special-countdown',
