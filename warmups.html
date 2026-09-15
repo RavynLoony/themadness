@@ -28,6 +28,10 @@
     .countdown-panel { margin: 1rem 0; padding: .8rem 1rem; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; background: rgba(0,0,0,.22); text-align: center; }
     .countdown-panel .countdown-label { display: block; margin-bottom: .35rem; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .82; }
     .countdown-panel .countdown-value { display: inline-block; font-size: 1.35rem; font-weight: 900; letter-spacing: .05em; }
+    .show-art-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1rem 0; }
+    .show-art-card { margin:0; display:flex; justify-content:center; align-items:center; padding:1rem; border:1px solid rgba(255,255,255,.14); border-radius:12px; background:#090c09; text-align:center; }
+    .show-art-card img { display:block; width:100%; max-width:352px; height:auto; margin:0 auto; border-radius:8px; }
+    .show-art-card img.hbc-art { width:260px; max-width:100%; }
     .expired-warning { display: inline-block; padding: .35rem .6rem; border: 2px solid #ff2b2b; border-radius: 6px; background: #190000; color: #fff; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 0 0 2px #5b0000, 0 0 16px rgba(255,43,43,.7); animation: asylum-alert .7s steps(1,end) infinite; }
     @keyframes asylum-alert { 0%,49% { background:#190000; color:#fff; border-color:#ff2b2b; box-shadow:0 0 0 2px #5b0000,0 0 16px rgba(255,43,43,.8); } 50%,100% { background:#fff4c2; color:#460000; border-color:#ffb000; box-shadow:0 0 0 2px #714900,0 0 22px rgba(255,176,0,.85); } }
     @media (prefers-reduced-motion: reduce) { .expired-warning { animation: none; } }
@@ -50,106 +54,69 @@
       <p><a href="https://docs.google.com/document/d/1dGIYITNNarMJfqIe9YgWXjlrYapDTJHINdLIF9L5jik/export?format=pdf">Download WARM-UPS À LA CARTE as a PDF →</a></p>
     </div>
 
+    <section class="content-section warmup-week" aria-labelledby="special-5150-title">
+      <p class="kicker">HEAD HAUNTRESS · 5150 SPECIAL · LIMITED TIME</p>
+      <h2 class="section-title" id="special-5150-title">HALLOWEEN WARS + HALLOWEEN BAKING CHAMPIONSHIP PREMIERE CHALLENGE</h2>
+      <p class="section-intro">Watch the premieres of <strong>Halloween Wars Season 16</strong> and <strong>Halloween Baking Championship Season 12</strong>.</p>
+      <div class="show-art-grid">
+        <figure class="show-art-card"><img src="images/5150-halloween-wars-embed.svg?v=1" alt="Halloween Wars Season 16 promo image used in the Head Hauntress's 5150 Special post" loading="eager"></figure>
+        <figure class="show-art-card"><img class="hbc-art" src="images/5150-halloween-baking-embed.svg?v=2" alt="Halloween Baking Championship Season 12 promo image used in the Head Hauntress's 5150 Special post" loading="eager"></figure>
+      </div>
+      <div class="score-grid warmup-score-grid" aria-label="5150 Special scoring">
+        <div class="score-card"><span class="score-number">5</span><h3>ONE PREMIERE</h3><p>Complete either premiere.</p></div>
+        <div class="score-card"><span class="score-number">12</span><h3>BOTH PREMIERES</h3><p>Complete both premieres for the full special.</p></div>
+      </div>
+      <div class="deadline"><strong>DEADLINE:</strong> Wednesday, September 16, 2026 at <strong>12:01 AM in each Maniac's own local time zone</strong>.</div>
+      <div class="countdown-panel"><span class="countdown-label">5150 SPECIAL COUNTDOWN · YOUR LOCAL TIME</span><span id="special-countdown" class="countdown-value" aria-live="polite">calculating…</span></div>
+      <div class="notice compact-notice"><h2>HOW TO CLAIM YOUR POINTS</h2><p>Comment on the <strong>Head Hauntress's 5150 Special post</strong> in the Madness Facebook group after completing your premiere or premieres so the points can be banked.</p></div>
+    </section>
+
     <section class="content-section warmup-week" aria-labelledby="week-two-title">
       <p class="kicker">WARM-UP WEEK TWO · NURSE NEVERMORE'S SUNDAY PRESCRIPTION</p>
       <h2 class="section-title" id="week-two-title">NURSE NEVERMORE'S WEEK TWO PRESCRIPTION</h2>
       <p class="section-intro"><strong>ATTENTION, PATIENTS.</strong> NURSE NEVERMORE is making her SUNDAY rounds. Your WEEK TWO PRESCRIPTION is to watch <strong>ANY ONE, ANY TWO, OR ALL THREE</strong> of the films below. Beginning this week, all weekly PRESCRIPTIONS will be dispensed on <strong>SUNDAYS</strong>.</p>
-
-      <div class="deadline">
-        <strong>PRESCRIPTION WINDOW:</strong> Valid through <strong>Saturday, September 19, 2026 at 11:59 PM</strong> in each Maniac's own local time zone.
-      </div>
-
+      <div class="deadline"><strong>PRESCRIPTION WINDOW:</strong> Valid through <strong>Saturday, September 19, 2026 at 11:59 PM</strong> in each Maniac's own local time zone.</div>
+      <div class="countdown-panel"><span class="countdown-label">WEEK TWO PRESCRIPTION CLOCK · YOUR LOCAL TIME</span><span id="prescription-countdown" class="countdown-value" aria-live="polite">calculating…</span></div>
       <div class="warmup-grid">
-        <article class="warmup-film">
-          <img src="https://i.ebayimg.com/00/s/MTYwMFgxMjE1/z/K-sAAOSwnLBkgXTr/%24_57.PNG?set_id=880000500F" alt="Shock Treatment 1981 movie poster" loading="eager">
-          <div class="warmup-film-body">
-            <p class="warmup-rx">PRESCRIPTION #1</p>
-            <h3>Shock Treatment</h3>
-            <p class="warmup-meta">1981 · 94 minutes</p>
-            <p class="warmup-points">6 POINTS</p>
-          </div>
-        </article>
-
-        <article class="warmup-film">
-          <img src="https://image.tmdb.org/t/p/original/q2LoYBTPnM4yWaXgKte56XVEIvB.jpg" alt="Psycho Beach Party 2000 movie poster" loading="eager">
-          <div class="warmup-film-body">
-            <p class="warmup-rx">PRESCRIPTION #2</p>
-            <h3>Psycho Beach Party</h3>
-            <p class="warmup-meta">2000 · 95 minutes</p>
-            <p class="warmup-points">6 POINTS</p>
-          </div>
-        </article>
-
-        <article class="warmup-film">
-          <img src="https://i.ebayimg.com/images/g/TNUAAOSw-VBgpseT/s-l1200.jpg" alt="Hairspray 1988 John Waters movie poster" loading="eager">
-          <div class="warmup-film-body">
-            <p class="warmup-rx">PRESCRIPTION #3</p>
-            <h3>Hairspray</h3>
-            <p class="warmup-meta">1988 · 92 minutes · JOHN WATERS</p>
-            <p class="warmup-points">6 POINTS</p>
-          </div>
-        </article>
+        <article class="warmup-film"><img src="https://i.ebayimg.com/00/s/MTYwMFgxMjE1/z/K-sAAOSwnLBkgXTr/%24_57.PNG?set_id=880000500F" alt="Shock Treatment 1981 movie poster" loading="eager"><div class="warmup-film-body"><p class="warmup-rx">PRESCRIPTION #1</p><h3>Shock Treatment</h3><p class="warmup-meta">1981 · 94 minutes</p><p class="warmup-points">6 POINTS</p></div></article>
+        <article class="warmup-film"><img src="https://image.tmdb.org/t/p/original/q2LoYBTPnM4yWaXgKte56XVEIvB.jpg" alt="Psycho Beach Party 2000 movie poster" loading="eager"><div class="warmup-film-body"><p class="warmup-rx">PRESCRIPTION #2</p><h3>Psycho Beach Party</h3><p class="warmup-meta">2000 · 95 minutes</p><p class="warmup-points">6 POINTS</p></div></article>
+        <article class="warmup-film"><img src="https://i.ebayimg.com/images/g/TNUAAOSw-VBgpseT/s-l1200.jpg" alt="Hairspray 1988 John Waters movie poster" loading="eager"><div class="warmup-film-body"><p class="warmup-rx">PRESCRIPTION #3</p><h3>Hairspray</h3><p class="warmup-meta">1988 · 92 minutes · JOHN WATERS</p><p class="warmup-points">6 POINTS</p></div></article>
       </div>
-
       <div class="score-grid warmup-score-grid" aria-label="Week Two Warm-Up scoring">
         <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Take any one dose.</p></div>
         <div class="score-card"><span class="score-number">15</span><h3>2 FILMS</h3><p>Take any two doses.</p></div>
         <div class="score-card"><span class="score-number">25</span><h3>ALL 3 FILMS</h3><p>Complete the full prescription.</p></div>
       </div>
-
-      <div class="notice compact-notice">
-        <h2>HOW TO CLAIM YOUR POINTS</h2>
-        <p>Watch your chosen film or films during the WEEK TWO prescription window. When you have finished your dose, comment on the <strong>WEEK TWO PRESCRIPTION thread in the MADNESS Facebook group</strong> so NURSE NEVERMORE can update your chart.</p>
-      </div>
-
-      <div class="rule-callout warmup-warning">
-        <strong>POSSIBLE SIDE EFFECTS:</strong> television-induced shock, homicidal beach-party impulses, uncontrollable dancing, and towering Baltimore hair.
-      </div>
+      <div class="notice compact-notice"><h2>HOW TO CLAIM YOUR POINTS</h2><p>Watch your chosen film or films during the WEEK TWO prescription window. When you have finished your dose, comment on the <strong>WEEK TWO PRESCRIPTION thread in the MADNESS Facebook group</strong> so NURSE NEVERMORE can update your chart.</p></div>
+      <div class="rule-callout warmup-warning"><strong>POSSIBLE SIDE EFFECTS:</strong> television-induced shock, homicidal beach-party impulses, uncontrollable dancing, and towering Baltimore hair.</div>
     </section>
 
     <section class="content-section warmup-week" aria-labelledby="legion-week-two-title">
       <p class="kicker">HEAD HAUNTRESS · WARM-UP WEEK TWO SPECIAL</p>
       <h2 class="section-title" id="legion-week-two-title">LEGION BINGE · 115 BANKED POINTS</h2>
       <p class="section-intro"><strong>BINGE <em>LEGION</em> (2017–2019)</strong> for a limited Week Two special. Every episode watched during the special window scores at the <strong>ONE-HOUR TV AUTOMATIC TRIPLE BONUS value of 4 POINTS</strong>.</p>
-
       <div class="score-grid warmup-score-grid" aria-label="Legion Week Two Warm-Up scoring">
         <div class="score-card"><span class="score-number">4</span><h3>PER EPISODE</h3><p>Every episode during the special window.</p></div>
         <div class="score-card"><span class="score-number">108</span><h3>ALL 27 EPISODES</h3><p>27 episodes × 4 points.</p></div>
         <div class="score-card"><span class="score-number">+7</span><h3>COMPLETION BONUS</h3><p>Finish all three seasons during the special window.</p></div>
         <div class="score-card"><span class="score-number">115</span><h3>MAXIMUM</h3><p>Total banked points for the complete binge.</p></div>
       </div>
-
-      <div class="deadline">
-        <strong>DEADLINE:</strong> This special expires at the RULE POST on <strong>Monday, September 21, 2026 at 8:00 PM PACIFIC TIME</strong>. This deadline is a specific Pacific-time exception; it is <strong>not</strong> based on each Maniac's local time zone.
-      </div>
-
-      <div class="countdown-panel">
-        <span class="countdown-label">LEGION SPECIAL DEADLINE · 8:00 PM PACIFIC TIME</span>
-        <span id="legion-countdown" class="countdown-value" aria-live="polite">calculating…</span>
-      </div>
-
-      <div class="notice compact-notice">
-        <h2>AFTER THE SPECIAL</h2>
-        <p><strong><em>Legion</em> remains fully accepted</strong> for THE MADNESS and episodes are scored by the <strong>normal point system</strong>. The 4-point-per-episode special and +7 completion bonus no longer apply.</p>
-      </div>
+      <div class="deadline"><strong>DEADLINE:</strong> This special expires at the RULE POST on <strong>Monday, September 21, 2026 at 8:00 PM PACIFIC TIME</strong>. This deadline is a specific Pacific-time exception; it is <strong>not</strong> based on each Maniac's local time zone.</div>
+      <div class="countdown-panel"><span class="countdown-label">LEGION SPECIAL DEADLINE · 8:00 PM PACIFIC TIME</span><span id="legion-countdown" class="countdown-value" aria-live="polite">calculating…</span></div>
+      <div class="notice compact-notice"><h2>AFTER THE SPECIAL</h2><p><strong><em>Legion</em> remains fully accepted</strong> for THE MADNESS and episodes are scored by the <strong>normal point system</strong>. The 4-point-per-episode special and +7 completion bonus no longer apply.</p></div>
     </section>
 
     <section class="content-section" aria-labelledby="outside-warmups-title">
       <p class="kicker">À La Carte · Available During September Warm-Ups</p>
       <h2 class="section-title" id="outside-warmups-title">Get Out of the House</h2>
       <p class="section-intro">The outside-event Warm-Ups below can be completed throughout the September Warm-Up weeks, with those points banked until the end of THE MADNESS. The Satanic Mechanic Challenge has its own longer challenge window.</p>
-
       <div class="score-grid warmup-score-grid" aria-label="À la carte Warm-Up outing bonuses">
         <div class="score-card"><span class="score-number">2</span><h3>Outside Event</h3><p>Attend an outside Halloween or seasonal event, such as an amusement-park Halloween event or fall festival. House parties do not count.</p></div>
         <div class="score-card"><span class="score-number">2</span><h3>Dark Ride / Walkthrough</h3><p>Complete a dark ride, corn maze, seasonal walkthrough or haunt, escape room, or fun house.</p></div>
         <div class="score-card"><span class="score-number">5</span><h3>Themed Dark Ride</h3><p>If the ride, maze, walkthrough, escape room or fun house is specifically asylum, hospital, psychiatric or medical themed, it is worth 5 points instead of 2.</p></div>
         <div class="score-card"><span class="score-number">10</span><h3>Actual Hospital / Asylum Venue</h3><p>If the event or haunt takes place <strong>inside a real current or former hospital, psychiatric / mental hospital, asylum, sanitarium / sanatorium or similar institution</strong>, it is worth 10 points.</p></div>
       </div>
-
-      <div class="rule-callout">
-        <strong>Multiple walkthroughs:</strong> At an attraction with multiple separately named walkthroughs, mazes or houses, <strong>each one you complete counts separately</strong>. Standard dark-ride / walkthrough points may be claimed separately from the ordinary 2-point Outside Halloween / Seasonal Event value when both apply.
-      </div>
-
+      <div class="rule-callout"><strong>Multiple walkthroughs:</strong> At an attraction with multiple separately named walkthroughs, mazes or houses, <strong>each one you complete counts separately</strong>. Standard dark-ride / walkthrough points may be claimed separately from the ordinary 2-point Outside Halloween / Seasonal Event value when both apply.</div>
       <div class="notice compact-notice rocky-special">
         <p class="kicker">Tim Curry · 2026 R.I.P. ATB</p>
         <h2>The Satanic Mechanic Challenge · 10 Points</h2>
@@ -157,105 +124,51 @@
         <p>This challenge is <strong>OPEN DURING WARM-UPS</strong> and remains open through the end of <strong>THE MADNESS</strong> at sunrise Sunday, November 1, 2026, in each Maniac's local time zone.</p>
         <p>Attend <strong><em>The Rocky Horror Picture Show</em> (1975) in a movie theater</strong> or attend a <strong>live stage production of <em>The Rocky Horror Show</em></strong> for <strong>10 points</strong>.</p>
       </div>
-
-      <div class="notice compact-notice">
-        <h2>How to claim it</h2>
-        <p>If you complete an outside-event activity or <strong>The Satanic Mechanic Challenge</strong> during <strong>WARM-UPS</strong>, make a post in the <strong>Madness Facebook group</strong> with a photo of the event, yourself there, or your ticket, receipt or admission confirmation. For The Satanic Mechanic Challenge, the 10 points are added to your <strong>banked Warm-Up points</strong>.</p>
-        <p>Once the <strong>MAIN GAME begins September 27</strong>, include the qualifying outing or Satanic Mechanic Challenge in that week's <strong>WEEKLY SUMMARY</strong> so it is scored in that week's total. We would still love you to share your photos in the group.</p>
-      </div>
-
-      <div class="rule-callout">
-        <strong>Pennhurst Asylum Challenge:</strong> Visit Pennhurst Asylum for <strong>25 points</strong>. During Warm-Ups, use the same Facebook-post proof process above. <a href="https://pennhurstasylum.com/">Pennhurst Asylum tickets &amp; info →</a>
-      </div>
+      <div class="notice compact-notice"><h2>How to claim it</h2><p>If you complete an outside-event activity or <strong>The Satanic Mechanic Challenge</strong> during <strong>WARM-UPS</strong>, make a post in the <strong>Madness Facebook group</strong> with a photo of the event, yourself there, or your ticket, receipt or admission confirmation. For The Satanic Mechanic Challenge, the 10 points are added to your <strong>banked Warm-Up points</strong>.</p><p>Once the <strong>MAIN GAME begins September 27</strong>, include the qualifying outing or Satanic Mechanic Challenge in that week's <strong>WEEKLY SUMMARY</strong> so it is scored in that week's total. We would still love you to share your photos in the group.</p></div>
+      <div class="rule-callout"><strong>Pennhurst Asylum Challenge:</strong> Visit Pennhurst Asylum for <strong>25 points</strong>. During Warm-Ups, use the same Facebook-post proof process above. <a href="https://pennhurstasylum.com/">Pennhurst Asylum tickets &amp; info →</a></div>
     </section>
 
     <section class="content-section warmup-week" aria-labelledby="week-one-title">
       <p class="kicker">WARM-UP WEEK ONE · PRESCRIPTION EXPIRED</p>
       <h2 class="section-title" id="week-one-title">Psychiatric Comedy Triple Feature</h2>
       <p class="section-intro">Week One offered any one, any two, or all three of the films below.</p>
-
-      <div class="deadline">
-        <strong>EXPIRED:</strong> Saturday, September 12, 2026 at 11:59 PM in each Maniac's local time zone.
-      </div>
-
+      <div class="deadline"><strong>EXPIRED:</strong> Saturday, September 12, 2026 at 11:59 PM in each Maniac's local time zone.</div>
       <div class="warmup-grid">
-        <article class="warmup-film">
-          <img src="https://whats-after-the-movie-ti152.sevalla.storage/movies/Futurama%3A-Bender%E2%80%99s%C2%A0Game-nsRKt_A7JlFRkQ.jpg" alt="Futurama: Bender's Game poster" loading="lazy">
-          <div class="warmup-film-body">
-            <p class="warmup-rx">Prescription #1</p>
-            <h3>Futurama: Bender's Game</h3>
-            <p class="warmup-meta">2008 · 88 minutes</p>
-            <p class="warmup-points">6 points</p>
-          </div>
-        </article>
-
-        <article class="warmup-film">
-          <img src="https://cdn.posteritati.com/posters/000/000/037/344/nice-dreams-md-web.jpg" alt="Cheech &amp; Chong's Nice Dreams poster" loading="lazy">
-          <div class="warmup-film-body">
-            <p class="warmup-rx">Prescription #2</p>
-            <h3>Cheech &amp; Chong's Nice Dreams</h3>
-            <p class="warmup-meta">1981 · 88 minutes</p>
-            <p class="warmup-points">6 points</p>
-          </div>
-        </article>
-
-        <article class="warmup-film">
-          <img src="https://www.posterpalace.com/cdn/shop/products/what-about-bob-us-one-sheet-1991-original-release-posterpalacecom-814955.jpg?v=1671385290&amp;width=1920" alt="What About Bob? poster" loading="lazy">
-          <div class="warmup-film-body">
-            <p class="warmup-rx">Prescription #3</p>
-            <h3>What About Bob?</h3>
-            <p class="warmup-meta">1991 · 99 minutes</p>
-            <p class="warmup-points">6 points</p>
-          </div>
-        </article>
+        <article class="warmup-film"><img src="https://whats-after-the-movie-ti152.sevalla.storage/movies/Futurama%3A-Bender%E2%80%99s%C2%A0Game-nsRKt_A7JlFRkQ.jpg" alt="Futurama: Bender's Game poster" loading="lazy"><div class="warmup-film-body"><p class="warmup-rx">Prescription #1</p><h3>Futurama: Bender's Game</h3><p class="warmup-meta">2008 · 88 minutes</p><p class="warmup-points">6 points</p></div></article>
+        <article class="warmup-film"><img src="https://cdn.posteritati.com/posters/000/000/037/344/nice-dreams-md-web.jpg" alt="Cheech &amp; Chong's Nice Dreams poster" loading="lazy"><div class="warmup-film-body"><p class="warmup-rx">Prescription #2</p><h3>Cheech &amp; Chong's Nice Dreams</h3><p class="warmup-meta">1981 · 88 minutes</p><p class="warmup-points">6 points</p></div></article>
+        <article class="warmup-film"><img src="https://www.posterpalace.com/cdn/shop/products/what-about-bob-us-one-sheet-1991-original-release-posterpalacecom-814955.jpg?v=1671385290&amp;width=1920" alt="What About Bob? poster" loading="lazy"><div class="warmup-film-body"><p class="warmup-rx">Prescription #3</p><h3>What About Bob?</h3><p class="warmup-meta">1991 · 99 minutes</p><p class="warmup-points">6 points</p></div></article>
       </div>
-
-      <div class="score-grid warmup-score-grid" aria-label="Week One Warm-Up scoring">
-        <div class="score-card"><span class="score-number">6</span><h3>1 Film</h3><p>Watch any one of the three.</p></div>
-        <div class="score-card"><span class="score-number">15</span><h3>2 Films</h3><p>Watch any two of the three.</p></div>
-        <div class="score-card"><span class="score-number">25</span><h3>All 3 Films</h3><p>Complete Nurse Nevermore's full prescription.</p></div>
-      </div>
+      <div class="score-grid warmup-score-grid" aria-label="Week One Warm-Up scoring"><div class="score-card"><span class="score-number">6</span><h3>1 Film</h3><p>Watch any one of the three.</p></div><div class="score-card"><span class="score-number">15</span><h3>2 Films</h3><p>Watch any two of the three.</p></div><div class="score-card"><span class="score-number">25</span><h3>All 3 Films</h3><p>Complete Nurse Nevermore's full prescription.</p></div></div>
     </section>
   </main>
 
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
-
   <script>
     (function () {
       function setupCountdown(id, deadline, expiredText, expiredLabel) {
         const countdown = document.getElementById(id);
         if (!countdown) return;
         let expired = false;
-
         function updateCountdown() {
           const remaining = deadline - Date.now();
           if (remaining <= 0) {
             countdown.textContent = expiredText;
             countdown.classList.add('expired-warning');
-            if (!expired) {
-              expired = true;
-              countdown.setAttribute('aria-label', expiredLabel);
-            }
+            if (!expired) { expired = true; countdown.setAttribute('aria-label', expiredLabel); }
             return;
           }
-
           const days = Math.floor(remaining / 86400000);
           const hours = Math.floor((remaining % 86400000) / 3600000);
           const minutes = Math.floor((remaining % 3600000) / 60000);
           const seconds = Math.floor((remaining % 60000) / 1000);
-          countdown.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+          countdown.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
         }
-
         updateCountdown();
         setInterval(updateCountdown, 1000);
       }
-
-      setupCountdown(
-        'legion-countdown',
-        Date.parse('2026-09-21T20:00:00-07:00'),
-        '⚠ LEGION SPECIAL EXPIRED ⚠',
-        'Legion Week Two special expired'
-      );
+      setupCountdown('special-countdown', new Date(2026,8,16,0,1,0).getTime(), '⚠ 5150 SPECIAL EXPIRED ⚠', '5150 Special expired');
+      setupCountdown('prescription-countdown', new Date(2026,8,20,0,0,0).getTime(), '⚠ WEEK TWO PRESCRIPTION EXPIRED ⚠', 'Week Two prescription expired');
+      setupCountdown('legion-countdown', Date.parse('2026-09-21T20:00:00-07:00'), '⚠ LEGION SPECIAL EXPIRED ⚠', 'Legion Week Two special expired');
     }());
   </script>
 </body>
