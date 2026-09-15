@@ -25,6 +25,12 @@
     .warmup-download a { font-weight: 700; }
     .rocky-special { margin-top: 1.5rem; border-color: var(--acid); }
     .rocky-special strong { color: var(--acid); }
+    .countdown-panel { margin: 1rem 0; padding: .8rem 1rem; border: 1px solid rgba(255,255,255,.22); border-radius: 10px; background: rgba(0,0,0,.22); text-align: center; }
+    .countdown-panel .countdown-label { display: block; margin-bottom: .35rem; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .82; }
+    .countdown-panel .countdown-value { display: inline-block; font-size: 1.35rem; font-weight: 900; letter-spacing: .05em; }
+    .expired-warning { display: inline-block; padding: .35rem .6rem; border: 2px solid #ff2b2b; border-radius: 6px; background: #190000; color: #fff; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 0 0 2px #5b0000, 0 0 16px rgba(255,43,43,.7); animation: asylum-alert .7s steps(1,end) infinite; }
+    @keyframes asylum-alert { 0%,49% { background:#190000; color:#fff; border-color:#ff2b2b; box-shadow:0 0 0 2px #5b0000,0 0 16px rgba(255,43,43,.8); } 50%,100% { background:#fff4c2; color:#460000; border-color:#ffb000; box-shadow:0 0 0 2px #714900,0 0 22px rgba(255,176,0,.85); } }
+    @media (prefers-reduced-motion: reduce) { .expired-warning { animation: none; } }
     @media (max-width:900px) { .warmup-score-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
     @media (max-width:760px) { .warmup-grid { grid-template-columns: 1fr; } .warmup-film > img { max-height: 580px; object-fit: contain; } .warmup-score-grid { grid-template-columns: 1fr; } }
   </style>
@@ -57,7 +63,12 @@
       </div>
 
       <div class="deadline">
-        <strong>DEADLINE:</strong> This special expires <strong>Monday, September 21, 2026 at the RULE POST</strong>.
+        <strong>DEADLINE:</strong> This special expires at the RULE POST on <strong>Monday, September 21, 2026 at 8:00 PM PACIFIC TIME</strong>. This deadline is a specific Pacific-time exception; it is <strong>not</strong> based on each Maniac's local time zone.
+      </div>
+
+      <div class="countdown-panel">
+        <span class="countdown-label">LEGION SPECIAL DEADLINE · 8:00 PM PACIFIC TIME</span>
+        <span id="legion-countdown" class="countdown-value" aria-live="polite">calculating…</span>
       </div>
 
       <div class="notice compact-notice">
@@ -208,5 +219,44 @@
   </main>
 
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
+
+  <script>
+    (function () {
+      function setupCountdown(id, deadline, expiredText, expiredLabel) {
+        const countdown = document.getElementById(id);
+        if (!countdown) return;
+        let expired = false;
+
+        function updateCountdown() {
+          const remaining = deadline - Date.now();
+          if (remaining <= 0) {
+            countdown.textContent = expiredText;
+            countdown.classList.add('expired-warning');
+            if (!expired) {
+              expired = true;
+              countdown.setAttribute('aria-label', expiredLabel);
+            }
+            return;
+          }
+
+          const days = Math.floor(remaining / 86400000);
+          const hours = Math.floor((remaining % 86400000) / 3600000);
+          const minutes = Math.floor((remaining % 3600000) / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+          countdown.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      }
+
+      setupCountdown(
+        'legion-countdown',
+        Date.parse('2026-09-21T20:00:00-07:00'),
+        '⚠ LEGION SPECIAL EXPIRED ⚠',
+        'Legion Week Two special expired'
+      );
+    }());
+  </script>
 </body>
 </html>
