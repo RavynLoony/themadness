@@ -16,6 +16,11 @@
     .scores-table th:last-child, .scores-table td:last-child { text-align:right; width:150px; }
     .score-breakdown { line-height:1.45; }
     .score-breakdown strong { color:var(--text); }
+    .score-breakdown details { margin:0; }
+    .score-breakdown summary { color:var(--acid); cursor:pointer; font-weight:700; list-style-position:outside; }
+    .score-breakdown summary:hover, .score-breakdown summary:focus-visible { color:var(--ink); }
+    .score-breakdown details[open] summary { margin-bottom:.65rem; }
+    .score-details { padding:.05rem 0 .2rem; }
     .score-math { margin:.45rem 0 .2rem; padding-left:1.1rem; }
     .score-math li { margin:.15rem 0; }
     .score-sort { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; margin:1.25rem 0 .25rem; }
@@ -53,7 +58,7 @@
     <p class="subhead">Warm-Up points are banked before the game begins. All players start the Madness at 0 points, and Warm-Up points are added back after the game ends.</p>
     <section class="about">
       <h2>Warm-Up Scores</h2>
-      <p>Each row shows exactly where the banked points came from.</p>
+      <p>Totals stay visible. Tap <strong>Show math &amp; details</strong> on any Maniac to expand the full point breakdown.</p>
       <div class="score-sort" aria-label="Sort live scores">
         <span class="score-sort-label">Sort by</span>
         <button type="button" data-sort="name" aria-pressed="true">First Name A–Z</button>
@@ -97,7 +102,21 @@
     (() => {
       const tbody = document.querySelector('.scores-table tbody');
       const buttons = [...document.querySelectorAll('.score-sort button')];
-      if (!tbody || !buttons.length) return;
+      if (!tbody) return;
+
+      document.querySelectorAll('.score-breakdown').forEach(cell => {
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        const body = document.createElement('div');
+        summary.textContent = 'Show math & details';
+        body.className = 'score-details';
+        while (cell.firstChild) body.appendChild(cell.firstChild);
+        details.append(summary, body);
+        cell.appendChild(details);
+        details.addEventListener('toggle', () => {
+          summary.textContent = details.open ? 'Hide math & details' : 'Show math & details';
+        });
+      });
 
       const rows = () => [...tbody.querySelectorAll('tr')];
       const nameOf = row => row.cells[0].textContent.trim();
@@ -115,6 +134,6 @@
       buttons.forEach(button => button.addEventListener('click', () => sortRows(button.dataset.sort)));
     })();
   </script>
-  <!-- live-scores refresh 2026-09-17: Kemarie Hairspray -->
+  <!-- live-scores refresh 2026-09-17: collapsible point breakdowns -->
 </body>
 </html>
