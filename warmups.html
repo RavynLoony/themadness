@@ -57,26 +57,6 @@
       <p><a href="https://docs.google.com/document/d/1dGIYITNNarMJfqIe9YgWXjlrYapDTJHINdLIF9L5jik/export?format=pdf">Download WARM-UPS À LA CARTE as a PDF →</a></p>
     </div>
 
-    <section class="content-section warmup-week" aria-labelledby="week-two-title">
-      <p class="kicker">WARM-UP WEEK TWO · PRESCRIPTION EXPIRED</p>
-      <h2 class="section-title" id="week-two-title">NURSE NEVERMORE'S WEEK TWO PRESCRIPTION</h2>
-      <p class="section-intro"><strong>ATTENTION, PATIENTS.</strong> NURSE NEVERMORE is making her SUNDAY rounds. Your WEEK TWO PRESCRIPTION is to watch <strong>ANY ONE, ANY TWO, OR ALL THREE</strong> of the films below. Beginning this week, all weekly PRESCRIPTIONS will be dispensed on <strong>SUNDAYS</strong>.</p>
-      <div class="deadline"><strong>EXPIRED:</strong> Saturday, September 19, 2026 at <strong>11:59 PM</strong> in each Maniac's own local time zone.</div>
-      <div class="countdown-panel"><span class="countdown-label">WEEK TWO PRESCRIPTION CLOCK · YOUR LOCAL TIME</span><span id="prescription-countdown" class="countdown-value" aria-live="polite">calculating…</span></div>
-      <div class="warmup-grid">
-        <article class="warmup-film"><img src="https://i.ebayimg.com/00/s/MTYwMFgxMjE1/z/K-sAAOSwnLBkgXTr/%24_57.PNG?set_id=880000500F" alt="Shock Treatment 1981 movie poster" loading="eager"><div class="warmup-film-body"><p class="warmup-rx">PRESCRIPTION #1</p><h3>Shock Treatment</h3><p class="warmup-meta">1981 · 94 minutes</p><p class="warmup-points">6 POINTS</p></div></article>
-        <article class="warmup-film"><img src="https://image.tmdb.org/t/p/original/q2LoYBTPnM4yWaXgKte56XVEIvB.jpg" alt="Psycho Beach Party 2000 movie poster" loading="eager"><div class="warmup-film-body"><p class="warmup-rx">PRESCRIPTION #2</p><h3>Psycho Beach Party</h3><p class="warmup-meta">2000 · 95 minutes</p><p class="warmup-points">6 POINTS</p></div></article>
-        <article class="warmup-film"><img src="https://i.ebayimg.com/images/g/TNUAAOSw-VBgpseT/s-l1200.jpg" alt="Hairspray 1988 John Waters movie poster" loading="eager"><div class="warmup-film-body"><p class="warmup-rx">PRESCRIPTION #3</p><h3>Hairspray</h3><p class="warmup-meta">1988 · 92 minutes · JOHN WATERS</p><p class="warmup-points">6 POINTS</p></div></article>
-      </div>
-      <div class="score-grid warmup-score-grid" aria-label="Week Two Warm-Up scoring">
-        <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Take any one dose.</p></div>
-        <div class="score-card"><span class="score-number">15</span><h3>2 FILMS</h3><p>Take any two doses.</p></div>
-        <div class="score-card"><span class="score-number">25</span><h3>ALL 3 FILMS</h3><p>Complete the full prescription.</p></div>
-      </div>
-      <div class="notice compact-notice"><h2>HOW TO CLAIM YOUR POINTS</h2><p>Watch your chosen film or films during the WEEK TWO prescription window. When you have finished your dose, comment on the <strong>WEEK TWO PRESCRIPTION thread in the MADNESS Facebook group</strong> so NURSE NEVERMORE can update your chart.</p></div>
-      <div class="rule-callout warmup-warning"><strong>POSSIBLE SIDE EFFECTS:</strong> television-induced shock, homicidal beach-party impulses, uncontrollable dancing, and towering Baltimore hair.</div>
-    </section>
-
     <section class="content-section warmup-week" aria-labelledby="legion-week-two-title">
       <p class="kicker">HEAD HAUNTRESS · WARM-UP WEEK TWO SPECIAL</p>
       <h2 class="section-title" id="legion-week-two-title">LEGION BINGE · 115 BANKED POINTS</h2>
@@ -173,7 +153,6 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
       }
-      setupCountdown('prescription-countdown', new Date(2026,8,20,0,0,0).getTime(), '⚠ WEEK TWO PRESCRIPTION EXPIRED ⚠', 'Week Two prescription expired');
       setupCountdown('week-three-countdown', new Date(2026,8,27,0,0,0).getTime(), '⚠ WEEK THREE PRESCRIPTION EXPIRED ⚠', 'Week Three prescription expired');
       setupCountdown('legion-countdown', Date.parse('2026-09-21T20:00:00-07:00'), '⚠ LEGION SPECIAL EXPIRED ⚠', 'Legion Week Two special expired');
     }());
