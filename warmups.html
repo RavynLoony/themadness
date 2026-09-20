@@ -54,23 +54,6 @@
       <p><a href="https://docs.google.com/document/d/1dGIYITNNarMJfqIe9YgWXjlrYapDTJHINdLIF9L5jik/export?format=pdf">Download WARM-UPS À LA CARTE as a PDF →</a></p>
     </div>
 
-    <section class="content-section warmup-week" aria-labelledby="special-5150-title">
-      <p class="kicker">HEAD HAUNTRESS · 5150 SPECIAL · LIMITED TIME</p>
-      <h2 class="section-title" id="special-5150-title">HALLOWEEN WARS + HALLOWEEN BAKING CHAMPIONSHIP PREMIERE CHALLENGE</h2>
-      <p class="section-intro">Watch the premieres of <strong>Halloween Wars Season 16</strong> and <strong>Halloween Baking Championship Season 12</strong>.</p>
-      <div class="show-art-grid">
-        <figure class="show-art-card"><img src="images/5150-halloween-wars-embed.svg?v=1" alt="Halloween Wars Season 16 promo image used in the Head Hauntress's 5150 Special post" loading="eager"></figure>
-        <figure class="show-art-card"><img class="hbc-art" src="images/5150-halloween-baking-embed.svg?v=2" alt="Halloween Baking Championship Season 12 promo image used in the Head Hauntress's 5150 Special post" loading="eager"></figure>
-      </div>
-      <div class="score-grid warmup-score-grid" aria-label="5150 Special scoring">
-        <div class="score-card"><span class="score-number">5</span><h3>ONE PREMIERE</h3><p>Complete either premiere.</p></div>
-        <div class="score-card"><span class="score-number">12</span><h3>BOTH PREMIERES</h3><p>Complete both premieres for the full special.</p></div>
-      </div>
-      <div class="deadline"><strong>DEADLINE:</strong> Wednesday, September 16, 2026 at <strong>12:01 AM in each Maniac's own local time zone</strong>.</div>
-      <div class="countdown-panel"><span class="countdown-label">5150 SPECIAL COUNTDOWN · YOUR LOCAL TIME</span><span id="special-countdown" class="countdown-value" aria-live="polite">calculating…</span></div>
-      <div class="notice compact-notice"><h2>HOW TO CLAIM YOUR POINTS</h2><p>Comment on the <strong>Head Hauntress's 5150 Special post</strong> in the Madness Facebook group after completing your premiere or premieres so the points can be banked.</p></div>
-    </section>
-
     <section class="content-section warmup-week" aria-labelledby="week-two-title">
       <p class="kicker">WARM-UP WEEK TWO · PRESCRIPTION EXPIRED</p>
       <h2 class="section-title" id="week-two-title">NURSE NEVERMORE'S WEEK TWO PRESCRIPTION</h2>
@@ -187,7 +170,6 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
       }
-      setupCountdown('special-countdown', new Date(2026,8,16,0,1,0).getTime(), '⚠ 5150 SPECIAL EXPIRED ⚠', '5150 Special expired');
       setupCountdown('prescription-countdown', new Date(2026,8,20,0,0,0).getTime(), '⚠ WEEK TWO PRESCRIPTION EXPIRED ⚠', 'Week Two prescription expired');
       setupCountdown('week-three-countdown', new Date(2026,8,27,0,0,0).getTime(), '⚠ WEEK THREE PRESCRIPTION EXPIRED ⚠', 'Week Three prescription expired');
       setupCountdown('legion-countdown', Date.parse('2026-09-21T20:00:00-07:00'), '⚠ LEGION SPECIAL EXPIRED ⚠', 'Legion Week Two special expired');
