@@ -116,7 +116,7 @@
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points. Active challenges are listed by nearest deadline first.</p>
 
     <section class="notice compact-notice">
-      <p class="kicker">ACTIVE NOW · WARM-UP WEEK TWO · SUNDAY PRESCRIPTION</p>
+      <p class="kicker">WARM-UP WEEK TWO · PRESCRIPTION EXPIRED</p>
       <h2>NURSE NEVERMORE'S WEEK TWO PRESCRIPTION</h2>
       <p><strong>ATTENTION, PATIENTS.</strong> NURSE NEVERMORE is making her SUNDAY rounds. Take <strong>ANY ONE, ANY TWO, OR ALL THREE</strong> of this week's prescribed films:</p>
 
@@ -136,7 +136,7 @@
       <p><strong>1 FILM = 6 POINTS · 2 FILMS = 15 POINTS · ALL 3 FILMS = 25 POINTS</strong></p>
       <p>Claim your points by commenting on the <strong>WEEK TWO PRESCRIPTION thread in the MADNESS Facebook group</strong> after completing your chosen dose.</p>
       <p>From here on out, weekly PRESCRIPTIONS are dispensed on <strong>SUNDAYS</strong>.</p>
-      <p>This prescription expires <strong>Saturday, September 19, 2026 at 11:59 PM in each Maniac's own local time zone</strong>.</p>
+      <p>This prescription expired <strong>Saturday, September 19, 2026 at 11:59 PM in each Maniac's own local time zone</strong>.</p>
       <div class="countdown-panel">
         <span class="countdown-label">NURSE NEVERMORE'S WEEK TWO PRESCRIPTION CLOCK · YOUR LOCAL TIME</span>
         <span id="prescription-countdown" class="countdown-value" aria-live="polite">calculating…</span>
@@ -162,6 +162,22 @@
       <p>After the special expires, <strong><em>Legion</em> remains fully accepted</strong> for THE MADNESS and episodes are scored by the <strong>normal point system</strong>. The 4-point-per-episode special and +7 completion bonus no longer apply.</p>
     </section>
 
+
+    <section class="notice compact-notice">
+      <p class="kicker">ACTIVE NOW · WARM-UP WEEK THREE · SUNDAY PRESCRIPTION</p>
+      <h2>NURSE NEVERMORE'S WEEK THREE PRESCRIPTION</h2>
+      <p><strong>GIRL, INTERRUPTED (1999)</strong> · <strong>12 MONKEYS (1995)</strong> · <strong>BRAZIL (1985)</strong></p>
+      <p><strong>1 FILM = 6 POINTS · 2 FILMS = 15 POINTS · ALL 3 FILMS = 25 POINTS</strong></p>
+      <p><strong>WEEK THREE SPECIAL VALUES:</strong> These 6 / 15 / 25 point values apply to these three films only during the Week Three prescription window.</p>
+      <p>Claim your points by commenting on the <strong>WEEK THREE PRESCRIPTION thread in the MADNESS Facebook group</strong> after completing each film.</p>
+      <p>This prescription expires <strong>Saturday, September 26, 2026 at 11:59 PM in each Maniac's own local time zone</strong>.</p>
+      <div class="countdown-panel">
+        <span class="countdown-label">NURSE NEVERMORE'S WEEK THREE PRESCRIPTION CLOCK · YOUR LOCAL TIME</span>
+        <span id="week-three-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+      <p><a href="warmups.html">VIEW THE FULL WEEK THREE PRESCRIPTION →</a></p>
+    </section>
+
     <section class="content-section">
       <p class="kicker">Active During September Warm-Ups</p>
       <h2 class="section-title">À La Carte Outside-Event Warm-Ups</h2>
@@ -179,12 +195,12 @@
 
     <section class="content-section">
       <p class="kicker">Active Now Through the End of THE MADNESS · Tim Curry R.I.P. ATB</p>
-      <h2 class="section-title">The Satanic Mechanic Challenge · 10 Points</h2>
-      <p class="section-intro"><strong>Tim Curry will be one of our 2026 R.I.P. ATBs.</strong> Starting now and running through the end of THE MADNESS, see either <strong><em>The Rocky Horror Picture Show</em> (1975) in a movie theater</strong> or <strong><em>The Rocky Horror Show</em> performed live onstage</strong>. Either version earns <strong>10 points</strong>.</p>
+      <h2 class="section-title">The Satanic Mechanic Challenge · 10 / 20 / 30 Points</h2>
+      <p class="section-intro"><strong>Tim Curry will be one of our 2026 R.I.P. ATBs.</strong> Starting now and running through the end of THE MADNESS: <strong><em>The Rocky Horror Picture Show</em> (1975) in a movie theater = 10 points</strong>; a movie-theater screening with a <strong>LIVE SHADOW CAST = 20 points total</strong>; a <strong>live stage production of <em>The Rocky Horror Show</em> = 30 points</strong>.</p>
       <div class="notice compact-notice">
-        <h2>How the 10 points are scored</h2>
-        <p>Complete the challenge <strong>before September 27</strong> and the 10 points are added to your <strong>banked Warm-Up points</strong>. Post photos from your outing in the Madness Facebook group so the completion can be counted.</p>
-        <p>Complete it <strong>September 27 or later</strong> and include the challenge in that week's <strong>WEEKLY SUMMARY</strong>; the 10 points go into that week's score. We would still love you to share your photos in the group.</p>
+        <h2>How the challenge points are scored</h2>
+        <p>Complete the challenge <strong>before September 27</strong> and the challenge points are added to your <strong>banked Warm-Up points</strong>. Post photos from your outing in the Madness Facebook group so the completion can be counted.</p>
+        <p>Complete it <strong>September 27 or later</strong> and include the challenge in that week's <strong>WEEKLY SUMMARY</strong>; the challenge points go into that week's score. We would still love you to share your photos in the group.</p>
       </div>
     </section>
 
@@ -233,6 +249,13 @@
         new Date(2026, 8, 20, 0, 0, 0).getTime(),
         '⚠ WEEK TWO PRESCRIPTION EXPIRED ⚠',
         'Week Two prescription expired'
+      );
+
+      setupCountdown(
+        'week-three-countdown',
+        new Date(2026, 8, 27, 0, 0, 0).getTime(),
+        '⚠ WEEK THREE PRESCRIPTION EXPIRED ⚠',
+        'Week Three prescription expired'
       );
 
       setupCountdown(
