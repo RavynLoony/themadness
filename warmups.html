@@ -51,7 +51,7 @@
     <img src="Madness Hallway.jfif" alt="The Madness Runs the Asylum banner" style="display:block;width:100%;height:auto;margin-bottom:1.5rem;border:1px solid var(--line);">
     <p class="kicker">Begins Monday, September 7, 2026</p>
     <h1 class="page-title">Warm-Ups</h1>
-    <p class="subhead">Three warm-up weeks before the main game begins Sunday, September 27. Active Warm-Up challenges are listed by nearest deadline first; expired prescriptions are archived below.</p>
+    <p class="subhead">Three warm-up weeks before the main game begins Sunday, September 27.</p>
 
 
     <div class="rule-callout"><strong>RULES READ ZOOM ATTENDANCE — 5 POINTS:</strong> Maniacs who attended the official 2026 Rules Read Zoom received <strong>5 banked Warm-Up points</strong>.</div>
@@ -60,6 +60,19 @@
       <p><a href="https://docs.google.com/document/d/1dGIYITNNarMJfqIe9YgWXjlrYapDTJHINdLIF9L5jik/export?format=docx">Download WARM-UPS À LA CARTE as a Word document →</a></p>
       <p style="margin-top:.65rem;"><a href="https://docs.google.com/document/d/1dGIYITNNarMJfqIe9YgWXjlrYapDTJHINdLIF9L5jik/export?format=pdf">Download WARM-UPS À LA CARTE as a PDF →</a></p>
     </div>
+
+
+    <section class="notice compact-notice" id="ghidorah-5150">
+      <p class="kicker">ACTIVE NOW · IMMEDIATE 5150 · KAIJU EVALUATION</p>
+      <h2>GHIDORAH, THE THREE-HEADED MONSTER (1964) · 8 POINTS</h2>
+      <p><strong>PATIENTS ARE HALLUCINATING KAIJU.</strong> Watch the Shōwa-era film <strong><em>Ghidorah, the Three-Headed Monster</em> (1964)</strong> for the special 5150 value of <strong>8 POINTS</strong>.</p>
+      <p><strong>HOW TO CLAIM:</strong> After completing the film, comment on the <strong>5150 challenge post in the MADNESS Facebook group</strong> so your points can be added to your chart.</p>
+      <p>You will be released from this evaluation at <strong>12:01 AM on Sunday, September 27, 2026 in each Maniac's own local time zone</strong>.</p>
+      <div class="countdown-panel">
+        <span class="countdown-label">5150 KAIJU EVALUATION CLOCK · YOUR LOCAL TIME</span>
+        <span id="ghidorah-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+    </section>
 
     <section class="content-section warmup-week" aria-labelledby="week-three-title">
       <p class="kicker">WARM-UP WEEK THREE · NURSE NEVERMORE'S SUNDAY PRESCRIPTION</p>
@@ -130,6 +143,7 @@
         setInterval(updateCountdown, 1000);
       }
       setupCountdown('week-three-countdown', new Date(2026,8,27,0,0,0).getTime(), '⚠ WEEK THREE PRESCRIPTION EXPIRED ⚠', 'Week Three prescription expired');
+      setupCountdown('ghidorah-countdown', new Date(2026,8,27,0,1,0).getTime(), '⚠ 5150 KAIJU EVALUATION EXPIRED ⚠', '5150 Kaiju Evaluation expired');
     }());
   </script>
   <!-- cache refresh 2026-09-22: expired Legion challenge removed -->
