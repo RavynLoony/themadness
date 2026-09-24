@@ -157,6 +157,19 @@
       </div>
     </section>
 
+
+    <section class="notice compact-notice" id="ghidorah-5150">
+      <p class="kicker">ACTIVE NOW · IMMEDIATE 5150 · KAIJU EVALUATION</p>
+      <h2>GHIDORAH, THE THREE-HEADED MONSTER (1964) · 8 POINTS</h2>
+      <p><strong>PATIENTS ARE HALLUCINATING KAIJU.</strong> Watch the Shōwa-era film <strong><em>Ghidorah, the Three-Headed Monster</em> (1964)</strong> for the special 5150 value of <strong>8 POINTS</strong>.</p>
+      <p><strong>HOW TO CLAIM:</strong> After completing the film, comment on the <strong>5150 challenge post in the MADNESS Facebook group</strong> so your points can be added to your chart.</p>
+      <p>You will be released from this evaluation at <strong>12:01 AM on Sunday, September 27, 2026 in each Maniac's own local time zone</strong>.</p>
+      <div class="countdown-panel">
+        <span class="countdown-label">5150 KAIJU EVALUATION CLOCK · YOUR LOCAL TIME</span>
+        <span id="ghidorah-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+    </section>
+
     <section class="notice compact-notice">
       <p class="kicker">ACTIVE NOW · WARM-UP WEEK THREE · SUNDAY PRESCRIPTION</p>
       <h2>NURSE NEVERMORE'S WEEK THREE PRESCRIPTION</h2>
@@ -248,6 +261,13 @@
         new Date(2026, 8, 27, 0, 0, 0).getTime(),
         '⚠ WEEK THREE PRESCRIPTION EXPIRED ⚠',
         'Week Three prescription expired'
+      );
+
+      setupCountdown(
+        'ghidorah-countdown',
+        new Date(2026, 8, 27, 0, 1, 0).getTime(),
+        '⚠ 5150 KAIJU EVALUATION EXPIRED ⚠',
+        '5150 Kaiju Evaluation expired'
       );
 
     }());
