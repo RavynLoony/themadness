@@ -27,6 +27,13 @@
     .score-sort-label { color:var(--muted); font-size:.8em; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
     .score-sort button { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.02); color:var(--acid); padding:.55rem .8rem; font:inherit; font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; }
     .score-sort button:hover, .score-sort button:focus-visible, .score-sort button[aria-pressed="true"] { border-color:var(--acid); background:rgba(168,198,108,.1); color:var(--ink); }
+    .visitor-room { margin: 3rem 0 1rem; padding: 1.25rem 1.4rem; border: 1px solid var(--line); background: rgba(255,255,255,.018); }
+    .visitor-room h2 { margin-top: 0; color: var(--acid); }
+    .visitor-room p { margin: .45rem 0 1rem; color: var(--muted); }
+    .visitor-list { margin: 0; padding-left: 1.35rem; }
+    .visitor-list li { margin: .45rem 0; color: var(--ink); font-weight: 700; }
+    .visitor-note { margin-top: 1rem !important; font-size: .95rem; }
+
     @media (max-width: 700px) {
       .scores-table th, .scores-table td { padding:.75rem .6rem; }
       .scores-table th:last-child, .scores-table td:last-child { width:auto; }
@@ -101,6 +108,17 @@
           <tr><td>Zee Campbell</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section class="visitor-room" aria-labelledby="visitor-room-title">
+      <p class="kicker">Waiting Area</p>
+      <h2 id="visitor-room-title">Visitor Room · Wait List</h2>
+      <p>These patients are keeping track of their watches in case a bed opens up.</p>
+      <ol class="visitor-list">
+        <li>Kyle West</li>
+        <li>Jamie Clemens-Lond</li>
+      </ol>
+      <p class="visitor-note">If a roster spot opens, their Madness watches will come with them.</p>
     </section>
   </main>
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
