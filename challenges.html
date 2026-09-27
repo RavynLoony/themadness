@@ -10,6 +10,74 @@
   <title>2026 Challenges | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    .prescription-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin:1.5rem 0;
+    }
+    .prescription-card {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.018);
+      overflow:hidden;
+    }
+    .prescription-card img {
+      display:block;
+      width:100%;
+      aspect-ratio:2/3;
+      object-fit:cover;
+      background:#080a08;
+    }
+    .prescription-card-body { padding:1rem 1.1rem 1.2rem; }
+    .prescription-card h3 { margin:.25rem 0 .35rem; color:var(--ink); font-size:1.12rem; }
+    .prescription-card p { margin:.2rem 0; color:var(--muted); }
+    .prescription-card .rx-number {
+      color:var(--acid);
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      font-size:.75rem;
+      font-weight:800;
+    }
+    .prescription-card .rx-points {
+      margin-top:.7rem;
+      color:var(--acid);
+      font-weight:900;
+      font-size:1.15rem;
+    }
+    .prescription-deadline {
+      margin:1rem 0;
+      padding:1rem 1.2rem;
+      border:1px solid var(--acid);
+      background:rgba(168,198,108,.05);
+    }
+    .countdown-panel {
+      margin:1rem 0 1.4rem;
+      padding:.8rem 1rem;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:10px;
+      background:rgba(0,0,0,.22);
+      text-align:center;
+    }
+    .countdown-label {
+      display:block;
+      margin-bottom:.35rem;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.82;
+    }
+    .countdown-value {
+      display:inline-block;
+      color:var(--acid);
+      font-size:1.35rem;
+      font-weight:900;
+      letter-spacing:.05em;
+    }
+    @media (max-width:760px) {
+      .prescription-grid { grid-template-columns:1fr; }
+      .prescription-card img { max-height:620px; object-fit:contain; }
+    }
   </style>
 </head>
 <body>
@@ -21,6 +89,60 @@
     <p class="kicker">2026 · Year 18</p>
     <h1 class="page-title">Challenges</h1>
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
+
+    <section class="notice compact-notice" id="week-one-prescription">
+      <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK ONE · NURSE NEVERMORE'S PRESCRIPTION</p>
+      <h2>NURSE NEVERMORE'S WEEK ONE PRESCRIPTION</h2>
+      <p><strong>ATTENTION, PATIENTS.</strong> Week One has begun, which means Nurse Nevermore has three new films on the medication cart.</p>
+
+      <div class="prescription-grid">
+        <article class="prescription-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Don%27t_Look_in_the_Basement_newspaper_ad_%281973%29.jpg" alt="Don't Look in the Basement 1973 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">Prescription #1</p>
+            <h3>Don't Look in the Basement</h3>
+            <p>1973</p>
+            <p class="rx-points">6 POINTS</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://whats-after-the-movie-ti152.sevalla.storage/movies/The-Big%C2%A0Cube-LjSWUoS9DfmLMw.jpg" alt="The Big Cube 1969 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">Prescription #2</p>
+            <h3>The Big Cube</h3>
+            <p>1969</p>
+            <p class="rx-points">6 POINTS</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://www.on-off-on.ru/upload/iblock/d6c/d6c7e2e2959cbd1e89f91afcdc60f6c5.jpg" alt="The Girl on a Broomstick Dívka na koštěti 1972 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">Prescription #3</p>
+            <h3>The Girl on a Broomstick / Dívka na koštěti</h3>
+            <p>1972</p>
+            <p class="rx-points">6 POINTS</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="score-grid" aria-label="Week One Prescription scoring">
+        <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Complete one Week One prescription.</p></div>
+        <div class="score-card"><span class="score-number">15</span><h3>2 FILMS</h3><p>Complete two Week One prescriptions.</p></div>
+        <div class="score-card"><span class="score-number">25</span><h3>ALL 3 FILMS</h3><p>Complete the full Week One prescription.</p></div>
+      </div>
+
+      <div class="prescription-deadline"><strong>PRESCRIPTION WINDOW:</strong> Complete your films by <strong>Saturday, October 3, 2026 at 11:59 PM</strong> in each Maniac's own local time zone.</div>
+
+      <div class="countdown-panel">
+        <span class="countdown-label">WEEK ONE PRESCRIPTION CLOCK · YOUR LOCAL TIME</span>
+        <span id="week-one-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+
+      <div class="rule-callout">
+        <strong>HOW TO CLAIM:</strong> Comment on the <strong>WEEK ONE PRESCRIPTION post in the MADNESS Facebook group</strong> when you complete a prescription, and include your completed prescription films in your <strong>WEEKLY SUMMARY</strong> so your Team Judge can score them.
+      </div>
+    </section>
+
 <section class="content-section">
       <p class="kicker">2026 Challenge Documents</p>
       <h2 class="section-title">Challenge Reference Files</h2>
@@ -93,5 +215,29 @@
   </main>
 
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
+  <script>
+    (() => {
+      const countdown = document.getElementById('week-one-countdown');
+      if (!countdown) return;
+      const deadline = new Date(2026, 9, 4, 0, 0, 0).getTime();
+
+      function updateCountdown() {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) {
+          countdown.textContent = 'PRESCRIPTION EXPIRED';
+          return;
+        }
+        const days = Math.floor(remaining / 86400000);
+        const hours = Math.floor((remaining % 86400000) / 3600000);
+        const minutes = Math.floor((remaining % 3600000) / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        countdown.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+
 </body>
 </html>
