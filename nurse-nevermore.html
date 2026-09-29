@@ -10,161 +10,183 @@
   <title>Nurse Nevermore | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .nurse-page main { font-family: "Courier New", Courier, monospace; }
+    .nurse-page main { font-family:"Courier New",Courier,monospace; }
     .case-file {
-      position: relative;
-      overflow: hidden;
-      margin-top: 2rem;
-      padding: clamp(1.25rem, 4vw, 2.6rem);
-      color: #24271e;
+      position:relative;
+      overflow:hidden;
+      margin-top:2rem;
+      padding:clamp(1.25rem,4vw,2.6rem);
+      color:#24271e;
       background:
-        radial-gradient(circle at 13% 18%, rgba(109,78,47,.16) 0 1.2rem, transparent 3.6rem),
-        radial-gradient(circle at 88% 72%, rgba(83,101,59,.15) 0 1.6rem, transparent 4.8rem),
-        repeating-linear-gradient(0deg, rgba(39,44,30,.035) 0 1px, transparent 1px 5px),
+        radial-gradient(circle at 13% 18%,rgba(109,78,47,.16) 0 1.2rem,transparent 3.6rem),
+        radial-gradient(circle at 88% 72%,rgba(83,101,59,.15) 0 1.6rem,transparent 4.8rem),
+        repeating-linear-gradient(0deg,rgba(39,44,30,.035) 0 1px,transparent 1px 5px),
         #d8d2ad;
-      border: 1px solid #71745a;
-      box-shadow: 0 1.4rem 3rem rgba(0,0,0,.38), inset 0 0 3rem rgba(69,63,38,.13);
-    }
-    .case-file::before, .case-file::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      border-radius: 50%;
-      filter: blur(1px);
+      border:1px solid #71745a;
+      box-shadow:0 1.4rem 3rem rgba(0,0,0,.38),inset 0 0 3rem rgba(69,63,38,.13);
     }
     .case-file::before {
-      width: 9rem;
-      height: 9rem;
-      right: -3rem;
-      top: -3rem;
-      border: .7rem solid rgba(98,65,38,.12);
-    }
-    .case-file::after {
-      width: 4rem;
-      height: 4rem;
-      left: 34%;
-      bottom: -2rem;
-      background: rgba(87,101,58,.09);
+      content:"";
+      position:absolute;
+      width:9rem;
+      height:9rem;
+      right:-3rem;
+      top:-3rem;
+      border:.7rem solid rgba(98,65,38,.12);
+      border-radius:50%;
+      pointer-events:none;
     }
     .case-kicker {
-      margin: 0 0 .5rem;
-      color: #5c643f;
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      margin:0 0 .5rem;
+      color:#5c643f;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
     }
     .case-title {
-      margin: 0;
-      max-width: none;
-      color: #672820;
-      font-family: "Courier New", Courier, monospace;
-      font-size: clamp(2.7rem, 8vw, 6.6rem);
-      line-height: .9;
-      letter-spacing: -.06em;
-      text-shadow: 1px 1px 0 rgba(255,255,255,.25);
+      margin:0;
+      max-width:none;
+      color:#672820;
+      font-family:"Courier New",Courier,monospace;
+      font-size:clamp(2.7rem,8vw,6.6rem);
+      line-height:.9;
+      letter-spacing:-.06em;
+      text-shadow:1px 1px 0 rgba(255,255,255,.25);
     }
     .case-subhead {
-      max-width: 780px;
-      margin: 1.35rem 0 0;
-      color: #414532;
-      font-size: 1rem;
+      max-width:820px;
+      margin:1.35rem 0 0;
+      color:#414532;
+      font-size:1rem;
     }
     .stamp {
-      display: inline-block;
-      margin-top: 1.4rem;
-      padding: .35rem .65rem;
-      border: 3px double #7b3329;
-      color: #7b3329;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      transform: rotate(-1.2deg);
+      display:inline-block;
+      margin-top:1.4rem;
+      padding:.35rem .65rem;
+      border:3px double #7b3329;
+      color:#7b3329;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      transform:rotate(-1.2deg);
     }
     .totals-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .85rem;
-      margin-top: 2rem;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.85rem;
+      margin-top:2rem;
     }
     .total-card {
-      padding: 1rem;
-      border: 1px solid #77795d;
-      background: rgba(255,255,255,.16);
+      padding:1rem;
+      border:1px solid #77795d;
+      background:rgba(255,255,255,.16);
     }
     .total-label {
-      display: block;
-      color: #5f6544;
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      display:block;
+      color:#5f6544;
+      font-size:.75rem;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
     .total-number {
-      display: block;
-      margin-top: .35rem;
-      color: #672820;
-      font-size: clamp(2.4rem, 7vw, 4.8rem);
-      font-weight: 900;
-      line-height: 1;
+      display:block;
+      margin-top:.35rem;
+      color:#672820;
+      font-size:clamp(2.4rem,7vw,4.8rem);
+      font-weight:900;
+      line-height:1;
     }
-    .ledger {
-      width: 100%;
-      margin-top: 2rem;
-      border-collapse: collapse;
-      background: rgba(255,255,255,.11);
+    .dosage-key {
+      margin:2rem 0 0;
+      padding:1rem 1.1rem;
+      border:1px dashed #6f7355;
+      background:rgba(255,255,255,.12);
     }
-    .ledger caption {
-      padding: 0 0 .7rem;
-      color: #5d2a23;
-      font-size: 1.1rem;
-      font-weight: 900;
-      text-align: left;
-      text-transform: uppercase;
-      letter-spacing: .08em;
+    .dosage-key h2,
+    .week-heading {
+      margin:0 0 .8rem;
+      color:#672820;
+      font-size:1rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
     }
-    .ledger th, .ledger td {
-      padding: .8rem .7rem;
-      border-bottom: 1px solid rgba(71,76,54,.38);
-      text-align: left;
-      vertical-align: top;
+    .dosage-key p { margin:.28rem 0; color:#3d4130; }
+    .week-heading {
+      margin-top:2.2rem;
+      padding:.65rem .75rem;
+      background:rgba(91,103,62,.14);
+      border-left:5px solid #672820;
+      font-size:1.15rem;
     }
-    .ledger th {
-      color: #56603c;
-      font-size: .76rem;
-      letter-spacing: .09em;
-      text-transform: uppercase;
+    .watch-entry {
+      margin-top:1.25rem;
+      padding:1.25rem 1.2rem 1.35rem;
+      border:1px solid #77795d;
+      background:rgba(255,255,255,.12);
+      box-shadow:inset 0 0 1.4rem rgba(69,63,38,.07);
     }
-    .ledger th:last-child, .ledger td:last-child {
-      width: 90px;
-      text-align: right;
-      font-weight: 900;
+    .watch-entry h2 {
+      margin:0;
+      color:#672820;
+      font-size:1.35rem;
+      line-height:1.1;
+      letter-spacing:.04em;
+      text-transform:uppercase;
     }
-    .ledger tfoot td {
-      border-top: 2px solid #672820;
-      border-bottom: 0;
-      color: #672820;
-      font-weight: 900;
+    .watch-meta {
+      margin:.35rem 0 1rem;
+      color:#5d6249;
+      font-size:.9rem;
+      font-style:italic;
     }
-    .chart-note {
-      margin: 1.5rem 0 0;
-      padding: 1rem;
-      border-left: 4px solid #672820;
-      background: rgba(103,40,32,.07);
-      color: #3f4330;
+    .patient-label {
+      margin:0 0 .45rem;
+      color:#672820;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:.82rem;
     }
-    .chart-note strong { color: #672820; }
+    .watch-entry p { color:#303426; }
+    .watch-entry p + p { margin-top:.8rem; }
+    .dosage {
+      margin-top:1rem !important;
+      color:#536038 !important;
+      font-weight:900;
+    }
+    .points {
+      margin:.3rem 0 0 !important;
+      color:#672820 !important;
+      font-weight:900;
+    }
+    .points-note {
+      margin:.15rem 0 0 !important;
+      color:#555b43 !important;
+      font-size:.9rem;
+    }
+    .running-total {
+      margin:1.7rem 0 0;
+      padding:.8rem 1rem;
+      border:3px double #672820;
+      color:#672820;
+      font-weight:900;
+      text-align:center;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transform:rotate(-.25deg);
+      background:rgba(255,255,255,.12);
+    }
     .site-link {
-      display: inline-block;
-      margin-top: 1.25rem;
-      color: #525c38;
-      font-weight: 900;
+      display:inline-block;
+      margin-top:1.25rem;
+      color:#525c38;
+      font-weight:900;
     }
-    @media (max-width: 760px) {
-      .totals-grid { grid-template-columns: 1fr; }
-      .case-file { padding: 1.2rem; }
-      .ledger { font-size: .9rem; }
-      .ledger th, .ledger td { padding: .65rem .45rem; }
+    @media (max-width:760px) {
+      .totals-grid { grid-template-columns:1fr; }
+      .case-file { padding:1.2rem; }
     }
   </style>
 </head>
@@ -179,7 +201,7 @@
           <a href="challenges.html">Challenges</a>
           <a href="warmups.html">Warm-Ups</a>
           <a href="live-scores.html">Live Scores</a>
-          <a href="nurse-nevermore.html?v=20260929-2" aria-current="page">Nurse Nevermore</a>
+          <a href="nurse-nevermore.html?v=20260929-3" aria-current="page">Nurse Nevermore</a>
         </div>
       </nav>
     </div>
@@ -187,9 +209,9 @@
 
   <main class="wrap">
     <section class="case-file" aria-labelledby="nurse-title">
-      <p class="case-kicker">Patient File · Nurse's Station · Week One</p>
-      <h1 class="case-title" id="nurse-title">Nurse Nevermore</h1>
-      <p class="case-subhead">Running totals for my own MADNESS watches.</p>
+      <p class="case-kicker">MADNESS 2026 · The Madness Runs the Asylum</p>
+      <h1 class="case-title" id="nurse-title">Nurse Nevermore's Watches</h1>
+      <p class="case-subhead">Nurse Nevermore's running watch log for THE MADNESS, with patient notes, Dosage Ratings, and the points each title earns under this year's rules.</p>
       <span class="stamp">Chart Updated · September 29, 2026</span>
 
       <div class="totals-grid" aria-label="Nurse Nevermore running totals">
@@ -198,19 +220,62 @@
         <div class="total-card"><span class="total-label">Watches Logged</span><span class="total-number">4</span></div>
       </div>
 
-      <table class="ledger">
-        <caption>Current Watch Ledger</caption>
-        <thead><tr><th>Title</th><th>Scoring Note</th><th>Points</th></tr></thead>
-        <tbody>
-          <tr><td>Brawl in Cell Block 99 (2017)</td><td>R.I.P. ATB · Udo Kier</td><td>6</td></tr>
-          <tr><td>The Bell Jar (1979)</td><td>ECT / electroshock ATB</td><td>6</td></tr>
-          <tr><td>Glass (2019)</td><td>Real former hospital/asylum filming-location ATB</td><td>6</td></tr>
-          <tr><td>Saved by the Bell: “The Surgery” / “Operation Zack” (1991)</td><td>Patient impersonates institutional staff ATB</td><td>3</td></tr>
-        </tbody>
-        <tfoot><tr><td colspan="2">WEEK ONE RUNNING TOTAL</td><td>21</td></tr></tfoot>
-      </table>
+      <section class="dosage-key" aria-labelledby="dosage-heading">
+        <h2 id="dosage-heading">💊 Dosage Ratings</h2>
+        <p>Each watch gets a Dosage Rating based on how much I liked it.</p>
+        <p>💊 Placebo = hated it</p>
+        <p>💊💊 Low Dose = didn't like it</p>
+        <p>💊💊💊 Standard Dose = liked it</p>
+        <p>💊💊💊💊 Heavy Dose = really liked it</p>
+        <p>💊💊💊💊💊 Maximum Dose = loved it</p>
+      </section>
 
-      <p class="chart-note"><strong>Score status:</strong> These are my running in-game totals as watches are audited. Warm-Up points remain banked separately until the end of THE MADNESS.</p>
+      <h2 class="week-heading">Week 1 · September 27–October 3</h2>
+
+      <article class="watch-entry">
+        <h2>Brawl in Cell Block 99</h2>
+        <p class="watch-meta">2017 · 2 hr 12 min · Plex</p>
+        <p class="patient-label">Patient Notes</p>
+        <p>Vince Vaughn stars as Bald Skinhead Guy Vince Vaughn, who really wants his one phone call to Dexter's sisterwife Jennifer Carpenter. Despite the film's commitment to practical effects, a lot of them are rather silly for the intensity this movie wants you to think that it has.</p>
+        <p class="dosage">Dosage Rating: 💊💊 Low Dose</p>
+        <p class="points">MADNESS Points: 6</p>
+        <p class="points-note">2.0 base × R.I.P. ATB: Udo Kier</p>
+      </article>
+
+      <article class="watch-entry">
+        <h2>The Bell Jar</h2>
+        <p class="watch-meta">1979 · 1 hr 47 min · YouTube</p>
+        <p class="patient-label">Patient Notes</p>
+        <p>The Bell Jar was not written for TV, but it certainly plays like it was. Directed by a dude who might be best known for directing 11 episodes of Touched by an Angel, this movie kept reminding me of Valley of the Dolls. Both feature disillusionment with the “big city” and the patriarchy, taboo representations of mental health and asylums, prescription-drug culture, and a cinematic shift from internal prose to melodrama. While Mark Robson pushed his performers into high camp and histrionics, Larry Peerce seemed content with theatrical screaming and questionable outbursts. Gene Siskel called it “downright laughable, a stormy TV soap opera without that genre's sense of humor.” Not a good representation of the book, depression, or women in general.</p>
+        <p class="dosage">Dosage Rating: 💊 Placebo</p>
+        <p class="points">MADNESS Points: 6</p>
+        <p class="points-note">2.0 base × ATB: ECT / electroshock therapy</p>
+      </article>
+
+      <article class="watch-entry">
+        <h2>Glass</h2>
+        <p class="watch-meta">2019 · 2 hr 9 min · Peacock</p>
+        <p class="patient-label">Patient Notes</p>
+        <p>I saw this one in the theater and remember not being very impressed with it. That being said, I don't really like any Shyamalan movies. The Sixth Sense's ending was spoiled for me by The Daily Show on the second day it was out in theaters. They apologized in the next episode and then spoiled it again, ha ha. Back when Craig Kilborn was the host of The Daily Show, they had a segment called "Box Office Earnings in Turkish Lira." There would be movies that earned $50 million USD and it would be something like 852 trillion Turkish lira. They'd do the top box-office numbers in Turkish lira as commercial bumpers, and when The Sixth Sense came out they announced the box-office numbers in lira and then said, "and Bruce Willis is dead." Well, I ended up going to the movie with my mom and I didn't tell her the ending or that there was a twist. About four minutes into the film, my mom leaned over and whispered, "He's dead," so I don't know if I would have figured it out that quickly. I'll never really know if Shyamalan's initial "twist" was effective for me.</p>
+        <p>Anywayyyyyyyyy, Glass is film three in a trilogy. The actors are much better than the script, and anytime I see Shyamalan give himself a cameo I roll my eyes and barf a little. I think he thinks he's smarter than he is? idk. It was bittersweet seeing Bruce Willis knowing his current condition. Also, WTF SARAH PAULSON AND ANYA TAYLOR-JOY ARE IN THIS AND I TOTALLY HAD NO IDEA, so this was probably one of the first titles I saw with either of them in it.</p>
+        <p class="dosage">Dosage Rating: 💊💊 Low Dose</p>
+        <p class="points">MADNESS Points: 6</p>
+        <p class="points-note">2.0 base × ATB: filmed on location at a real former hospital/asylum · Allentown State Hospital</p>
+      </article>
+
+      <article class="watch-entry">
+        <h2>Saved by the Bell: “The Surgery” / “Operation Zack”</h2>
+        <p class="watch-meta">1991 · S3E5 (IMDb) · 30 min</p>
+        <p class="patient-label">Patient Notes</p>
+        <p>News broke yesterday that Dennis Haskins, aka Mr. Belding, had died, and coincidentally this ATB episode originally aired on September 28, 1991, exactly 35 years earlier. Woahhhhhhh spooky.</p>
+        <p>So first of all I need to talk about something. My character Nurse Nevermore is not me. I am not Nurse Nevermore. Nurse Nevermore is snarky and likes to jab people both with needles and dark humor. I'm kinda sarcastic, but I'm a lot nicer, and a lot of things that come out of her mouth probably wouldn't ever seriously come out of mine. She is a character. That being said, I need to make it clear that one of the things Nurse Nevermore and I have in common is that we both UNIRONICALLY LOVE SAVED BY THE BELL. Do I love it ironically too? Maaaaaaybe. Every day after school I would come home and watch the two back-to-back episodes of Saved by the Bell that were airing on my local NBC channel. You see, my absolute biggest crush of my life looked exactly like Zack Morris. So yes, I thought the show was entertaining, and that Zack Morris was beautiful, but I also used to research Kelly Kapowski because if I could be more like her, then I could probably get my IRL Zack Morris to notice me. I tried out for the volleyball team because of her (didn't make it), did cheerleader tryouts (didn't make it), and gave it my all at softball tryouts (didn't make it). And guess what? My IRL Zack Morris never noticed me or asked me out. Coincidence? I think not. Anyway, now he's a cop and ACAB, so I dodged a bullet.</p>
+        <p>So oh yeah, this episode is pretty boring until the last 10-minute fever dream. Zack, who is the top player on Bayside's basketball team, is super pumped for the school's upcoming game. Mr. Belding, who for some reason is hanging out in the boys' locker room for the coach's final words to the team pre-game, decides to monologue an inspirational speech since the coach seemed to not really give a shit. On the way out of the room he accidentally knocks Zack down after turning around suddenly, and honestly it looked like he wasn't even within a foot of him, but the show is telling us Zack hurt his knee terribly. Zack gets taken to the hospital, where Lisa is a candy striper who "doesn't do wheelchairs" or some shit. Zack is like "fuck this shit I'm going home" and dons some scrubs and a facemask to pretend to be a doctor to GTFO. Honestly, his "doctor voice" is super hilarious and showed more range than it probably intended to. Anyway, at the hospital Screech appears to Zack in some weird medication dream as an angel and shows Zack scenes of how the school would react if he died. Things get more surreal and dumb from there, but it's all wrapped up in 30 minutes, so at some points I think it tried to get deeper than made any sense. Anyway RIP Mr. Belding and "hey hey HEY what is going ON in here?"</p>
+        <p class="dosage">Dosage Rating: 💊💊💊 Standard Dose</p>
+        <p class="points">MADNESS Points: 3</p>
+        <p class="points-note">0.5 base × ATB: hospital patient impersonates institutional staff · Zack poses as a doctor</p>
+      </article>
+
+      <p class="running-total">Week 1 Running Total: 21 Points</p>
       <a class="site-link" href="live-scores.html">Return to the full Live Scores ward →</a>
     </section>
   </main>
