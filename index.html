@@ -42,6 +42,16 @@
       <a class="card" href="nurse-nevermore.html?v=20260929-2" style="text-decoration:none;"><h2>Nurse Nevermore</h2><p>Running totals and the current watch ledger from the nurse's station.</p></a>
     </section>
 
+
+    <section class="notice compact-notice" id="madness-music">
+      <h2>Music Therapy</h2>
+      <p>The Madness soundtrack is making rounds. Press play and the playlist will begin in a freshly randomized order each time the page loads.</p>
+      <div style="position:relative;width:100%;aspect-ratio:16/9;margin-top:1rem;background:#000;border:1px solid var(--line);">
+        <div id="madness-music-player" style="position:absolute;inset:0;"></div>
+      </div>
+      <p><a href="https://music.youtube.com/playlist?list=PLGcu5y5Cl1YQ&si=rPMqte5razhns0Fn" target="_blank" rel="noopener">Open the full playlist in YouTube Music.</a></p>
+    </section>
+
     <section class="about"><h2>Eighteen years ago...</h2><p>Halloween Horror Movie Marathon Madness began as a way to turn October horror viewing into a game. Every year brings a new theme and a new excuse to watch an unreasonable amount of horror. For 2026, the institution is open.</p></section>
 
     <section class="notice compact-notice" id="theme-reveal-trailer">
@@ -54,6 +64,55 @@
   </main>
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
   <!-- homepage refresh 2026-08-26 scores -->
+
+  <script>
+    (function () {
+      const playlistId = 'PLGcu5y5Cl1YQ';
+      let randomized = false;
+
+      function shuffle(items) {
+        for (let i = items.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [items[i], items[j]] = [items[j], items[i]];
+        }
+        return items;
+      }
+
+      window.onYouTubeIframeAPIReady = function () {
+        new YT.Player('madness-music-player', {
+          width: '100%',
+          height: '100%',
+          playerVars: {
+            playsinline: 1,
+            rel: 0
+          },
+          events: {
+            onReady: function (event) {
+              event.target.cuePlaylist({
+                listType: 'playlist',
+                list: playlistId,
+                index: 0,
+                startSeconds: 0
+              });
+            },
+            onStateChange: function (event) {
+              if (event.data === YT.PlayerState.CUED && !randomized) {
+                const playlist = event.target.getPlaylist();
+                if (playlist && playlist.length) {
+                  randomized = true;
+                  event.target.cuePlaylist(shuffle(playlist.slice()), 0, 0);
+                }
+              }
+            }
+          }
+        });
+      };
+
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    })();
+  </script>
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ce1052a07f9b48a684633f1fd419a40d"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
