@@ -68,15 +68,7 @@
   <script>
     (function () {
       const playlistId = 'PLGcu5y5Cl1YQ';
-      let randomized = false;
-
-      function shuffle(items) {
-        for (let i = items.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [items[i], items[j]] = [items[j], items[i]];
-        }
-        return items;
-      }
+      let shuffleApplied = false;
 
       window.onYouTubeIframeAPIReady = function () {
         new YT.Player('madness-music-player', {
@@ -96,12 +88,9 @@
               });
             },
             onStateChange: function (event) {
-              if (event.data === YT.PlayerState.CUED && !randomized) {
-                const playlist = event.target.getPlaylist();
-                if (playlist && playlist.length) {
-                  randomized = true;
-                  event.target.cuePlaylist(shuffle(playlist.slice()), 0, 0);
-                }
+              if (event.data === YT.PlayerState.CUED && !shuffleApplied) {
+                shuffleApplied = true;
+                event.target.setShuffle(true);
               }
             }
           }
