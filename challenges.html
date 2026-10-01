@@ -144,6 +144,59 @@
       </div>
     </section>
 
+
+    <section class="notice compact-notice" id="immediate-5150-kaiju">
+      <p class="kicker">ACTIVE NOW · IMMEDIATE 5150 · KAIJU HALLUCINATIONS</p>
+      <h2>IMMEDIATE 5150: KAIJU HALLUCINATIONS</h2>
+      <p><strong>ATTENTION ALL MANIACS.</strong> PATIENTS are HALLUCINATING KAIJU. Your evaluation: watch these <strong>NON-GODZILLA TOHO FILMS</strong> for a SPECIAL PRICE.</p>
+
+      <div class="prescription-grid">
+        <article class="prescription-card">
+          <img src="images/matango-1963.jpg" alt="Matango aka Attack of the Mushroom People 1963 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">5150 Evaluation</p>
+            <h3>Matango aka Attack of the Mushroom People</h3>
+            <p>1963</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="images/war-of-the-gargantuas-1966.jpg" alt="The War of the Gargantuas 1966 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">5150 Evaluation</p>
+            <h3>The War of the Gargantuas</h3>
+            <p>1966</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="images/space-amoeba-1970.jpg" alt="Space Amoeba 1970 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">5150 Evaluation</p>
+            <h3>Space Amoeba</h3>
+            <p>1970</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="score-grid" aria-label="Immediate 5150 Kaiju Hallucinations scoring">
+        <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Complete one evaluation film.</p></div>
+        <div class="score-card"><span class="score-number">15</span><h3>2 FILMS</h3><p>Complete two evaluation films.</p></div>
+        <div class="score-card"><span class="score-number">25</span><h3>ALL 3 FILMS</h3><p>Complete all three evaluation films.</p></div>
+      </div>
+
+      <div class="prescription-deadline"><strong>+5 POINT COMPLETION BONUS:</strong> Finish all three for <strong>30 POINTS TOTAL</strong> toward your OVERALL score.</div>
+
+      <div class="rule-callout">
+        <strong>HOW TO CLAIM:</strong> Comment on the 5150 challenge post and tag <strong>Ravyn Jazper-Hawke</strong> so they can keep track. You <strong>MUST COMMENT with the LAST FILM before your RELEASE</strong>. Also include the challenge in your <strong>FIRST WEEKLY SUMMARY</strong>.
+      </div>
+
+      <div class="prescription-deadline"><strong>RELEASE:</strong> Sunday, October 4 at <strong>12:01 AM</strong> in each Maniac's own local time zone.</div>
+
+      <div class="countdown-panel">
+        <span class="countdown-label">5150 RELEASE CLOCK · YOUR LOCAL TIME</span>
+        <span id="kaiju-5150-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+    </section>
+
 <section class="content-section">
       <p class="kicker">2026 Challenge Documents</p>
       <h2 class="section-title">Challenge Reference Files</h2>
@@ -237,6 +290,30 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const countdown = document.getElementById('kaiju-5150-countdown');
+      if (!countdown) return;
+      const release = new Date(2026, 9, 4, 0, 1, 0).getTime();
+
+      function update5150Countdown() {
+        const remaining = release - Date.now();
+        if (remaining <= 0) {
+          countdown.textContent = 'PATIENTS RELEASED';
+          return;
+        }
+        const days = Math.floor(remaining / 86400000);
+        const hours = Math.floor((remaining % 86400000) / 3600000);
+        const minutes = Math.floor((remaining % 3600000) / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        countdown.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+      }
+
+      update5150Countdown();
+      setInterval(update5150Countdown, 1000);
     })();
   </script>
 
