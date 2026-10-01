@@ -58,6 +58,10 @@
       background:rgba(0,0,0,.22);
       text-align:center;
     }
+    .kaiju-card img {
+      object-fit:contain;
+      background:#050705;
+    }
     .countdown-label {
       display:block;
       margin-bottom:.35rem;
@@ -271,6 +275,27 @@
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
   <script>
     (() => {
+      const kaijuCountdown = document.getElementById('kaiju-countdown');
+      if (kaijuCountdown) {
+        const kaijuDeadline = new Date(2026, 9, 4, 0, 1, 0).getTime();
+
+        function updateKaijuCountdown() {
+          const remaining = kaijuDeadline - Date.now();
+          if (remaining <= 0) {
+            kaijuCountdown.textContent = 'EVALUATION RELEASED';
+            return;
+          }
+          const days = Math.floor(remaining / 86400000);
+          const hours = Math.floor((remaining % 86400000) / 3600000);
+          const minutes = Math.floor((remaining % 3600000) / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+          kaijuCountdown.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+        }
+
+        updateKaijuCountdown();
+        setInterval(updateKaijuCountdown, 1000);
+      }
+
       const countdown = document.getElementById('week-one-countdown');
       if (!countdown) return;
       const deadline = new Date(2026, 9, 4, 0, 0, 0).getTime();
