@@ -184,9 +184,116 @@
       color:#525c38;
       font-weight:900;
     }
+
+    .reading-log {
+      margin-top:2rem;
+      padding:1rem 1.1rem 1.15rem;
+      border:1px dashed #6f7355;
+      background:rgba(255,255,255,.12);
+    }
+    .reading-log > h2 {
+      margin:0 0 .9rem;
+      color:#672820;
+      font-size:1rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .book-tracker {
+      --progress:6;
+      display:grid;
+      grid-template-columns:82px minmax(0,1fr) 88px;
+      gap:1rem;
+      align-items:center;
+      padding:.9rem;
+      border:1px solid #77795d;
+      background:rgba(255,255,255,.12);
+      box-shadow:inset 0 0 1.2rem rgba(69,63,38,.07);
+    }
+    .book-cover {
+      width:72px;
+      height:auto;
+      display:block;
+      border:1px solid #5f6544;
+      box-shadow:0 .35rem .7rem rgba(0,0,0,.24);
+    }
+    .book-info h3 {
+      margin:0;
+      color:#672820;
+      font-size:1.2rem;
+      line-height:1.1;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .book-author {
+      margin:.3rem 0 0 !important;
+      color:#555b43 !important;
+      font-size:.9rem;
+      font-style:italic;
+    }
+    .book-progress-text {
+      margin:.65rem 0 0 !important;
+      color:#536038 !important;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .tube-meter {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.3rem;
+      color:#536038;
+      font-size:.7rem;
+      font-weight:900;
+      letter-spacing:.06em;
+    }
+    .test-tube {
+      position:relative;
+      width:38px;
+      height:118px;
+      overflow:hidden;
+      border:3px solid #5f6544;
+      border-top-width:5px;
+      border-radius:7px 7px 18px 18px;
+      background:
+        repeating-linear-gradient(to bottom,rgba(63,67,48,.22) 0 1px,transparent 1px 12px),
+        rgba(255,255,255,.22);
+      box-shadow:
+        inset 5px 0 6px rgba(255,255,255,.18),
+        inset -5px 0 7px rgba(41,45,31,.14);
+    }
+    .test-tube::before {
+      content:"";
+      position:absolute;
+      z-index:2;
+      top:0;
+      right:4px;
+      width:7px;
+      height:100%;
+      background:repeating-linear-gradient(to bottom,#5f6544 0 1px,transparent 1px 12px);
+      opacity:.7;
+    }
+    .tube-liquid {
+      position:absolute;
+      left:3px;
+      right:3px;
+      bottom:3px;
+      height:max(calc(var(--progress) * 1%),7px);
+      min-height:7px;
+      border-radius:0 0 13px 13px;
+      background:
+        radial-gradient(circle at 28% 40%,rgba(223,239,123,.75) 0 2px,transparent 2.5px),
+        radial-gradient(circle at 70% 65%,rgba(29,50,8,.38) 0 2px,transparent 2.5px),
+        linear-gradient(#829a2e,#536b18 55%,#3e5312);
+      box-shadow:0 0 8px rgba(83,107,24,.55);
+    }
+    .tube-percent {
+      color:#672820;
+      font-size:.9rem;
+    }
     @media (max-width:760px) {
       .totals-grid { grid-template-columns:1fr; }
-      .case-file { padding:1.2rem; }
+      .case-file { padding:1.2rem; }\n      .book-tracker { grid-template-columns:68px minmax(0,1fr) 68px; gap:.7rem; }\n      .book-cover { width:60px; }\n      .test-tube { width:32px; height:104px; }
     }
   </style>
 </head>
@@ -228,6 +335,24 @@
         <p>💊💊💊 Standard Dose = liked it</p>
         <p>💊💊💊💊 Heavy Dose = really liked it</p>
         <p>💊💊💊💊💊 Maximum Dose = loved it</p>
+      </section>
+
+
+      <section class="reading-log" aria-labelledby="reading-heading">
+        <h2 id="reading-heading">📚 Current Reading</h2>
+        <article class="book-tracker" style="--progress:6" aria-label="Sleeping Beauties reading progress: 6 percent complete">
+          <img class="book-cover" src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781501163401/sleeping-beauties-9781501163401_hr.jpg" alt="Sleeping Beauties by Stephen King and Owen King book cover">
+          <div class="book-info">
+            <h3>Sleeping Beauties</h3>
+            <p class="book-author">Stephen King &amp; Owen King</p>
+            <p class="book-progress-text">6% complete</p>
+          </div>
+          <div class="tube-meter" aria-hidden="true">
+            <span>100%</span>
+            <div class="test-tube"><div class="tube-liquid"></div></div>
+            <span class="tube-percent">6%</span>
+          </div>
+        </article>
       </section>
 
       <h2 class="week-heading">Week 1 · September 27–October 3</h2>
