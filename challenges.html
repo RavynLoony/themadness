@@ -140,7 +140,7 @@
 
       <div class="countdown-panel">
         <span class="countdown-label">WEEK TWO PRESCRIPTION CLOCK · YOUR LOCAL TIME</span>
-        <span id="week-three-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+        <span id="week-two-countdown" class="countdown-value" aria-live="polite">calculating…</span>
       </div>
 
       <div class="rule-callout">
@@ -296,7 +296,7 @@
         setInterval(updateKaijuCountdown, 1000);
       }
 
-      const countdown = document.getElementById('week-three-countdown');
+      const countdown = document.getElementById('week-two-countdown');
       if (!countdown) return;
       const deadline = new Date(2026, 9, 10, 23, 59, 59).getTime();
 
