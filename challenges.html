@@ -95,56 +95,56 @@
     <h1 class="page-title">Challenges</h1>
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
 
-    <section class="notice compact-notice" id="week-one-prescription">
-      <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK ONE · NURSE NEVERMORE'S PRESCRIPTION</p>
-      <h2>NURSE NEVERMORE'S WEEK ONE PRESCRIPTION</h2>
-      <p><strong>ATTENTION, PATIENTS.</strong> Week One has begun, which means Nurse Nevermore has three new films on the medication cart.</p>
+    <section class="notice compact-notice" id="week-three-prescription">
+      <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK THREE · NURSE NEVERMORE'S PRESCRIPTION</p>
+      <h2>NURSE NEVERMORE'S WEEK THREE PRESCRIPTION</h2>
+      <p><strong>ATTENTION, PATIENTS.</strong> Week Three's medication cart is stocked with three made-for-TV doses of medical science behaving badly.</p>
 
       <div class="prescription-grid">
         <article class="prescription-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Don%27t_Look_in_the_Basement_newspaper_ad_%281973%29.jpg" alt="Don't Look in the Basement 1973 poster" loading="eager">
+          <img src="week3-missing-are-deadly.jpg" alt="The Missing Are Deadly 1975 poster" loading="eager">
           <div class="prescription-card-body">
             <p class="rx-number">Prescription #1</p>
-            <h3>Don't Look in the Basement</h3>
-            <p>1973</p>
+            <h3>The Missing Are Deadly</h3>
+            <p>1975</p>
             <p class="rx-points">6 POINTS</p>
           </div>
         </article>
         <article class="prescription-card">
-          <img src="https://whats-after-the-movie-ti152.sevalla.storage/movies/The-Big%C2%A0Cube-LjSWUoS9DfmLMw.jpg" alt="The Big Cube 1969 poster" loading="eager">
+          <img src="week3-alien-nation-dark-horizon.jpg" alt="Alien Nation Dark Horizon 1994 poster" loading="eager">
           <div class="prescription-card-body">
             <p class="rx-number">Prescription #2</p>
-            <h3>The Big Cube</h3>
-            <p>1969</p>
-            <p class="rx-points">6 POINTS</p>
+            <h3>Alien Nation: Dark Horizon</h3>
+            <p>1994</p>
+            <p class="rx-points">15 POINTS FOR TWO</p>
           </div>
         </article>
         <article class="prescription-card">
-          <img src="https://www.on-off-on.ru/upload/iblock/d6c/d6c7e2e2959cbd1e89f91afcdc60f6c5.jpg" alt="The Girl on a Broomstick Dívka na koštěti 1972 poster" loading="eager">
+          <img src="week3-species-iii.jpg" alt="Species III 2004 poster" loading="eager">
           <div class="prescription-card-body">
             <p class="rx-number">Prescription #3</p>
-            <h3>The Girl on a Broomstick / Dívka na koštěti</h3>
-            <p>1972</p>
-            <p class="rx-points">6 POINTS</p>
+            <h3>Species III</h3>
+            <p>2004</p>
+            <p class="rx-points">25 POINTS FOR ALL THREE</p>
           </div>
         </article>
       </div>
 
-      <div class="score-grid" aria-label="Week One Prescription scoring">
-        <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Complete one Week One prescription.</p></div>
-        <div class="score-card"><span class="score-number">15</span><h3>2 FILMS</h3><p>Complete two Week One prescriptions.</p></div>
-        <div class="score-card"><span class="score-number">25</span><h3>ALL 3 FILMS</h3><p>Complete the full Week One prescription.</p></div>
+      <div class="score-grid" aria-label="Week Three Prescription scoring">
+        <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Complete one Week Three prescription.</p></div>
+        <div class="score-card"><span class="score-number">15</span><h3>2 FILMS</h3><p>Complete two Week Three prescriptions.</p></div>
+        <div class="score-card"><span class="score-number">25</span><h3>ALL 3 FILMS</h3><p>Complete the full Week Three prescription.</p></div>
       </div>
 
-      <div class="prescription-deadline"><strong>PRESCRIPTION WINDOW:</strong> Complete your films by <strong>Saturday, October 3, 2026 at 11:59 PM</strong> in each Maniac's own local time zone.</div>
+      <div class="prescription-deadline"><strong>PRESCRIPTION WINDOW:</strong> Complete your films by <strong>Saturday, October 10, 2026 at 11:59 PM</strong> in each Maniac's own local time zone.</div>
 
       <div class="countdown-panel">
-        <span class="countdown-label">WEEK ONE PRESCRIPTION CLOCK · YOUR LOCAL TIME</span>
-        <span id="week-one-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+        <span class="countdown-label">WEEK THREE PRESCRIPTION CLOCK · YOUR LOCAL TIME</span>
+        <span id="week-three-countdown" class="countdown-value" aria-live="polite">calculating…</span>
       </div>
 
       <div class="rule-callout">
-        <strong>HOW TO CLAIM:</strong> Comment on the <strong>WEEK ONE PRESCRIPTION post in the MADNESS Facebook group</strong> when you complete a prescription, and include your completed prescription films in your <strong>WEEKLY SUMMARY</strong> so your Team Judge can score them.
+        <strong>HOW TO CLAIM:</strong> Comment on the <strong>WEEK THREE PRESCRIPTION post in the MADNESS Facebook group</strong> when you complete a prescription, and include your completed prescription films in your <strong>WEEKLY SUMMARY</strong> so your Team Judge can score them.
       </div>
     </section>
 
@@ -296,9 +296,9 @@
         setInterval(updateKaijuCountdown, 1000);
       }
 
-      const countdown = document.getElementById('week-one-countdown');
+      const countdown = document.getElementById('week-three-countdown');
       if (!countdown) return;
-      const deadline = new Date(2026, 9, 4, 0, 0, 0).getTime();
+      const deadline = new Date(2026, 9, 10, 23, 59, 59).getTime();
 
       function updateCountdown() {
         const remaining = deadline - Date.now();
