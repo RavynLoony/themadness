@@ -10,36 +10,120 @@
   <title>Live Scores | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .scores-table { width:100%; border-collapse:separate; border-spacing:0; margin-top:1.5rem; }
-    .scores-table th { text-align:left; color:var(--acid); text-transform:uppercase; letter-spacing:.08em; padding:.9rem 1rem; border-bottom:1px solid var(--line); }
-    .scores-table td { padding:.9rem 1rem; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
-    .scores-table th:last-child, .scores-table td:last-child { text-align:right; width:150px; }
-    .score-breakdown { line-height:1.45; }
-    .score-breakdown strong { color:var(--text); }
-    .score-breakdown details { margin:0; }
-    .score-breakdown summary { color:var(--acid); cursor:pointer; font-weight:700; list-style-position:outside; }
-    .score-breakdown summary:hover, .score-breakdown summary:focus-visible { color:var(--ink); }
-    .score-breakdown details[open] summary { margin-bottom:.65rem; }
-    .score-details { padding:.05rem 0 .2rem; }
-    .score-math { margin:.45rem 0 .2rem; padding-left:1.1rem; }
-    .score-math li { margin:.15rem 0; }
-    .score-sort { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; margin:1.25rem 0 .25rem; }
-    .score-sort-label { color:var(--muted); font-size:.8em; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
-    .score-sort button { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.02); color:var(--acid); padding:.55rem .8rem; font:inherit; font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; }
-    .score-sort button:hover, .score-sort button:focus-visible, .score-sort button[aria-pressed="true"] { border-color:var(--acid); background:rgba(168,198,108,.1); color:var(--ink); }
-    .visitor-room { margin: 3rem 0 1rem; padding: 1.25rem 1.4rem; border: 1px solid var(--line); background: rgba(255,255,255,.018); }
-    .visitor-room h2 { margin-top: 0; color: var(--acid); }
-    .visitor-room p { margin: .45rem 0 1rem; color: var(--muted); }
-    .visitor-list { margin: 0; padding-left: 1.35rem; }
-    .visitor-list li { margin: .45rem 0; color: var(--ink); font-weight: 700; }
-    .visitor-note { margin-top: 1rem !important; font-size: .95rem; }
-
-    @media (max-width: 700px) {
-      .scores-table th, .scores-table td { padding:.75rem .6rem; }
-      .scores-table th:last-child, .scores-table td:last-child { width:auto; }
-      .score-sort { align-items:stretch; }
-      .score-sort-label { width:100%; }
-      .score-sort button { flex:1 1 145px; }
+    .score-note { color:var(--muted); max-width:900px; }
+    .score-controls {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(180px,1fr));
+      gap:.8rem;
+      margin:1.35rem 0 1.5rem;
+      padding:1rem;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.018);
+    }
+    .score-control { display:flex; flex-direction:column; gap:.35rem; }
+    .score-control label {
+      color:var(--acid);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .score-control select {
+      width:100%;
+      border:1px solid var(--line);
+      background:#11160f;
+      color:var(--ink);
+      padding:.62rem .7rem;
+      font:inherit;
+    }
+    .team-grid { display:grid; gap:1.25rem; }
+    .team-card {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.015);
+      overflow:hidden;
+    }
+    .team-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:1rem;
+      padding:1rem 1.1rem;
+      border-bottom:1px solid var(--line);
+      background:rgba(168,198,108,.05);
+    }
+    .team-head h3 {
+      margin:0;
+      color:var(--acid);
+      font-size:1.02rem;
+      letter-spacing:.055em;
+      text-transform:uppercase;
+    }
+    .team-totals { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.45rem; }
+    .score-chip {
+      display:inline-flex;
+      gap:.35rem;
+      align-items:baseline;
+      padding:.3rem .55rem;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:.78rem;
+      white-space:nowrap;
+    }
+    .score-chip strong { color:var(--ink); font-size:1rem; }
+    .scores-table { width:100%; border-collapse:collapse; }
+    .scores-table th {
+      text-align:left;
+      color:var(--acid);
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      font-size:.75rem;
+      padding:.7rem .85rem;
+      border-bottom:1px solid var(--line);
+    }
+    .scores-table td {
+      padding:.78rem .85rem;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      vertical-align:top;
+    }
+    .scores-table tr:last-child td { border-bottom:0; }
+    .scores-table .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .scores-table .player-name { color:var(--ink); font-weight:800; }
+    .role { color:var(--muted); font-size:.9rem; }
+    .audit-state {
+      display:inline-block;
+      padding:.18rem .42rem;
+      border:1px solid var(--line);
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .audit-state.audited { color:var(--acid); border-color:rgba(168,198,108,.55); }
+    .math details { margin:0; }
+    .math summary {
+      cursor:pointer;
+      color:var(--acid);
+      font-weight:800;
+      list-style-position:outside;
+    }
+    .math details[open] summary { margin-bottom:.4rem; }
+    .math-detail { max-width:680px; line-height:1.45; }
+    .individual-wrap { display:none; }
+    .individual-wrap.active, .team-wrap.active { display:block; }
+    .team-wrap:not(.active) { display:none; }
+    .leaderboard-title { margin:.3rem 0 .7rem; color:var(--acid); }
+    .visitor-room { margin:3rem 0 1rem; padding:1.25rem 1.4rem; border:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .visitor-room h2 { margin-top:0; color:var(--acid); }
+    .visitor-room p { margin:.45rem 0 1rem; color:var(--muted); }
+    .visitor-list { margin:0; padding-left:1.35rem; }
+    .visitor-list li { margin:.45rem 0; color:var(--ink); font-weight:700; }
+    .visitor-note { margin-top:1rem !important; font-size:.95rem; }
+    @media (max-width:850px) {
+      .score-controls { grid-template-columns:1fr; }
+      .team-head { flex-direction:column; }
+      .team-totals { justify-content:flex-start; }
+      .scores-table { display:block; overflow-x:auto; }
     }
   </style>
 </head>
@@ -63,52 +147,58 @@
   <main class="wrap">
     <p class="kicker">2026 · The Madness Runs the Asylum</p>
     <h1 class="page-title">Live Scores</h1>
-    <p class="subhead">Warm-Up points are safely banked until the end of THE MADNESS. The main-game scoreboard starts everyone at 0.</p>
+    <p class="subhead">Warm-Up points are banked separately. Week 1 scores appear here as summaries are audited.</p>
+
     <section class="about">
       <h2>Current Scores</h2>
-      <p>Scores will update as Weekly Summaries are processed. Tap <strong>Show math &amp; details</strong> on any Maniac to expand the scoring breakdown.</p>
-      <div class="score-sort" aria-label="Sort live scores">
-        <span class="score-sort-label">Sort by</span>
-        <button type="button" data-sort="name" aria-pressed="true">First Name A–Z</button>
-        <button type="button" data-sort="score" aria-pressed="false">Score High → Low</button>
+      <p class="score-note">Players are grouped by team by default. Switch to the Individual Leaderboard at any time, then sort alphabetically or high to low. Math is intentionally abbreviated. Secret Film bonuses remain pending and are not included until all Week 1 timestamps are compared.</p>
+
+      <div class="score-controls" aria-label="Live score display options">
+        <div class="score-control">
+          <label for="score-view">View</label>
+          <select id="score-view">
+            <option value="team">By Team</option>
+            <option value="individual">Individual Leaderboard</option>
+          </select>
+        </div>
+        <div class="score-control" id="team-sort-control">
+          <label for="team-sort">Team Order</label>
+          <select id="team-sort">
+            <option value="alpha">Alphabetical</option>
+            <option value="week1">Week 1 High to Low</option>
+            <option value="overall">Overall High to Low</option>
+          </select>
+        </div>
+        <div class="score-control">
+          <label for="player-sort">Player Order</label>
+          <select id="player-sort">
+            <option value="alpha">Alphabetical</option>
+            <option value="week1">Week 1 High to Low</option>
+            <option value="overall">Overall High to Low</option>
+          </select>
+        </div>
       </div>
-      <table class="scores-table">
-        <thead>
-          <tr><th>Maniac</th><th>Current Point Breakdown</th><th>Total Points</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Adam Artruc</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Áine M. Coyotl</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-                    <tr><td>Alec Pridgeon</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-<tr><td>Alexa Starr</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Andrasta Iceni</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Cathleen Marshall</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Chris Qualls</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-<tr><td>Chris Gusta</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Dan Cossette</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-<tr><td>Diana Price</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Clair Hooker</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Crystal Sharie</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Elizabeth Katherine Gray</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Erica Andrus</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Giovanni Deldio</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Gnat Marie</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Harriett Branch</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Jenni Johnson</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Kathleen Gibney</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Kemarie Graves</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Kimberly Duvall</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Laura Sue</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Lisa Harshman Weaver</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Lynniall Johnson</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Newt White</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Renee Hatten</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Sean Gleeson</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Shaun Berkey</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Winslow Leach</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-          <tr><td>Zee Campbell</td><td class="score-breakdown"><strong>Week One:</strong> No Weekly Summary scored yet.</td><td>0</td></tr>
-        </tbody>
-      </table>
+
+      <div class="team-wrap active" id="team-view">
+        <div class="team-grid" id="team-grid"></div>
+      </div>
+
+      <div class="individual-wrap" id="individual-view">
+        <h3 class="leaderboard-title">Individual Leaderboard</h3>
+        <table class="scores-table">
+          <thead>
+            <tr>
+              <th>Maniac</th>
+              <th>Team</th>
+              <th>Role</th>
+              <th class="num">Week 1</th>
+              <th class="num">Overall</th>
+              <th>Math / Status</th>
+            </tr>
+          </thead>
+          <tbody id="individual-body"></tbody>
+        </table>
+      </div>
     </section>
 
     <section class="visitor-room" aria-labelledby="visitor-room-title">
@@ -122,41 +212,152 @@
       <p class="visitor-note">If a roster spot opens, their Madness watches will come with them.</p>
     </section>
   </main>
+
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
+
   <script>
     (() => {
-      const tbody = document.querySelector('.scores-table tbody');
-      const buttons = [...document.querySelectorAll('.score-sort button')];
-      if (!tbody) return;
+      const players = [
+        {name:"Lynniall Johnson", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Judge", week1:0, overall:0},
+        {name:"Erica Andrus", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Captain", week1:0, overall:0},
+        {name:"Alexa Starr", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Player", week1:0, overall:0},
+        {name:"Shaun Berkey", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Player", week1:0, overall:0},
+        {name:"Kimberly Duvall", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Player", week1:0, overall:0},
+        {name:"Crystal Sharie", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Player", week1:0, overall:0},
 
-      document.querySelectorAll('.score-breakdown').forEach(cell => {
-        const details = document.createElement('details');
-        const summary = document.createElement('summary');
-        const body = document.createElement('div');
-        summary.textContent = 'Show math & details';
-        body.className = 'score-details';
-        while (cell.firstChild) body.appendChild(cell.firstChild);
-        details.append(summary, body);
-        cell.appendChild(details);
-        details.addEventListener('toggle', () => {
-          summary.textContent = details.open ? 'Hide math & details' : 'Show math & details';
+        {name:"Gnat Marie", team:"TEAM RUBBER ROOMIES", role:"Judge", week1:0, overall:0},
+        {name:"Winslow Leach", team:"TEAM RUBBER ROOMIES", role:"Captain", week1:0, overall:0},
+        {name:"Kathleen Gibney", team:"TEAM RUBBER ROOMIES", role:"Player", week1:0, overall:0},
+        {name:"Chris Gusta", team:"TEAM RUBBER ROOMIES", role:"Player", week1:0, overall:0},
+        {name:"Dan Cossette", team:"TEAM RUBBER ROOMIES", role:"Player", week1:0, overall:0},
+        {name:"Harriett Branch", team:"TEAM RUBBER ROOMIES", role:"Player", week1:0, overall:0},
+
+        {name:"Lisa Harshman Weaver", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Judge", week1:0, overall:0},
+        {name:"Elizabeth Katheryn Gray", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Captain", week1:0, overall:0},
+        {name:"Zee Campbell", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Player", week1:0, overall:0},
+        {name:"Kemarie Graves", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Player", week1:0, overall:0},
+        {name:"Giovanni Deldio", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Player", week1:0, overall:0},
+        {name:"Cathleen Marshall", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Player", week1:0, overall:0},
+
+        {name:"Chris Qualls", team:"TEAM EYES OF PATTY MULLEN", role:"Judge", week1:0, overall:0},
+        {name:"Adam Artruc", team:"TEAM EYES OF PATTY MULLEN", role:"Captain", week1:0, overall:0},
+        {name:"Renee Hatten", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:0, overall:0},
+        {name:"Áine M. Coyotl", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:0, overall:0},
+        {name:"Clair Hooker", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:0, overall:0},
+        {name:"Jenni Johnson", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:0, overall:0},
+
+        {name:"Andrasta Iceni", team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO", role:"Judge", week1:0, overall:0},
+        {
+          name:"Newt White",
+          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+          role:"Captain",
+          week1:341,
+          overall:356,
+          audited:true,
+          math:"341 + 15 = 356",
+          detail:"Week 1: 341. Overall-only bonuses: Immediate 5150 completion +5 and Asylum Asylum Binge completion +10. Four Secret Films are provisional and not included yet."
+        },
+        {name:"Sean Gleeson", team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO", role:"Player", week1:0, overall:0},
+        {name:"Laura Sue", team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO", role:"Player", week1:0, overall:0},
+        {name:"Alec Pridgen", team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO", role:"Player", week1:0, overall:0},
+        {name:"Diana Price", team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO", role:"Player", week1:0, overall:0}
+      ];
+
+      const viewSelect = document.getElementById('score-view');
+      const teamSort = document.getElementById('team-sort');
+      const playerSort = document.getElementById('player-sort');
+      const teamSortControl = document.getElementById('team-sort-control');
+      const teamView = document.getElementById('team-view');
+      const individualView = document.getElementById('individual-view');
+      const teamGrid = document.getElementById('team-grid');
+      const individualBody = document.getElementById('individual-body');
+
+      const alpha = (a,b,key="name") => a[key].localeCompare(b[key], undefined, {sensitivity:"base"});
+      const sortPlayers = list => {
+        const mode = playerSort.value;
+        return [...list].sort((a,b) => {
+          if (mode === "week1") return b.week1 - a.week1 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week1 - a.week1 || alpha(a,b);
+          return alpha(a,b);
         });
-      });
-
-      const rows = () => [...tbody.querySelectorAll('tr')];
-      const nameOf = row => row.cells[0].textContent.trim();
-      const scoreOf = row => Number.parseFloat(row.cells[2].textContent.trim()) || 0;
-      const byName = (a, b) => nameOf(a).localeCompare(nameOf(b), undefined, { sensitivity: 'base' });
-
-      const sortRows = mode => {
-        const sorted = rows().sort(mode === 'score'
-          ? (a, b) => scoreOf(b) - scoreOf(a) || byName(a, b)
-          : byName);
-        sorted.forEach(row => tbody.appendChild(row));
-        buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.sort === mode)));
       };
 
-      buttons.forEach(button => button.addEventListener('click', () => sortRows(button.dataset.sort)));
+      const teamStats = () => {
+        const map = new Map();
+        players.forEach(player => {
+          if (!map.has(player.team)) map.set(player.team, {name:player.team, week1:0, overall:0, players:[]});
+          const team = map.get(player.team);
+          team.week1 += player.week1;
+          team.overall += player.overall;
+          team.players.push(player);
+        });
+        const teams = [...map.values()];
+        const mode = teamSort.value;
+        teams.sort((a,b) => {
+          if (mode === "week1") return b.week1 - a.week1 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week1 - a.week1 || alpha(a,b);
+          return alpha(a,b);
+        });
+        return teams;
+      };
+
+      const mathCell = player => {
+        if (!player.audited) return '<span class="audit-state">Not audited yet</span>';
+        return `<div class="math"><details><summary>${player.math}</summary><div class="math-detail">${player.detail}</div></details></div>`;
+      };
+
+      const playerRow = (player, includeTeam=false) => `
+        <tr>
+          <td><span class="player-name">${player.name}</span></td>
+          ${includeTeam ? `<td>${player.team.replace(/^TEAM /,'')}</td>` : ''}
+          <td><span class="role">${player.role}</span></td>
+          <td class="num">${player.week1}</td>
+          <td class="num">${player.overall}</td>
+          <td>${mathCell(player)}</td>
+        </tr>`;
+
+      const renderTeams = () => {
+        teamGrid.innerHTML = teamStats().map(team => `
+          <section class="team-card" data-week1="${team.week1}" data-overall="${team.overall}">
+            <div class="team-head">
+              <h3>${team.name}</h3>
+              <div class="team-totals">
+                <span class="score-chip">Week 1 <strong>${team.week1}</strong></span>
+                <span class="score-chip">Overall <strong>${team.overall}</strong></span>
+              </div>
+            </div>
+            <table class="scores-table">
+              <thead>
+                <tr>
+                  <th>Maniac</th>
+                  <th>Role</th>
+                  <th class="num">Week 1</th>
+                  <th class="num">Overall</th>
+                  <th>Math / Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sortPlayers(team.players).map(player => playerRow(player)).join('')}
+              </tbody>
+            </table>
+          </section>`).join('');
+      };
+
+      const renderIndividuals = () => {
+        individualBody.innerHTML = sortPlayers(players).map(player => playerRow(player, true)).join('');
+      };
+
+      const render = () => {
+        const individual = viewSelect.value === 'individual';
+        teamView.classList.toggle('active', !individual);
+        individualView.classList.toggle('active', individual);
+        teamSortControl.style.display = individual ? 'none' : 'flex';
+        renderTeams();
+        renderIndividuals();
+      };
+
+      [viewSelect, teamSort, playerSort].forEach(control => control.addEventListener('change', render));
+      render();
     })();
   </script>
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ce1052a07f9b48a684633f1fd419a40d"}'></script><!-- End Cloudflare Web Analytics -->
