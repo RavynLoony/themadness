@@ -44,6 +44,10 @@
       font-weight:900;
       font-size:1.15rem;
     }
+    .double-dose-grid {
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      max-width:780px;
+    }
     .prescription-deadline {
       margin:1rem 0;
       padding:1rem 1.2rem;
@@ -94,6 +98,50 @@
     <p class="kicker">2026 · Year 18</p>
     <h1 class="page-title">Challenges</h1>
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
+
+    <section class="notice compact-notice" id="double-dosed">
+      <p class="kicker">POP-UP CHALLENGE · ACTIVE NOW · NURSE NEVERMORE</p>
+      <h2>💉 DOUBLE DOSED! 💉</h2>
+      <p><strong>OH NO.</strong> NURSE NEVERMORE WAS DISTRACTED BY HER DAYTIME STORIES AND ACCIDENTALLY DOUBLE DOSED YOU.</p>
+      <p><strong>THE PATIENT HAS BEEN PRESCRIBED:</strong></p>
+
+      <div class="prescription-grid double-dose-grid">
+        <article class="prescription-card">
+          <img src="https://drive.google.com/thumbnail?id=188e-9kfS0qLRXyxMLF4adIGkRZy5dtCI&amp;sz=w1200" alt="Suitable Flesh 2023 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">Dose #1</p>
+            <h3>Suitable Flesh</h3>
+            <p>2023</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://drive.google.com/thumbnail?id=1bZiHB4VulAjax7aXa8wiMKSxHyM1ULGU&amp;sz=w1200" alt="Yummy 2019 poster" loading="eager">
+          <div class="prescription-card-body">
+            <p class="rx-number">Dose #2</p>
+            <h3>Yummy</h3>
+            <p>2019</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="score-grid" aria-label="Double Dosed scoring">
+        <div class="score-card"><span class="score-number">6</span><h3>1 FILM</h3><p>Complete one dose.</p></div>
+        <div class="score-card"><span class="score-number">15</span><h3>BOTH FILMS</h3><p>Complete the full double dose.</p></div>
+      </div>
+
+      <div class="prescription-deadline"><strong>EXPIRES:</strong> Saturday, October 10 at <strong>11:59 PM</strong> in each patient's own local time zone.</div>
+
+      <div class="countdown-panel">
+        <span class="countdown-label">DOUBLE DOSED! CLOCK · YOUR LOCAL TIME</span>
+        <span id="double-dose-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+
+      <div class="rule-callout">
+        <strong>HOW TO CLAIM:</strong> Comment on the <strong>DOUBLE DOSED! post</strong> when you've completed your dose, and include <strong>DOUBLE DOSED!</strong> on your <strong>current week's summary</strong>.
+      </div>
+
+      <p style="margin-top:1rem;"><strong>IF ANYONE ASKS, THE MEDICATION LOG WAS ALWAYS LIKE THAT.</strong> 💉📋</p>
+    </section>
 
     <section class="notice compact-notice" id="week-two-prescription">
       <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK TWO · NURSE NEVERMORE'S PRESCRIPTION</p>
@@ -275,6 +323,25 @@
   <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
   <script>
     (() => {
+      const doubleDoseCountdown = document.getElementById('double-dose-countdown');
+      if (doubleDoseCountdown) {
+        const doubleDoseDeadline = new Date(2026, 9, 10, 23, 59, 59).getTime();
+        function updateDoubleDoseCountdown() {
+          const remaining = doubleDoseDeadline - Date.now();
+          if (remaining <= 0) {
+            doubleDoseCountdown.textContent = 'DOUBLE DOSE EXPIRED';
+            return;
+          }
+          const days = Math.floor(remaining / 86400000);
+          const hours = Math.floor((remaining % 86400000) / 3600000);
+          const minutes = Math.floor((remaining % 3600000) / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+          doubleDoseCountdown.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+        }
+        updateDoubleDoseCountdown();
+        setInterval(updateDoubleDoseCountdown, 1000);
+      }
+
       const kaijuCountdown = document.getElementById('kaiju-countdown');
       if (kaijuCountdown) {
         const kaijuDeadline = new Date(2026, 9, 4, 0, 1, 0).getTime();
