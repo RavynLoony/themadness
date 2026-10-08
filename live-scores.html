@@ -340,7 +340,7 @@
           math:"148 + 7 = 155 · +5 = 160",
           detail:"Week 1 final verified total: 155. Player-estimated total was 153, but 5 points from the completed Immediate 5150 challenge are overall-only, making the submitted Week 1 equivalent 148. Audit corrections beyond the player's listed challenge adjustments: Legends of Fear +2; Stephen King's It +4; House on Haunted Hill (1999) +1, for +7. Week 1 Prescription completed 3/3 = 25. Immediate 5150 completed 3/3 = 25 Week 1 points +5 overall-only completion bonus. Observation Ward progress: 4/24, 20 remaining. The Asylum Asylum progress: 1/20, 19 remaining. Secret Film hits: 1; Secret Film bonuses remain pending and are not included."
         },
-        {name:"Renee Hatten", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:0, overall:0},
+        {name:"Renee Hatten", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:0, overall:0, auditing:true},
         {
           name:"Áine M. Coyotl",
           team:"TEAM EYES OF PATTY MULLEN",
@@ -455,6 +455,7 @@
       };
 
       const mathCell = player => {
+        if (player.auditing) return '<span class="audit-state">Now auditing</span>';
         if (!player.audited) return '<span class="audit-state">Not audited yet</span>';
         return `<div class="math"><details><summary>${player.math}</summary><div class="math-detail">${player.detail}</div></details></div>`;
       };
