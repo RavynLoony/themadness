@@ -293,7 +293,46 @@
     }
     @media (max-width:760px) {
       .totals-grid { grid-template-columns:1fr; }
-      .case-file { padding:1.2rem; }\n      .book-tracker { grid-template-columns:68px minmax(0,1fr) 68px; gap:.7rem; }\n      .book-cover { width:60px; }\n      .test-tube { width:32px; height:104px; }
+      .case-file { padding:1.2rem; }
+      .reading-log { padding:.8rem; }
+      .book-tracker {
+        grid-template-columns:72px minmax(0,1fr);
+        gap:.75rem;
+        align-items:center;
+        padding:.8rem;
+      }
+      .book-cover {
+        width:66px;
+        grid-column:1;
+        grid-row:1;
+      }
+      .book-info {
+        grid-column:2;
+        grid-row:1;
+        min-width:0;
+      }
+      .book-info h3 {
+        font-size:1rem;
+        overflow-wrap:anywhere;
+      }
+      .book-author {
+        font-size:.82rem !important;
+        line-height:1.35;
+      }
+      .book-progress-text {
+        margin-top:.45rem !important;
+        font-size:.82rem;
+      }
+      .tube-meter {
+        grid-column:1 / -1;
+        grid-row:2;
+        justify-self:center;
+        margin-top:.15rem;
+      }
+      .test-tube {
+        width:32px;
+        height:104px;
+      }
     }
   </style>
 </head>
@@ -308,7 +347,7 @@
           <a href="challenges.html">Challenges</a>
           <a href="warmups.html">Warm-Ups</a>
           <a href="live-scores.html">Live Scores</a>
-          <a href="nurse-nevermore.html?v=20260929-6" aria-current="page">Nurse Nevermore</a>
+          <a href="nurse-nevermore.html?v=20261008-mobilefix" aria-current="page">Nurse Nevermore</a>
         </div>
       </nav>
     </div>
