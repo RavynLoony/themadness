@@ -6,6 +6,23 @@
   <meta name="theme-color" content="#11160f">
   <title>2026 Rules | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .mobile-rules-fallback { display: none; }
+    @media (max-width: 760px) {
+      .rules-document { display: none; }
+      .mobile-rules-fallback {
+        display: block;
+        margin-top: 1rem;
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.03);
+      }
+      .mobile-rules-fallback .rules-action {
+        display: block;
+        margin-top: .75rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -64,6 +81,14 @@
           title="Halloween Horror Movie Marathon Madness 2026 Full Rules"
           allowfullscreen>
         </iframe>
+      </div>
+      <div class="mobile-rules-fallback">
+        <strong>Mobile reader</strong>
+        <p>Google Docs does not reliably load inside the embedded viewer on phones. Open the live rules directly instead.</p>
+        <a class="rules-action" href="https://docs.google.com/document/d/1CAxVxtP2MbaNWtc7ULBcsNn4UcbOQTld1rctzcZMjwQ/edit?usp=drivesdk" target="_blank" rel="noopener">
+          <strong>Open Full Rules</strong>
+          <span>Opens the live master in Google Docs</span>
+        </a>
       </div>
     </section>
   </main>
