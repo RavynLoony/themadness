@@ -147,11 +147,11 @@
   <main class="wrap">
     <p class="kicker">2026 · The Madness Runs the Asylum</p>
     <h1 class="page-title">Live Scores</h1>
-    <p class="subhead">Warm-Up points are banked separately. Week 1 scores appear here as summaries are audited.</p>
+    <p class="subhead">Warm-Up points are banked separately. Week 2 scores start at 0 and update LIVE as summaries are audited.</p>
 
     <section class="about">
       <h2>Current Scores</h2>
-      <p class="score-note">Players are grouped by team by default. Switch to the Individual Leaderboard at any time, then sort alphabetically or high to low. Math is intentionally abbreviated. Week 1 Secret Film first-finder bonuses have been awarded as Overall-only points.</p>
+      <p class="score-note">Players are grouped by team by default. Week 2 scores update LIVE as each summary is audited. Game Overall carries forward all verified prior-week points and Overall-only bonuses, then increases with verified Week 2 scoring.</p>
 
       <div class="score-controls" aria-label="Live score display options">
         <div class="score-control">
@@ -165,7 +165,7 @@
           <label for="team-sort">Team Order</label>
           <select id="team-sort">
             <option value="alpha">Alphabetical</option>
-            <option value="week1" selected>Week 1 High to Low</option>
+            <option value="week2" selected>Week 2 High to Low</option>
             <option value="overall">Overall High to Low</option>
           </select>
         </div>
@@ -173,7 +173,7 @@
           <label for="player-sort">Player Order</label>
           <select id="player-sort">
             <option value="alpha">Alphabetical</option>
-            <option value="week1">Week 1 High to Low</option>
+            <option value="week2">Week 2 High to Low</option>
             <option value="overall">Overall High to Low</option>
           </select>
         </div>
@@ -191,8 +191,8 @@
               <th>Maniac</th>
               <th>Team</th>
               <th>Role</th>
-              <th class="num">Week 1</th>
-              <th class="num">Overall</th>
+              <th class="num">Week 2</th>
+              <th class="num">Game Overall</th>
               <th>Math / Status</th>
             </tr>
           </thead>
@@ -479,6 +479,14 @@
         }
       ];
 
+      players.forEach(player => {
+        if (player.week2 == null) player.week2 = 0;
+        if (player.week2Audited == null) player.week2Audited = false;
+        if (player.week2Auditing == null) player.week2Auditing = false;
+        if (player.week2Math == null) player.week2Math = "";
+        if (player.week2Detail == null) player.week2Detail = "";
+      });
+
       const viewSelect = document.getElementById('score-view');
       const teamSort = document.getElementById('team-sort');
       const playerSort = document.getElementById('player-sort');
@@ -492,8 +500,8 @@
       const sortPlayers = list => {
         const mode = playerSort.value;
         return [...list].sort((a,b) => {
-          if (mode === "week1") return b.week1 - a.week1 || b.overall - a.overall || alpha(a,b);
-          if (mode === "overall") return b.overall - a.overall || b.week1 - a.week1 || alpha(a,b);
+          if (mode === "week2") return b.week2 - a.week2 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week2 - a.week2 || alpha(a,b);
           return alpha(a,b);
         });
       };
@@ -501,26 +509,26 @@
       const teamStats = () => {
         const map = new Map();
         players.forEach(player => {
-          if (!map.has(player.team)) map.set(player.team, {name:player.team, week1:0, overall:0, players:[]});
+          if (!map.has(player.team)) map.set(player.team, {name:player.team, week2:0, overall:0, players:[]});
           const team = map.get(player.team);
-          team.week1 += player.week1;
+          team.week2 += player.week2;
           team.overall += player.overall;
           team.players.push(player);
         });
         const teams = [...map.values()];
         const mode = teamSort.value;
         teams.sort((a,b) => {
-          if (mode === "week1") return b.week1 - a.week1 || b.overall - a.overall || alpha(a,b);
-          if (mode === "overall") return b.overall - a.overall || b.week1 - a.week1 || alpha(a,b);
+          if (mode === "week2") return b.week2 - a.week2 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week2 - a.week2 || alpha(a,b);
           return alpha(a,b);
         });
         return teams;
       };
 
       const mathCell = player => {
-        if (player.auditing) return '<span class="audit-state">Now auditing</span>';
-        if (!player.audited) return '<span class="audit-state">Not audited yet</span>';
-        return `<div class="math"><details><summary>${player.math}</summary><div class="math-detail">${player.detail}</div></details></div>`;
+        if (player.week2Auditing) return '<span class="audit-state">Now auditing</span>';
+        if (!player.week2Audited) return '<span class="audit-state">Not audited yet</span>';
+        return `<div class="math"><details><summary>${player.week2Math}</summary><div class="math-detail">${player.week2Detail}</div></details></div>`;
       };
 
       const playerRow = (player, includeTeam=false) => `
@@ -528,18 +536,18 @@
           <td><span class="player-name">${player.name}</span></td>
           ${includeTeam ? `<td>${player.team.replace(/^TEAM /,'')}</td>` : ''}
           <td><span class="role">${player.role}</span></td>
-          <td class="num">${player.week1}</td>
+          <td class="num">${player.week2}</td>
           <td class="num">${player.overall}</td>
           <td>${mathCell(player)}</td>
         </tr>`;
 
       const renderTeams = () => {
         teamGrid.innerHTML = teamStats().map(team => `
-          <section class="team-card" data-week1="${team.week1}" data-overall="${team.overall}">
+          <section class="team-card" data-week2="${team.week2}" data-overall="${team.overall}">
             <div class="team-head">
               <h3>${team.name}</h3>
               <div class="team-totals">
-                <span class="score-chip">Week 1 <strong>${team.week1}</strong></span>
+                <span class="score-chip">Week 2 <strong>${team.week2}</strong></span>
                 <span class="score-chip">Overall <strong>${team.overall}</strong></span>
               </div>
             </div>
@@ -548,8 +556,8 @@
                 <tr>
                   <th>Maniac</th>
                   <th>Role</th>
-                  <th class="num">Week 1</th>
-                  <th class="num">Overall</th>
+                  <th class="num">Week 2</th>
+                  <th class="num">Game Overall</th>
                   <th>Math / Status</th>
                 </tr>
               </thead>
