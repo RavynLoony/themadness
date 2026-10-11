@@ -109,6 +109,62 @@
     <p class="kicker">2026 · Year 18</p>
     <h1 class="page-title">Challenges</h1>
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
+    <section class="notice compact-notice" id="week-three-binge">
+      <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK THREE · BINGE CHALLENGE</p>
+      <h2>WEEK THREE BINGE CHALLENGE</h2>
+      <p><strong>ATTN: MANIACS,</strong> the WEEK THREE BINGE is now OPEN. For this week only, every episode in the three assigned seasons is priced at its <strong>ATB VALUE = 4 POINTS</strong>.</p>
+
+      <div class="prescription-grid">
+        <article class="prescription-card">
+          <img src="https://m.media-amazon.com/images/M/MV5BZjU1YmZiODQtMzhmMy00YzkzLThiYzUtOTZjNTcyM2I0Y2I4XkEyXkFqcGc%40._V1_.jpg" alt="Ratched Season 1 poster" loading="eager" referrerpolicy="no-referrer">
+          <div class="prescription-card-body">
+            <p class="rx-number">Binge #1</p>
+            <h3>Ratched · Season 1</h3>
+            <p>8 episodes × 4 = 32 + 3 season bonus = <strong>35 POINTS</strong></p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://3.bp.blogspot.com/-KJTShWxiUkk/VRgUGlHnUdI/AAAAAAAABCA/ekm8LGQ8FDQ/s1600/American-Horror-Story-poster-Asylum.jpeg" alt="American Horror Story Asylum poster" loading="eager" referrerpolicy="no-referrer">
+          <div class="prescription-card-body">
+            <p class="rx-number">Binge #2</p>
+            <h3>American Horror Story: Asylum · Season 2</h3>
+            <p>13 episodes × 4 = 52 + 8 season bonus = <strong>60 POINTS</strong></p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://artworks.thetvdb.com/banners/v4/season/2110051/posters/69fbcef7d84c4.jpg" alt="The Terror Devil in Silver Season 3 poster" loading="eager" referrerpolicy="no-referrer">
+          <div class="prescription-card-body">
+            <p class="rx-number">Binge #3</p>
+            <h3>The Terror: Devil in Silver · Season 3</h3>
+            <p>6 episodes × 4 = 24 + 6 season bonus = <strong>30 POINTS</strong></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="score-grid" aria-label="Week Three Binge scoring">
+        <div class="score-card"><span class="score-number">125</span><h3>ALL 3 SEASONS</h3><p>Complete all three assigned seasons during Week Three.</p></div>
+        <div class="score-card"><span class="score-number">+10</span><h3>FULL-BINGE BONUS</h3><p>Watch all 27 episodes during Week Three.</p></div>
+        <div class="score-card"><span class="score-number">135</span><h3>MAXIMUM</h3><p>Complete the entire Week Three Binge Challenge.</p></div>
+      </div>
+
+      <div class="prescription-deadline"><strong>BINGE WINDOW:</strong> Sunday, October 11 at <strong>12:01 AM</strong> through Saturday, October 17 at <strong>11:59 PM</strong> in each Maniac's own local time zone.</div>
+
+      <div class="countdown-panel">
+        <span class="countdown-label">WEEK 3 BINGE CLOCK · YOUR LOCAL TIME</span>
+        <span id="week-three-binge-countdown" class="countdown-value" aria-live="polite">calculating…</span>
+      </div>
+
+      <div class="rule-callout">
+        <strong>IMPORTANT:</strong> Each <strong>SEASON BONUS</strong> requires every episode of that season to be watched during WEEK THREE. The <strong>+10 FULL-BINGE COMPLETION BONUS</strong> requires all 27 episodes during WEEK THREE. Outside Week Three, these episodes return to their <strong>NORMAL MADNESS VALUE</strong>.
+      </div>
+
+      <div class="rule-callout" style="margin-top:1rem;">
+        <strong>HOW TO CLAIM:</strong> Include the episodes and completed season bonuses on your <strong>WEEK 3 SUMMARY</strong>.
+      </div>
+
+      <p style="margin-top:1rem;">The doors are locked. Start bingeing. 📺🧠</p>
+    </section>
+
     <section class="notice compact-notice" id="week-three-prescription">
       <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK THREE · NURSE NEVERMORE'S PRESCRIPTION</p>
       <h2>HUMAN EXPERIMENTS DEPARTMENT</h2>
@@ -240,25 +296,33 @@
 
   <script>
     (() => {
-      const countdown = document.getElementById('week-three-countdown');
-      if (!countdown) return;
+      const prescriptionCountdown = document.getElementById('week-three-countdown');
+      const bingeCountdown = document.getElementById('week-three-binge-countdown');
+      if (!prescriptionCountdown && !bingeCountdown) return;
       const deadline = new Date(2026, 9, 17, 23, 59, 59).getTime();
 
-      function updateCountdown() {
-        const remaining = deadline - Date.now();
-        if (remaining <= 0) {
-          countdown.textContent = 'PRESCRIPTION EXPIRED';
-          return;
-        }
+      function formatRemaining(remaining) {
         const days = Math.floor(remaining / 86400000);
         const hours = Math.floor((remaining % 86400000) / 3600000);
         const minutes = Math.floor((remaining % 3600000) / 60000);
         const seconds = Math.floor((remaining % 60000) / 1000);
-        countdown.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+        return `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
       }
 
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      function updateCountdowns() {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) {
+          if (prescriptionCountdown) prescriptionCountdown.textContent = 'PRESCRIPTION EXPIRED';
+          if (bingeCountdown) bingeCountdown.textContent = 'BINGE EXPIRED';
+          return;
+        }
+        const value = formatRemaining(remaining);
+        if (prescriptionCountdown) prescriptionCountdown.textContent = value;
+        if (bingeCountdown) bingeCountdown.textContent = value;
+      }
+
+      updateCountdowns();
+      setInterval(updateCountdowns, 1000);
     })();
   </script>
 
