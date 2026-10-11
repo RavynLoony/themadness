@@ -191,12 +191,36 @@
       border:1px dashed #6f7355;
       background:rgba(255,255,255,.12);
     }
-    .reading-log > h2 {
-      margin:0 0 .9rem;
+    .reading-log > summary {
+      cursor:pointer;
+      list-style:none;
       color:#672820;
       font-size:1rem;
+      font-weight:900;
       letter-spacing:.1em;
       text-transform:uppercase;
+    }
+    .reading-log > summary::-webkit-details-marker { display:none; }
+    .reading-log > summary::after {
+      content:"▸";
+      float:right;
+      color:#536038;
+      font-size:1.1rem;
+      transition:transform .15s ease;
+    }
+    .reading-log[open] > summary {
+      margin-bottom:.9rem;
+    }
+    .reading-log[open] > summary::after {
+      transform:rotate(90deg);
+    }
+    .reading-toggle-hint {
+      margin-left:.4rem;
+      color:#5d6249;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:none;
     }
     .book-tracker {
       --progress:6;
@@ -377,8 +401,8 @@
       </section>
 
 
-      <section class="reading-log" aria-labelledby="reading-heading">
-        <h2 id="reading-heading">📚 Current Reading</h2>
+      <details class="reading-log">
+        <summary id="reading-heading">📚 Current Reading <span class="reading-toggle-hint">tap to expand</span></summary>
         <article class="book-tracker" style="--progress:42" aria-label="The Devil in Silver reading progress: 42 percent complete">
           <img class="book-cover" src="data:image/jpeg;base64,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" alt="The Devil in Silver by Victor LaValle book cover">
           <div class="book-info">
@@ -444,7 +468,7 @@
             <span class="tube-percent">13%</span>
           </div>
         </article>
-      </section>
+      </details>
 
       <h2 class="week-heading">Week 2 · October 4–10</h2>
 
