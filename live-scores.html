@@ -10,6 +10,10 @@
   <title>Live Scores | Halloween Horror Movie Marathon Madness</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    .warmup-disclosure { display:inline-block; position:relative; margin-left:.12rem; vertical-align:baseline; }
+    .warmup-disclosure summary { display:inline; cursor:pointer; color:var(--acid); font-weight:800; list-style:none; text-decoration:underline; text-underline-offset:2px; }
+    .warmup-disclosure summary::-webkit-details-marker { display:none; }
+    .warmup-explanation { position:absolute; z-index:20; top:1.35em; right:0; display:block; width:max-content; max-width:min(270px,75vw); padding:.55rem .65rem; border:1px solid var(--acid); border-radius:3px; background:#11160f; color:var(--ink); font-size:.8rem; font-weight:normal; text-transform:none; letter-spacing:normal; white-space:normal; line-height:1.4; box-shadow:0 3px 12px rgba(0,0,0,.4); }
     .score-note { color:var(--muted); max-width:900px; }
     .score-controls {
       display:grid;
@@ -40,7 +44,7 @@
     .team-card {
       border:1px solid var(--line);
       background:rgba(255,255,255,.015);
-      overflow:hidden;
+      overflow:visible;
     }
     .team-head {
       display:flex;
@@ -193,7 +197,7 @@
               <th>Team</th>
               <th>Role</th>
               <th class="num">Week 2</th>
-              <th class="num">Game Overall<a href="#warmup-note" aria-label="Read Game Overall warm-up points note">*</a></th>
+              <th class="num">Game Overall<details class="warmup-disclosure"><summary aria-label="Explain Game Overall scoring">*</summary><span class="warmup-explanation">Does not include banked warm-up points.</span></details></th>
               <th>Math / Status</th>
             </tr>
           </thead>
@@ -705,7 +709,7 @@
               <h3>${team.name}</h3>
               <div class="team-totals">
                 <span class="score-chip">Week 2 <strong>${team.week2}</strong></span>
-                <span class="score-chip">Game Overall<a href="#warmup-note" aria-label="Read Game Overall warm-up points note">*</a> <strong>${team.overall}</strong></span>
+                <span class="score-chip">Game Overall<details class="warmup-disclosure"><summary aria-label="Explain Game Overall scoring">*</summary><span class="warmup-explanation">Does not include banked warm-up points.</span></details> <strong>${team.overall}</strong></span>
               </div>
             </div>
             <table class="scores-table">
@@ -714,7 +718,7 @@
                   <th>Maniac</th>
                   <th>Role</th>
                   <th class="num">Week 2</th>
-                  <th class="num">Game Overall<a href="#warmup-note" aria-label="Read Game Overall warm-up points note">*</a></th>
+                  <th class="num">Game Overall<details class="warmup-disclosure"><summary aria-label="Explain Game Overall scoring">*</summary><span class="warmup-explanation">Does not include banked warm-up points.</span></details></th>
                   <th>Math / Status</th>
                 </tr>
               </thead>
