@@ -152,6 +152,7 @@
     <section class="about">
       <h2>Current Scores</h2>
       <p class="score-note">Players are grouped by team by default. Week 2 includes judge-submitted totals that are not yet audited. Game Overall includes these provisional Week 2 totals alongside prior verified points and overall-only bonuses. FINALIZING means an audited figure is being reconciled with a judge's submission.</p>
+      <p class="score-note" id="warmup-note"><strong>* Game Overall does not include banked warm-up points.</strong></p>
 
       <div class="score-controls" aria-label="Live score display options">
         <div class="score-control">
@@ -192,7 +193,7 @@
               <th>Team</th>
               <th>Role</th>
               <th class="num">Week 2</th>
-              <th class="num">Game Overall</th>
+              <th class="num">Game Overall<a href="#warmup-note" aria-label="Read Game Overall warm-up points note">*</a></th>
               <th>Math / Status</th>
             </tr>
           </thead>
@@ -704,7 +705,7 @@
               <h3>${team.name}</h3>
               <div class="team-totals">
                 <span class="score-chip">Week 2 <strong>${team.week2}</strong></span>
-                <span class="score-chip">Game Overall <strong>${team.overall}</strong></span>
+                <span class="score-chip">Game Overall<a href="#warmup-note" aria-label="Read Game Overall warm-up points note">*</a> <strong>${team.overall}</strong></span>
               </div>
             </div>
             <table class="scores-table">
@@ -713,7 +714,7 @@
                   <th>Maniac</th>
                   <th>Role</th>
                   <th class="num">Week 2</th>
-                  <th class="num">Game Overall</th>
+                  <th class="num">Game Overall<a href="#warmup-note" aria-label="Read Game Overall warm-up points note">*</a></th>
                   <th>Math / Status</th>
                 </tr>
               </thead>
