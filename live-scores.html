@@ -580,13 +580,14 @@
           team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
           role:"Player",
           week1:62.5,
-          week2:52.5,
+          week2:32.5,
           week2Audited:false,
           week2Auditing:false,
           week2Finalizing:true,
-          week2Math:"52.5",
-          week2Detail:"FINALIZING.",
-          overall:115,
+          scoreDifference:-20,
+          week2Math:"32.5",
+          week2Detail:"JUDGE SUBMITTED 52.5; OUR AUDIT 32.5; SCORE DIFFERENCE −20. PENDING RECONCILIATION WITH JUDGE. JACOB'S LADDER 6; GROUP WATCH (2 OF 3) 15; HAUNTED HOTEL S2 (8 EPISODES) 4; STRANGER THINGS: TALES FROM '85 S2 (8 EPISODES) 4; AVATAR: SEVEN HAVENS (3 EPISODES) 1.5; CARRIE (2 EPISODES) 2.",
+          overall:95,
           audited:true,
           math:"31.5 + 9 + 3 + 4.5 + 3.5 + 5 + 6 = 62.5",
           detail:"Week 1 summary: 62.5. Challenges: Observation Ward 31.5; Asylum Book Cart 9. Adjustments/bonuses: Project Hail Mary +1 for Bonus Element 4; Stranger Things: Tales From '85 S1E6 +1 from Bonus Elements 4 and 8. Secret Film hits: 0."
@@ -686,6 +687,7 @@
       };
 
       const mathCell = player => {
+        if (player.week2Finalizing && player.scoreDifference != null) return `<div class="math"><details><summary>DIFF ${player.scoreDifference} · REVIEW</summary><div class="math-detail">${player.week2Detail}</div></details></div>`;
         if (player.week2Finalizing) return '<span class="audit-state">Finalizing</span>';
         if (player.week2Auditing) return '<span class="audit-state">Now auditing</span>';
         if (!player.week2Audited) return '<span class="audit-state">Not audited yet</span>';
