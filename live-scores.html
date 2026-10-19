@@ -151,12 +151,12 @@
   <main class="wrap">
     <p class="kicker">2026 · The Madness Runs the Asylum</p>
     <h1 class="page-title">Live Scores</h1>
-    <p class="subhead">Warm-Up points are banked separately. Week 2 includes judge-submitted totals pending audit; FINALIZING indicates a score under reconciliation.</p>
+    <p class="subhead">Week 3 scores begin at zero and update as summaries are reviewed.</p>
 
     <section class="about">
       <h2>Current Scores</h2>
-      <p class="score-note">Players are grouped by team by default. Week 2 includes judge-submitted totals that are not yet audited. Game Overall includes these provisional Week 2 totals alongside prior verified points and overall-only bonuses. FINALIZING means an audited figure is being reconciled with a judge's submission.</p>
-      <p class="score-note" id="warmup-note"><strong>* Game Overall does not include banked warm-up points.</strong></p>
+      <p class="score-note">Week 3 shows weekly points and Week 3 Overall, including any Week 3 overall-only bonuses. Cumulative game scores stay internal until audited standings are posted on Facebook.</p>
+      <p class="score-note" id="warmup-note"><strong>Prior weeks and banked warm-up scores are excluded from Week 3 figures.</strong></p>
 
       <div class="score-controls" aria-label="Live score display options">
         <div class="score-control">
@@ -170,7 +170,7 @@
           <label for="team-sort">Team Order</label>
           <select id="team-sort">
             <option value="alpha">Alphabetical</option>
-            <option value="week2" selected>Week 2 High to Low</option>
+            <option value="week3" selected>Week 3 High to Low</option>
             <option value="overall">Overall High to Low</option>
           </select>
         </div>
@@ -178,7 +178,7 @@
           <label for="player-sort">Player Order</label>
           <select id="player-sort">
             <option value="alpha">Alphabetical</option>
-            <option value="week2">Week 2 High to Low</option>
+            <option value="week3">Week 3 High to Low</option>
             <option value="overall">Overall High to Low</option>
           </select>
         </div>
@@ -196,8 +196,8 @@
               <th>Maniac</th>
               <th>Team</th>
               <th>Role</th>
-              <th class="num">Week 2</th>
-              <th class="num">Game Overall<details class="warmup-disclosure"><summary aria-label="Explain Game Overall scoring">*</summary><span class="warmup-explanation">Does not include banked warm-up points.</span></details></th>
+              <th class="num">Week 3</th>
+              <th class="num">Week 3 Overall</th>
               <th>Math / Status</th>
             </tr>
           </thead>
@@ -224,429 +224,336 @@
     (() => {
       const players = [
         {
-          name:"Lynniall Johnson",
-          team:"TEAM DARKPLACE DIS-ORDERLIES",
-          role:"Judge",
-          week1:426.5,
-          week2:453.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"453.5",
-          week2Detail:"Week 2 Prescription completed 3/3 = 25. DOUBLE DOSED! completed = 15. 5150 Kaiju Challenge completed = 30 Week 2 points +10 overall-only completion bonus. Observation Ward progress is now 14/24. No Week 2 score adjustments.",
-          overall:895,
-          audited:true,
-          math:"414 + 12.5 = 426.5 · +5 = 431.5",
-          detail:"Week 1: submitted/listed total 414 + audit adjustments 12.5 = 426.5. Adjustments: Shock (1946) -1; The X-Files: The Host +1; Halloween Horror Nights Hollywood +11; American Horror Story S13E3-E5 +1.5. Week 1 Prescription completed 3/3 = 25. Immediate 5150 Kaiju Challenge completed 3/3 = 25 Week 1 points +5 overall-only completion bonus. Observation Ward progress: 7/24. Transformers: The Ride-3D now includes +2 as an eligible dark ride. Peter Cullen voice-credit question remains pending and is not included."
-        },
-        {name:"Erica Andrus", team:"TEAM DARKPLACE DIS-ORDERLIES", role:"Captain", week1:130.5, week2:98, week2Audited:true, week2Auditing:false, week2Finalizing:false, week2Math:"98", week2Detail:"RATCHED (2020) S1E1–E8 = 35; 5150 KAIJU FOUR-TITLE CHALLENGE = 30 WEEKLY +10 OVERALL-ONLY; HOWL-O-SCREAM SEAWORLD ORLANDO = 12. WEEK 2 OVERALL-ONLY BONUS: +10.", overall:238.5, audited:true, math:"130.5", detail:"Week 1 final verified total: 130.5. Key audit correction: AHS: Asylum blanket hospital/asylum ATB claim corrected where episodes only qualified for regular bonus elements; S2E3, E7, E8, E9 and E11 had no ATB."},
-        {
-          name:"Alexa Starr",
-          team:"TEAM DARKPLACE DIS-ORDERLIES",
-          role:"Player",
-          week1:29.5,
-          week2:33,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"33",
-          week2Detail:"Ratched (2020): adjusted to 27 points. Gothika (2003): adjusted to 6 points.",
-          overall:62.5,
-          audited:true,
-          math:"28 + 1.5 = 29.5",
-          detail:"Week 1 final verified total: 29.5. Submitted/listed total 28 + audit adjustment 1.5 = 29.5. Adjustment: Shutter Island +1.5."
+                "name": "Lynniall Johnson",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Judge",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Shaun Berkey",
-          team:"TEAM DARKPLACE DIS-ORDERLIES",
-          role:"Player",
-          week1:454.5,
-          week2:197,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"197",
-          week2Detail:"Week 2 final audited total: 197. Key corrections: The Lovely Bones = 3; Bram Stoker’s Dracula = 6; Stranger Things: “Dig Dug” = 4; The Boys S5E1 = 3. Historic Beech Grove Cemetery Tour = +2 overall-only Work Handicap. TNA Wrestling 10/8 argument accepted, but remains the same 2-point value either way.",
-          overall:653.5,
-          audited:true,
-          math:"400.5 + 54 = 454.5",
-          detail:"Week 1 final verified total: 454.5. Submitted/listed total 400.5 + net audit adjustments 54 = 454.5. Adjustments: Endless Night +2; Frankenstein (1931) +1; The Muppets +1; Grimm: Bears Will Be Bears +1; Moonlight: The Mortal Cure +3; Tales from the Crypt: The Man Who Was Death -1; Maniac +4; Narcotic +1; Hideaway +1; Jurassic World: Fallen Kingdom +1; The House of the Devil +2; Teenage Mutant Ninja Turtles: Mutant Mayhem +3; The Boys: Season Four Finale +1; Avengers: Infinity War +2; Bad Samaritan +1; Live Event — The Wizard of Oz +2; Bionic Woman: Pilot +2; Truth or Dare +2; Supernatural: After School Special +1; Wonder Woman: Bloodlines +2; Dr. Jekyll and Mr. Hyde (1931) +2; Criminal Minds: 100 +3; The Swarm +3; Chip 'n Dale: Rescue Rangers: Robocat +2.5; Rambo: First Strike +2.5; Dogma +1; The Faculty -3; Ready or Not +2; Scream VI +1; Aliens +1; Station Eleven: Wheel of Fire +1; Gen V: H is for Human +1; Runaways: Smoke and Mirrors +1; Young Justice: Bereft +1; Demons of the Mind +3."
+                "name": "Erica Andrus",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Captain",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Kimberly Duvall",
-          team:"TEAM DARKPLACE DIS-ORDERLIES",
-          role:"Player",
-          week1:11,
-          week2:15,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"15",
-          week2Detail:"AHS S13E4 -0.5: 30-MIN TV BONUS. Evil Dead Burn +4: BRUCE CAMPBELL UNDEAD RIP ATB.",
-          overall:26,
-          audited:true,
-          math:"12.5 - 1.5 = 11",
-          detail:"Week 1 final corrected total: 11. Submitted/listed total 12.5 + net audit adjustments -1.5 = 11. Prior audit accidentally used Week 2 entries and has been superseded. Adjustments: Backrooms +0.5; The Morrigan -0.5; The Ninth Gate -0.5; Barbarian -0.5; Undertone -0.5."
+                "name": "Alexa Starr",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Crystal Sharie",
-          team:"TEAM DARKPLACE DIS-ORDERLIES",
-          role:"Player",
-          week1:72.5,
-          week2:110,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"110",
-          week2Detail:"FROM BEYOND (1986) +1 STRAITJACKET ATB; HALLOWEEN WARS S6 +1 DERANGED DOCTOR; GRAFTED (2024) +2 SERUM SAMPLE, INJECTION, HUMAN EXPERIMENTATION; ALONE IN THE DARK (1982) −2 NO ATB; WEEK 2 PRESCRIPTION +7 COMPLETION; ALIEN NATION: THE ENEMY WITHIN +1 HOSPITAL; FRIDAY THE 13TH (1980) +2 HOSPITAL AND VALIUM; THE SCOOBY-DOO SHOW S1E5–E10 +3.5; 5150 KAIJU +7 THREE-TITLE COMPLETION. WEEK 2 OVERALL-ONLY: 0.",
-          overall:182.5,
-          audited:true,
-          math:"66.5 + 6 = 72.5",
-          detail:"Week 1: submitted total 66.5 + audit adjustments of 6 = 72.5. Adjustments: Jennifer's Body +2, The Hunt +1, and Blood Feast +3. Don't Look in the Basement remains its natural 6 because the full Prescription bundle was not completed. Immediate 5150 Kaiju Challenge: Matango only = 6, with no completion bonus. Secret Film hit: Doom Asylum. No first-finder bonus."
-        },
-
-        {
-          name:"Gnat Marie",
-          team:"TEAM RUBBER ROOMIES",
-          role:"Judge",
-          week1:230.5,
-          week2:217,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"217",
-          week2Detail:"SUMMARY SUBTOTAL −1; THE HUNT FOR RED OCTOBER (1990) −3; GROUP WATCH BONUS MOVED TO OVERALL −5.",
-          overall:462.5,
-          audited:true,
-          math:"197 + 33.5 = 230.5 · +5 = 235.5",
-          detail:"Week 1 final verified total: 230.5. Submitted/listed total 197 + net audit adjustments 33.5 = 230.5. Adjustments: The Wild Thornberrys S1E1–E5 +7.5; The Wild Thornberrys S1E6–E17 +18; Masters of Horror: Dreams in the Witch-House +1; Immediate 5150 challenge 30→25 (-5); Jack of All Trades S1E1–E2 +3; Halloween Horror Nights Hollywood 38→46 (+8); Buffy the Vampire Slayer: Welcome to the Hellmouth +1. Immediate 5150 completed 3/3 = 25 Week 1 points +5 overall-only completion bonus. Week 1 Prescription completed 3/3 = 25. Observation Ward progress: 4 titles. Son of Monsterpalooza Personal Challenge completed for +70 Overall-only points: 5 organ selfies = 50, Phantasm silver ball selfie = 10, Ms. Scissorhands selfie = 10."
+                "name": "Shaun Berkey",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Winslow Leach",
-          team:"TEAM RUBBER ROOMIES",
-          role:"Captain",
-          week1:396,
-          week2:354,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"354",
-          week2Detail:"WEEK 2 OVERALL-ONLY BONUSES: SON OF MONSTERPALOOZA PERSONAL CHALLENGE +70; GROUP WATCH COMPLETION +5; 5150 KAIJU COMPLETION +10. WEEK 2 OVERALL-ONLY TOTAL: +85.",
-          overall:840,
-          audited:true,
-          math:"396 · +5 + 70 = 471",
-          detail:"Week 1 final audited total: 396. Per-episode R.I.P. ATB scoring increased multiple blocks of The Wild Thornberrys, The Transformers, Schitt’s Creek, and Jack of All Trades. Masters of Horror: Dreams in the Witch-House received +1. Immediate 5150 Kaiju Challenge was corrected from 30 to the fixed 25-point Week 1 tier, with the separate +5 overall-only completion bonus. Academy Museum’s Escape from New York / Escape from L.A. outing was corrected to 11 total: 2 outside-event points + Escape from New York 3 points from BASE 2 + INJECTION ADMINISTERED + Escape from L.A. 6 points for the Bruce Campbell ATB. HHN Hollywood = 46. Week 1 Prescription completed 3/3 = 25. Observation Ward progress: 4 titles."
-        },
-        {name:"Kathleen Gibney", team:"TEAM RUBBER ROOMIES", role:"Player", week1:0, week2:25, week2Audited:true, week2Auditing:false, week2Finalizing:false, week2Math:"25", week2Detail:"No adjustments", overall:25, audited:true, math:"0", detail:"No Week 1 summary submitted."},
-        {
-          name:"Chris Gusta",
-          team:"TEAM RUBBER ROOMIES",
-          role:"Player",
-          week1:129,
-          week2:126,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"126",
-          week2Detail:"GET OUT −1; SANITARIUM +1; NORTHERN STATE MENTAL HOSPITAL HIKE/CEMETERY +10.",
-          overall:255,
-          audited:true,
-          math:"129",
-          detail:"Secret Film hits: 2. No first-finder bonus."
+                "name": "Kimberly Duvall",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Dan Cossette",
-          team:"TEAM RUBBER ROOMIES",
-          role:"Player",
-          week1:21,
-          week2:40,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"40",
-          week2Detail:"GODZILLA VS. KONG +1 SEDATIVES; MURDERBOT S1E8 +1 MEDICATION REFUSAL. WEEK 2 OVERALL-ONLY: 0.",
-          overall:61,
-          audited:true,
-          math:"18 + 3 = 21",
-          detail:"Week 1 final audited total: 21. Widow’s Bay S1E1–E10 = 18 points. The Last House = 3 points from BASE 2 + MEDICATION."
+                "name": "Crystal Sharie",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Harriett Branch",
-          team:"TEAM RUBBER ROOMIES",
-          role:"Player",
-          week1:52.5,
-          week2:86,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"86",
-          week2Detail:"AHS S13E4 medical specimen/sample: +0.5. Kaiju completion bonus: +5 overall only.",
-          overall:143.5,
-          audited:true,
-          math:"50 + 2.5 = 52.5",
-          detail:"Week 1: submitted total 50 + Treehouse of Horror audit adjustment 2.5 = 52.5. The five Treehouse episodes were corrected from 5 total to 7.5 total. Quills remains 6 points, with the ATB reason corrected from ECT to filming at a real former hospital. Don't Look in the Basement is one completed Week 1 Prescription title and keeps its natural 6-point ATB score. Secret Film hit: Stonehearst Asylum. No first-finder bonus."
-        },
-
-        {
-          name:"Lisa Harshman Weaver",
-          team:"TEAM TARYN'S BEAUTIFUL BADDIES",
-          role:"Judge",
-          week1:270,
-          week2:252,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"252",
-          week2Detail:"ROCKY HORROR PICTURE SHOW LIVE SHADOW CAST (OCTOBER 10) = 20 WEEK 2 POINTS; GROUP WATCH FULL PROGRAM = 25 WEEKLY +5 OVERALL-ONLY; 5150 KAIJU FOUR-TITLE CHALLENGE = 30 WEEKLY +10 OVERALL-ONLY.",
-          overall:542,
-          audited:true,
-          math:"280 - 10 = 270 · +5 = 275",
-          detail:"Submitted/listed Week 1 points: 280. Week 1 Prescription: 30→25 = -5. Immediate 5150: 30→25 = -5 Week 1. Week 1: 280 - 5 - 5 = 270. Immediate 5150 completion bonus: +5 overall only. Overall: 270 + 5 = 275. Observation Ward: 6/24. Week 1 Prescription completed 3/3. Immediate 5150 completed 3/3."
+                "name": "Gnat Marie",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Judge",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Elizabeth Katheryn Gray",
-          team:"TEAM TARYN'S BEAUTIFUL BADDIES",
-          role:"Captain",
-          week1:65,
-          week2:98.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"98.5",
-          week2Detail:"LIVE EVENT GROUP WATCH 25 WEEKLY +5 OVERALL-ONLY; 5150 KAIJU FOUR-TITLE COMPLETION 30 WEEKLY +10 OVERALL-ONLY; SPIDER-MAN: BRAND NEW DAY = 5.5; BURIED ALIVE FESTIVAL WORK HANDICAP +2 OVERALL-ONLY; OUTRUN BREWERY 2; STAR COMMUNITY BAR 2.",
-          overall:185.5,
-          audited:true,
-          math:"65 Week 1 + 85.5 judge-submitted Week 2 + 5 prior overall bonus = 155.5 (pending reconciliation)",
-          detail:"Week 1 and Week 2 audits complete. Final Week 1 score: 65. Madness Total: 70. Submitted/listed total: 67. Adjustments: Visiting Hours (1982) +1; Human Experiments (1979) +1; Return of the Living Dead: Necropolis (2005) +1; Immediate 5150 allocation 30→25 Week 1 points, with the separate +5 completion bonus added to Madness Total only. Math: 67 + 1 + 1 + 1 - 5 = 65 Week 1. Madness Total = 65 + 5 Immediate 5150 completion bonus = 70. Week 1 Prescription progress: 1/3. Observation Ward progress: 1/24. Immediate 5150: 3/3 COMPLETE."
-        },
-        {name:"Zee Campbell", team:"TEAM TARYN'S BEAUTIFUL BADDIES", role:"Player", week1:35, week2:20, week2Audited:true, week2Auditing:false, week2Finalizing:false, week2Math:"20", week2Detail:"CARRIE S1E1–E8 = 9; OBSESSION = 3 VIA HOSPITAL SETTING; THIRTEEN GHOSTS = 6 VIA VISIBLE STRAITJACKET ATB.", overall:55, audited:true, math:"25 + 10 = 35", detail:"Week 1 final verified total: 35. Scaradise = 10 points: 6 for three convention days + 2 Black Haus Creature Feature + 2 Hellzapoppin Circus Sideshow."},
-        {
-          name:"Kemarie Graves",
-          team:"TEAM TARYN'S BEAUTIFUL BADDIES",
-          role:"Player",
-          week1:93.5,
-          week2:203,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"203",
-          week2Detail:"STAN AGAINST EVIL S3E1 = 1 (−0.5); WHAT WE DO IN THE SHADOWS S4E2 = 1 (−0.5); 5150 KAIJU THREE-TITLE BUNDLE = 25; WEEK 2 PRESCRIPTION 3/3 = 25; DOUBLE DOSED! = 15; OBSERVATION WARD 9 TITLES = 55.5; GROUP WATCH = 25 WEEKLY +5 OVERALL-ONLY; BOOK CART = 7; OUTSIDE EVENTS = 30.",
-          overall:306.5,
-          audited:true,
-          math:"95.49 - 1.99 = 93.5 · +5 = 98.5",
-          detail:"Week 1 final verified total: 93.5. Listed total 95.49 with adjustments: Shutter Island +1.5; Se7en -1; Immediate 5150 challenge 30→25 (-5); Week 1 Prescription 24.99→25 (+0.01); Halloween Baking Championship S12E2 +1.5; Halloween Wars S16E2 +1. Immediate 5150 completed 3/3 = 25 Week 1 points +5 overall-only completion bonus. Week 1 Prescription completed 3/3 = 25. The Asylum Asylum Binge progress: 2/20 via Snakes on a Train and Monster Island, 12 points. Idle Hands at Deadbeats: 4 film points +2 outside event = 6."
+                "name": "Winslow Leach",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Captain",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Giovanni Deldio",
-          team:"TEAM TARYN'S BEAUTIFUL BADDIES",
-          role:"Player",
-          week1:39,
-          week2:32.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"32.5",
-          week2Detail:"NYCC TWO DAYS = 4; NYCC PERSONAL CHALLENGE +5 OVERALL-ONLY; FRANKENSTEIN AND THE MONSTER FROM HELL = 6; HALLOWEEN 5 = 5; TERRIFIER 2 = 5.5; UNSANE = 6; HALLOWEEN II (2009) = 6.",
-          overall:76.5,
-          audited:true,
-          math:"3 + 6 + 3 + 3 + 6 + 15 + 3 = 39",
-          detail:"Week 1 final verified total: 39. Observation Ward progress: 1/24 via Bad Dreams. Immediate 5150 Kaiju Challenge: The War of the Gargantuas + Space Amoeba = two-film tier, 15 points."
+                "name": "Kathleen Gibney",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Cathleen Marshall",
-          team:"TEAM TARYN'S BEAUTIFUL BADDIES",
-          role:"Player",
-          week1:130.5,
-          week2:174.5,
-          week2Audited:true,
-          week2Auditing:false, week2Finalizing:false,
-          week2Math:"174.5",
-          week2Detail:"THE RAVEN (1963) −2; THE COMEDY OF TERRORS (1963) −1; SCHITT\u0027S CREEK S1E4–E8 +3; CELEBRITY GHOST STORIES S3E15 +3; A HAUNTING: ASYLUM 49 −2; LIVE EVENT COMPLETION +5 OVERALL; 5150 KAIJU −10 WEEK 2 / +10 OVERALL.",
-          overall:325,
-          audited:true,
-          math:"130.5 · +5 = 135.5",
-          detail:"Week 1 summary: 130.5. Week 1 Prescription completed: 25. Immediate 5150 Kaiju Challenge completed: 25 Week 1 points +5 overall-only completion bonus. Observation Ward subtotal: 19.5. The Asylum Asylum Binge subtotal: 36. Catherine O'Hara R.I.P. ATB: For Your Consideration 6; Schitt's Creek S1E1–E3 9 via per-episode scoring. Leprechaun Returns: 2 after IMDb runtime correction. Secret Film hits: 0."
-        },
-
-        {
-          name:"Chris Qualls",
-          team:"TEAM EYES OF PATTY MULLEN",
-          role:"Judge",
-          week1:50,
-          week2:142.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"142.5",
-          week2Detail:"Final audited Week 2 total: 142.5. Submitted total: 120.5. Net audit adjustment: +22 points.",
-          overall:192.5,
-          audited:true,
-          math:"45.5 + 4.5 = 50",
-          detail:"Week 1 summary: 50. Week 1 Prescription: 1 title. Adjustments: Shutter Island +1.5 runtime correction; Friday the 13th +2 for Bonus Elements 1 and 4; Friday the 13th Part 2 -1 after full re-audit; Blood Harvest +2 for Bonus Elements 4 and 5. Secret Film hit: Doom Asylum. No first-finder bonus."
+                "name": "Chris Gusta",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Adam Artruc",
-          team:"TEAM EYES OF PATTY MULLEN",
-          role:"Captain",
-          week1:155,
-          week2:108,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"108",
-          week2Detail:"Prescription 3/3, 5150 3/3, Double Dosed 2/2. Observation Ward 6/24, Asylum Asylum 1/20.",
-          overall:268,
-          audited:true,
-          math:"148 + 7 = 155 · +5 = 160",
-          detail:"Week 1 final verified total: 155. Player-estimated total was 153, but 5 points from the completed Immediate 5150 challenge are overall-only, making the submitted Week 1 equivalent 148. Audit corrections beyond the player's listed challenge adjustments: Legends of Fear +2; Stephen King's It +4; House on Haunted Hill (1999) +1, for +7. Week 1 Prescription completed 3/3 = 25. Immediate 5150 completed 3/3 = 25 Week 1 points +5 overall-only completion bonus. Observation Ward progress: 4/24, 20 remaining. The Asylum Asylum progress: 1/20, 19 remaining. Secret Film hit: House on Haunted Hill (1999). No first-finder bonus."
+                "name": "Dan Cossette",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Renee Hatten",
-          team:"TEAM EYES OF PATTY MULLEN",
-          role:"Player",
-          week1:53.5,
-          week2:64,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"64",
-          week2Detail:"AHS MURDER HOUSE S1E10–E12 = 7; COVEN S3E1/S3E12 = 4, S3E13 = 1; ASYLUM S2E1–E2 = 8, S2E3–E7 = 18, S2E8 = 3; ALIEN NATION: DARK HORIZON = 6; CLOVERFIELD = 6; PAN'S LABYRINTH SCREENING = 5. DRACULA POINTS UNCONFIRMED.",
-          overall:117.5,
-          audited:true,
-          math:"11 + 7 + 15 + 2 + 6 + 3 + 4 + 5.5 = 53.5",
-          detail:"Week 1 final audited total: 53.5. AHS Murder House S1E4–E7 = 11 points, with all four listed episodes credited pending Renee’s clarification about her “3 total” note. AHS S1E8–E9 = 7. Week 1 Prescription = 2/3 titles for the fixed 15-point tier. Tremors = 2. Immediate 5150 = Matango, 1/3 titles for 6 points. Verity = 3 as an out-of-genre watch with one qualifying Bonus Element. Night of the Living Dead live at Maverick Theater = 4, from 2 outside-event points + 2 stage-performance points. Beauty and the Beast live at Segerstrom = 5.5, from 2 outside-event points + 2.5 runtime base + 1 for Element 5 castle-cell confinement."
+                "name": "Harriett Branch",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Áine M. Coyotl",
-          team:"TEAM EYES OF PATTY MULLEN",
-          role:"Player",
-          week1:102,
-          week2:150,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"150",
-          week2Detail:"FRIDAY THE 13TH (2009): KILLER CUT +1 WRIST RESTRAINTS; GROUP WATCH BONUS MOVED TO OVERALL −5. WEEK 2: 150; WEEK 2 OVERALL-ONLY: +5; CUMULATIVE OVERALL: 262.",
-          overall:262,
-          audited:true,
-          math:"42 + 53 + 7 = 102",
-          detail:"Week 1 starting title score: 42 from listed runtimes, with Halloween II (1981) claimed as a 6-point ATB and accepted unchanged. Audit additions: Halloween (1978) +4; Halloween III +4; Halloween 4 +4; Halloween 5 +3; Halloween: The Curse of Michael Myers +4; Halloween: Resurrection +4; Halloween (2007) +4; Halloween II (2009) +4; Halloween (2018) +3; Halloween Kills +3; Halloween Ends +1; Scream +1; Scream 2 +1; Scream 3 +1; Scream 4 +4; Scream (2022) +2; Scream VI +2; Scream 7 +4. Title adjustments total +53. Crypticon +7 (2 outside event + 5 Doug Jones photo)."
-        },
-        {name:"Clair Hooker", team:"TEAM EYES OF PATTY MULLEN", role:"Player", week1:94, week2:159, week2Audited:true, week2Auditing:false,
-          week2Finalizing:false, week2Math:"159", week2Detail:"CIGARETTE BURNS 3→4 (+1); FOUR FLIES ON GREY VELVET 4→6 (+2) STRAITJACKET ATB; MICHIGAN SENATE DEBATE = 2, NO SPIN-ROOM ADD-ON; GROUP WATCH 2/3 = 15; DOUBLE DOSED! = 15; 5150 KAIJU = 30 WEEKLY +10 OVERALL-ONLY; CULT OF CHUCKY = 6.", overall:268, audited:true, math:"6 + 25 + 6 + 24 + 2 + 25 + 6 = 94 · +5 = 99", detail:"Week 1 final audited total: 94. Swan Song = 6; Week 1 Prescription = 25; The Amityville Asylum = 6; The Kingdom S1E1-E4 = 24; Black Zombie = 2; Immediate 5150 = 25; Grave Encounters = 6. Immediate 5150 completion bonus +5 brings Overall to 99."},
-        {
-          name:"Jenni Johnson",
-          team:"TEAM EYES OF PATTY MULLEN",
-          role:"Player",
-          week1:55.5,
-          week2:24,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"24",
-          week2Detail:"No adjustments needed",
-          overall:79.5,
-          audited:true,
-          math:"61 - 5.5 = 55.5",
-          detail:"Week 1 summary: 55.5. Week 1 Prescription completed: 25. Adjustments: Shutter Island +1.5 runtime correction; Benny & Joon -3 for out-of-genre Element 1 scoring; The Institute -1 after full re-audit; King of California -3 for out-of-genre Element 2 scoring. Wild at Heart: Diane Ladd R.I.P. ATB. Escaping the Madhouse: straitjacket ATB. Secret Film hits: 0."
-        },
-
-        {
-          name:"Andrasta Iceni",
-          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
-          role:"Judge",
-          week1:202,
-          week2:193.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"193.5",
-          week2Detail:"THE HUNT FOR RED OCTOBER (1990): -3. BUFFY THE VAMPIRE SLAYER, SEASON 1 (1997): +12. ROCKY HORROR PICTURE SHOW OUTSIDE EVENT, THE GROVE (10/10/26): -10.",
-          overall:395.5,
-          audited:true,
-          math:"117 + 25 + 10 + 46 + 4 = 202",
-          detail:"Week 1: audited film/Observation Ward watches 117 + completed Prescription bundle 25 + Asylum Brewing outside event and shared photo 10 + Halloween Horror Nights Hollywood 46 + Night of the Living Dead stage play outing 4 = 202. HHN includes Evil Dead Burn at 3 points and Transformers: The Ride-3D at +2 under the dark-ride ruling. Peter Cullen voice-credit question remains pending and is not included. Secret Film hits: The Snake Pit and Stonehearst Asylum. No first-finder bonus."
+                "name": "Lisa Harshman Weaver",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Judge",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Newt White",
-          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
-          role:"Captain",
-          week1:341,
-          week2:318,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"318",
-          week2Detail:"DOUBLE DOSED! completed 2/2 = 15. Live Event Group Watch = 25 Week 2 + 5 overall-only. 5150 Kaiju Challenge completed 4/4 = 30 Week 2 + 10 overall-only. Observation Ward = 23 confirmed titles. Trick or Tea = 2. Oktoberfest = 2.",
-          overall:729,
-          audited:true,
-          math:"25 + 25 + 120 + 1 + 170 = 341 · +55 = 396",
-          detail:"Week 1 math: Prescription 25 + Immediate 5150 challenge 25 + Asylum Asylum Binge watches 120 + Asylum Book Cart 1 + regular/ATB/out-of-genre watches and outside event 170 = 341. The 170 breaks down as 11×6 + 2×5 + 8×4 + 16×3 + 5×2 + 4×1. Overall-only bonuses: Immediate 5150 completion +5, Asylum Asylum Binge completion +10, plus four Secret Film first-finder bonuses (#01, #06, #09, #10) = +40. Overall = 396."
+                "name": "Elizabeth Katheryn Gray",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Captain",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Sean Gleeson",
-          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
-          role:"Player",
-          week1:62.5,
-          week2:32.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"32.5",
-          week2Detail:" JACOB'S LADDER 6; GROUP WATCH (2 OF 3) 15; HAUNTED HOTEL S2 (8 EPISODES) 4; STRANGER THINGS: TALES FROM '85 S2 (8 EPISODES) 4; AVATAR: SEVEN HAVENS (3 EPISODES) 1.5; CARRIE (2 EPISODES) 2.",
-          overall:95,
-          audited:true,
-          math:"31.5 + 9 + 3 + 4.5 + 3.5 + 5 + 6 = 62.5",
-          detail:"Week 1 summary: 62.5. Challenges: Observation Ward 31.5; Asylum Book Cart 9. Adjustments/bonuses: Project Hail Mary +1 for Bonus Element 4; Stranger Things: Tales From '85 S1E6 +1 from Bonus Elements 4 and 8. Secret Film hits: 0."
+                "name": "Zee Campbell",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Laura Sue",
-          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
-          role:"Player",
-          week1:132.5,
-          week2:165.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"165.5",
-          week2Detail:"Final audited Week 2 total: 165.5. Group Watch full program = 25 Week 2 points +5 Overall-only. DOUBLE DOSED! = 15 total. Northern State Hospital outside event = 10 points.",
-          overall:313,
-          audited:true,
-          math:"132.5 · +10 = 142.5",
-          detail:"Week 1: Prescription bundle 25 + fifteen 6-point titles 90 + two 5-point titles 10 + The Ruling Class 7.5 = 132.5. Secret Film #08 Doom Asylum first-finder bonus = +10 Overall-only. Overall = 142.5."
+                "name": "Kemarie Graves",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Alec Pridgen",
-          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
-          role:"Player",
-          week1:30,
-          week2:36,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Math:"36",
-          week2Detail:"MARVEL’S TOMB OF DRACULA (1980): +1. FAMILY GUY: HAPPY HELL-O-WEEN (2026): -1. THE SIMPSONS: TREEHOUSE OF HORROR XX (2009): -1.5. THE SIMPSONS: TREEHOUSE OF HORROR XXIV (2013): -1. THE SIMPSONS: TREEHOUSE OF HORROR XXV (2014): -1. THE SIMPSONS: TREEHOUSE OF HORROR XXVII (2016): -0.5. REGULAR SHOW: TERROR TALES OF THE PARK III (2013): -1.",
-          overall:66,
-          audited:true,
-          math:"30 + 36 = 66",
-          detail:"Week 1 final verified total: 30. Week 2 final verified total: 36."
+                "name": "Giovanni Deldio",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         },
         {
-          name:"Diana Price",
-          team:"TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
-          role:"Player",
-          week1:222.5,
-          week2:147.5,
-          week2Audited:true,
-          week2Auditing:false,
-          week2Finalizing:false,
-          week2Math:"147.5",
-          week2Detail:"LONGLEGS: +1 UNCLAIMED MEDICAL SCAN. OBSERVATION WARD: 20/24.",
-          overall:420,
-          audited:true,
-          math:"222.5 · +50 = 272.5",
-          detail:"Week 1 math: Prescription bundle 25 + twenty-five 6-point titles 150 + four 5-point titles 20 + four 4-point titles 16 + two 2-point titles 4 + Terminator 2: Judgment Day 7.5 = 222.5. Audit adjustments include Terminator 2 correcting to a 137-minute 2.5-point base before its ATB, IT (1990) scored per episode as two separate 2-hour TV parts at 6 each, the completed Prescription bundle scored as the fixed 25 points, and Diana's 80-minute Pigs cut scored 2. Secret Film first-finder bonuses: #02, #03, #04, #05 and #07 = +50 Overall-only. Overall = 272.5."
+                "name": "Cathleen Marshall",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Chris Qualls",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Judge",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Adam Artruc",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Captain",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Renee Hatten",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Áine M. Coyotl",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Clair Hooker",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Jenni Johnson",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Andrasta Iceni",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Judge",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Newt White",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Captain",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Sean Gleeson",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Laura Sue",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Alec Pridgen",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
+        },
+        {
+                "name": "Diana Price",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 0,
+                "overall": 0,
+                "week3Audited": false,
+                "week3Auditing": false,
+                "week3Math": "",
+                "week3Detail": ""
         }
-      ];
-
-      players.forEach(player => {
-        if (player.week2 == null) player.week2 = 0;
-        if (player.week2Audited == null) player.week2Audited = false;
-        if (player.week2Auditing == null) player.week2Auditing = false;
-        if (player.week2Math == null) player.week2Math = "";
-        if (player.week2Detail == null) player.week2Detail = "";
-      });
+];
 
       const viewSelect = document.getElementById('score-view');
       const teamSort = document.getElementById('team-sort');
@@ -661,8 +568,8 @@
       const sortPlayers = list => {
         const mode = playerSort.value;
         return [...list].sort((a,b) => {
-          if (mode === "week2") return b.week2 - a.week2 || b.overall - a.overall || alpha(a,b);
-          if (mode === "overall") return b.overall - a.overall || b.week2 - a.week2 || alpha(a,b);
+          if (mode === "week3") return b.week3 - a.week3 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week3 - a.week3 || alpha(a,b);
           return alpha(a,b);
         });
       };
@@ -670,28 +577,26 @@
       const teamStats = () => {
         const map = new Map();
         players.forEach(player => {
-          if (!map.has(player.team)) map.set(player.team, {name:player.team, week2:0, overall:0, players:[]});
+          if (!map.has(player.team)) map.set(player.team, {name:player.team, week3:0, overall:0, players:[]});
           const team = map.get(player.team);
-          team.week2 += player.week2;
+          team.week3 += player.week3;
           team.overall += player.overall;
           team.players.push(player);
         });
         const teams = [...map.values()];
         const mode = teamSort.value;
         teams.sort((a,b) => {
-          if (mode === "week2") return b.week2 - a.week2 || b.overall - a.overall || alpha(a,b);
-          if (mode === "overall") return b.overall - a.overall || b.week2 - a.week2 || alpha(a,b);
+          if (mode === "week3") return b.week3 - a.week3 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week3 - a.week3 || alpha(a,b);
           return alpha(a,b);
         });
         return teams;
       };
 
       const mathCell = player => {
-        if (player.week2Finalizing && player.scoreDifference != null) return `<div class="math"><details><summary>${player.week2Math}</summary><div class="math-detail">${player.week2Detail}</div></details></div>`;
-        if (player.week2Finalizing) return '<span class="audit-state">Finalizing</span>';
-        if (player.week2Auditing) return '<span class="audit-state">Now auditing</span>';
-        if (!player.week2Audited) return '<span class="audit-state">Not audited yet</span>';
-        return `<div class="math"><details><summary>${player.week2Math}</summary><div class="math-detail">${player.week2Detail}</div></details></div>`;
+        if (player.week3Auditing) return '<span class="audit-state">Now auditing</span>';
+        if (!player.week3Audited) return '<span class="audit-state">Not audited yet</span>';
+        return '<span class="audit-state audited">Audited</span>';
       };
 
       const playerRow = (player, includeTeam=false) => `
@@ -699,19 +604,19 @@
           <td><span class="player-name">${player.name}</span></td>
           ${includeTeam ? `<td>${player.team.replace(/^TEAM /,'')}</td>` : ''}
           <td><span class="role">${player.role}</span></td>
-          <td class="num">${player.week2}</td>
+          <td class="num">${player.week3}</td>
           <td class="num">${player.overall}</td>
           <td>${mathCell(player)}</td>
         </tr>`;
 
       const renderTeams = () => {
         teamGrid.innerHTML = teamStats().map(team => `
-          <section class="team-card" data-week2="${team.week2}" data-overall="${team.overall}">
+          <section class="team-card" data-week3="${team.week3}" data-overall="${team.overall}">
             <div class="team-head">
               <h3>${team.name}</h3>
               <div class="team-totals">
-                <span class="score-chip">Week 2 <strong>${team.week2}</strong></span>
-                <span class="score-chip">Game Overall<details class="warmup-disclosure"><summary aria-label="Explain Game Overall scoring">*</summary><span class="warmup-explanation">Does not include banked warm-up points.</span></details> <strong>${team.overall}</strong></span>
+                <span class="score-chip">Week 3 <strong>${team.week3}</strong></span>
+                <span class="score-chip">Week 3 Overall <strong>${team.overall}</strong></span>
               </div>
             </div>
             <table class="scores-table">
@@ -719,8 +624,8 @@
                 <tr>
                   <th>Maniac</th>
                   <th>Role</th>
-                  <th class="num">Week 2</th>
-                  <th class="num">Game Overall<details class="warmup-disclosure"><summary aria-label="Explain Game Overall scoring">*</summary><span class="warmup-explanation">Does not include banked warm-up points.</span></details></th>
+                  <th class="num">Week 3</th>
+                  <th class="num">Week 3 Overall</th>
                   <th>Math / Status</th>
                 </tr>
               </thead>
@@ -753,5 +658,5 @@
 </html>
 <!-- deployment refresh: 2026-10-05 -->
 <!-- deployment refresh: 2026-10-06 retry -->
-<!-- deployment refresh: 2026-10-16 Sean Week 2 -->
+<!-- deployment refresh: 2026-10-16 Sean Week 3 -->
 <!-- Adam Week 1 audit complete: 2026-10-08 -->
