@@ -463,7 +463,7 @@
                 "week3Audited": true,
                 "week3Auditing": false,
                 "week3Math": "173.5",
-                "week3Detail": "THE ADDAMS FAMILY (1991): 6 points, false psychiatrist ATB. ADDAMS FAMILY VALUES (1993): 4 points, hospital setting and wrist restraints. JURASSIC PARK (1993): 6 points, Sam Neill RIP ATB. JURASSIC PARK III (2001): 6 points, Sam Neill RIP ATB. JURASSIC WORLD DOMINION EXTENDED CUT (2022): 7.5 points, Sam Neill RIP ATB. MANHUNTER (1986): 3 points, psychiatric hospital setting. THE SILENCE OF THE LAMBS (1991): 6 points, straitjacket ATB. HANNIBAL (2001): 5 points, sedatives, restraints, forced surgery and organ transported (ordinary bonus cap). RED DRAGON (2002): 6 points, real psychiatric hospital filming-location ATB. READY OR NOT 2: HERE I COME (2026): 4 points, hospital and wrist restraint. SX_TAPE (2013): 6 points, abandoned hospital ATB. HOUSE ON HAUNTED HILL (1999): 6 points, abandoned asylum ATB. WEEK 3 BINGE: 108 episode points into Week 3, +27 season and full-binge completion bonuses into Week 3 Overall only. No other adjustments."
+                "week3Detail": "Week 3 Binge Challenge: 27 episodes for 108 weekly points, plus 27 completion bonus points added to the overall score."
         },
         {
                 "name": "Clair Hooker",
@@ -596,6 +596,7 @@
       const mathCell = player => {
         if (player.week3Auditing) return '<span class="audit-state">Now auditing</span>';
         if (!player.week3Audited) return '<span class="audit-state">Not audited yet</span>';
+        if (player.week3Detail) return `<details class="audit-notes"><summary><span class="audit-state audited">Audited</span></summary><p>${player.week3Detail}</p></details>`;
         return '<span class="audit-state audited">Audited</span>';
       };
 
