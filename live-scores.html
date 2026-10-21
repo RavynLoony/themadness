@@ -359,66 +359,72 @@
                 "name": "Lisa Harshman Weaver",
                 "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
                 "role": "Judge",
-                "week3": 0,
-                "overall": 0,
+                "week3": 319.5,
+                "overall": 861.5,
                 "week3Audited": false,
                 "week3Auditing": false,
-                "week3Math": "",
+                "week3Finalizing": true,
+                "week3Math": "319.5",
                 "week3Detail": ""
         },
         {
                 "name": "Elizabeth Katheryn Gray",
                 "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
                 "role": "Captain",
-                "week3": 0,
-                "overall": 0,
+                "week3": 125.5,
+                "overall": 311,
                 "week3Audited": false,
                 "week3Auditing": false,
-                "week3Math": "",
+                "week3Finalizing": true,
+                "week3Math": "125.5",
                 "week3Detail": ""
         },
         {
                 "name": "Zee Campbell",
                 "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
                 "role": "Player",
-                "week3": 0,
-                "overall": 0,
+                "week3": 209,
+                "overall": 264,
                 "week3Audited": false,
                 "week3Auditing": false,
-                "week3Math": "",
+                "week3Finalizing": true,
+                "week3Math": "209",
                 "week3Detail": ""
         },
         {
                 "name": "Kemarie Graves",
                 "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
                 "role": "Player",
-                "week3": 0,
-                "overall": 0,
+                "week3": 197.5,
+                "overall": 504,
                 "week3Audited": false,
                 "week3Auditing": false,
-                "week3Math": "",
+                "week3Finalizing": true,
+                "week3Math": "197.5",
                 "week3Detail": ""
         },
         {
                 "name": "Giovanni Deldio",
                 "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
                 "role": "Player",
-                "week3": 0,
-                "overall": 0,
+                "week3": 38.5,
+                "overall": 115,
                 "week3Audited": false,
                 "week3Auditing": false,
-                "week3Math": "",
+                "week3Finalizing": true,
+                "week3Math": "38.5",
                 "week3Detail": ""
         },
         {
                 "name": "Cathleen Marshall",
                 "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
                 "role": "Player",
-                "week3": 0,
-                "overall": 0,
+                "week3": 148,
+                "overall": 473,
                 "week3Audited": false,
                 "week3Auditing": false,
-                "week3Math": "",
+                "week3Finalizing": true,
+                "week3Math": "148",
                 "week3Detail": ""
         },
         {
@@ -594,6 +600,7 @@
       };
 
       const mathCell = player => {
+        if (player.week3Finalizing) return '<span class="audit-state">Finalizing</span>';
         if (player.week3Auditing) return '<span class="audit-state">Now auditing</span>';
         if (!player.week3Audited) return '<span class="audit-state">Not audited yet</span>';
         if (player.week3Detail) return `<details class="audit-notes"><summary><span class="audit-state audited">Audited</span></summary><p>${player.week3Detail}</p></details>`;
