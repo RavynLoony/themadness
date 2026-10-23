@@ -143,6 +143,26 @@
       </div>
     </section>
 
+
+    <section class="notice compact-notice" id="the-devils-special">
+      <p class="kicker">EDIT: EXTENDED · WEEK 4 THEATRICAL SCREENING SPECIAL</p>
+      <h2>🖤 THE DEVILS · THEATRICAL SCREENING SPECIAL</h2>
+      <p><strong>ATTENTION ALL MANIACS!</strong></p>
+      <div class="prescription-grid" style="grid-template-columns:minmax(0,280px);max-width:280px;">
+        <article class="prescription-card">
+          <img src="images/the-devils-1973.jpg" alt="The Devils (1973) theatrical screening poster" loading="eager">
+          <div class="prescription-card-body"><h3>THE DEVILS</h3><p>1973 · Directed by KEN RUSSELL</p></div>
+        </article>
+      </div>
+      <p><strong>NO EXCUSE!</strong> GO SEE <strong>THE DEVILS</strong> IN THE THEATERS FOR <strong>10 POINTS</strong>.</p>
+      <p><strong>INCLUDE THIS SPECIAL IN THE APPROPRIATE WEEKLY SUMMARY.</strong></p>
+      <div class="prescription-deadline"><strong>EXTENDED DEADLINE: SATURDAY, OCTOBER 24 AT 11:59 PM IN ALL TIME ZONES.</strong></div>
+      <div class="countdown-panel" role="timer" aria-live="polite">
+        <span class="countdown-label">THE DEVILS SPECIAL CLOCK · YOUR LOCAL TIME</span>
+        <span class="countdown-value" id="the-devils-countdown">Calculating…</span>
+      </div>
+    </section>
+
     <section class="notice compact-notice" id="week-four-double-dosed">
       <p class="kicker">ACTIVE NOW · WEEK 4 · CLOSES OCTOBER 24</p>
       <h2>💉 DOUBLE DOSED! + DOUBLE DOUBLE DOSED!</h2>
@@ -242,6 +262,7 @@
       const clocks = [
         { element: document.getElementById('week-four-countdown'), expired: 'PRESCRIPTION EXPIRED' },
         { element: document.getElementById('week-four-double-dose-countdown'), expired: 'DOUBLE DOSED CHALLENGE CLOSED' }
+        { element: document.getElementById('the-devils-countdown'), expired: 'THE DEVILS SPECIAL CLOSED' }
       ];
       // Each visitor sees the deadline at 11:59:59 PM in their own time zone.
       const deadline = new Date(2026, 9, 24, 23, 59, 59).getTime();
