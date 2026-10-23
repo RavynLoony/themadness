@@ -129,6 +129,44 @@
       <p><strong>NEED THE ZOOM LINK?</strong> Go to the Facebook group or DM Nurse Nevermore for the link.</p>
     </section>
 
+
+    <section class="notice compact-notice" id="week-four-rec-room-recovery">
+      <p class="kicker">ACTIVE NOW · WEEK 4 · CLOSES OCTOBER 24</p>
+      <h2>📺 REC ROOM RECOVERY!</h2>
+      <p><strong>OH NO. NURSE NEVERMORE HAS BEEN EXPERIMENTING WITH HYDROTHERAPY!</strong></p>
+      <p>APPARENTLY "SUBMERGE UNTIL THE SCREAMING STOPS" WAS NOT AN APPROVED TREATMENT PROTOCOL. 😭</p>
+      <p>NOW YOU'RE WATERLOGGED, SHIVERING, AND COUGHING UP SOMETHING THAT MAY OR MAY NOT BE A GOLDFISH. THE ENTIRE HYDROTHERAPY WARD IS FLOODED, AND NURSE NEVERMORE HAS DECLARED THE INCIDENT A SUCCESS.</p>
+      <p>YOU'VE BEEN TRANSFERRED TO THE REC ROOM TO DRY OFF IN FRONT OF THE TELEVISION. DON'T TOUCH THE ELECTRICAL OUTLETS. WE'VE ALREADY LOST TWO ORDERLIES THAT WAY.</p>
+      <p><strong>📺 YOUR SATURDAY MORNING LINEUP:</strong></p>
+      <div class="prescription-grid">
+        <article class="prescription-card">
+          <img style="aspect-ratio:4/3;object-fit:cover" src="https://s3.amazonaws.com/intanibase/iad_screenshots/2002/15272/12.jpg" alt="Actual Invader Zim episode still from GIR's Gone Crazy and Stuff showing GIR with a spiked club" loading="lazy" referrerpolicy="no-referrer">
+          <div class="prescription-card-body"><p class="rx-number">💊 EPISODE #1</p><h3>INVADER ZIM</h3><p>S1E19: "GIR'S GONE CRAZY AND STUFF / DIB'S WONDERFUL LIFE OF DOOM" (2002)</p></div>
+        </article>
+        <article class="prescription-card">
+          <img style="aspect-ratio:4/3;object-fit:cover" src="https://thumbnails.cbsig.net/CBS_Production_Entertainment_VMS/2020/06/18/1752247363905/NICKELODEON_THERENSTIMPY_041_214160_1920x1080.jpg" alt="Actual Ren and Stimpy Show episode image from Galoot Wranglers / Ren Needs Help" loading="lazy" referrerpolicy="no-referrer">
+          <div class="prescription-card-body"><p class="rx-number">💊 EPISODE #2</p><h3>THE REN &amp; STIMPY SHOW</h3><p>S4E11: "GALOOT WRANGLERS / REN NEEDS HELP!" (1995)</p></div>
+        </article>
+        <article class="prescription-card">
+          <img style="aspect-ratio:4/3;object-fit:cover" src="https://thumbnails.cbsig.net/CBS_Production_Entertainment_VMS/2023/03/04/2178721859584/COMEDYCENTRAL_MIKEJUDGESBEAVISBUTTHEAD_206_HD_1991749_1920x1080.jpg" alt="Official Beavis and Butt-Head Sad Boys episode still showing group therapy" loading="lazy" referrerpolicy="no-referrer">
+          <div class="prescription-card-body"><p class="rx-number">💊 EPISODE #3</p><h3>MIKE JUDGE'S BEAVIS AND BUTT-HEAD</h3><p>S2E6: "SAD BOYS / ARE YOU THERE GOD? IT'S ME, BEAVIS." (2023)</p></div>
+        </article>
+      </div>
+      <p><strong>WATCH:</strong></p>
+      <div class="score-grid" aria-label="Week 4 Rec Room Recovery points">
+        <div class="score-card"><span class="score-number">3</span><h3>1 EPISODE</h3><p>3 POINTS</p></div>
+        <div class="score-card"><span class="score-number">7</span><h3>2 EPISODES</h3><p>7 POINTS TOTAL</p></div>
+        <div class="score-card"><span class="score-number">12</span><h3>ALL 3 EPISODES</h3><p>12 POINTS TOTAL</p></div>
+      </div>
+      <p>⚠️ <strong>DOCTOR'S ORDERS:</strong> THESE WATCHES MUST BE INCLUDED IN YOUR <strong>WEEK 4 SUMMARY!</strong></p>
+      <div class="prescription-deadline"><strong>⏰ DEADLINE: SATURDAY, OCTOBER 24, AT 11:59 PM IN ALL TIME ZONES!</strong></div>
+      <div class="countdown-panel" role="timer" aria-live="off">
+        <span class="countdown-label">REC ROOM RECOVERY CLOCK · YOUR LOCAL TIME</span>
+        <span id="week-four-rec-room-countdown" class="countdown-value">calculating…</span>
+      </div>
+      <p>ENJOY THE CARTOONS. AND IF YOU FIND A GOLDFISH IN YOUR UNDERWEAR, PLEASE RETURN IT TO THE HYDROTHERAPY DEPARTMENT.</p>
+    </section>
+
     <section class="notice compact-notice" id="week-four-prescription">
       <p class="kicker">ACTIVE NOW · OFFICIAL MADNESS WEEK FOUR · NURSE NEVERMORE'S PRESCRIPTION</p>
       <h2>💊 WEEK 4 PRESCRIPTION</h2>
@@ -281,6 +319,7 @@
     (() => {
       const clocks = [
         { element: document.getElementById('week-four-countdown'), expired: 'PRESCRIPTION EXPIRED' },
+        { element: document.getElementById('week-four-rec-room-countdown'), expired: 'REC ROOM RECOVERY CLOSED' },
         { element: document.getElementById('week-four-double-dose-countdown'), expired: 'DOUBLE DOSED CHALLENGE CLOSED' },
         { element: document.getElementById('the-devils-countdown'), expired: 'THE DEVILS SPECIAL CLOSED' }
       ];
