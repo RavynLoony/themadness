@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11160f">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Live Scores | Halloween Horror Movie Marathon Madness</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .warmup-disclosure { display:inline-block; position:relative; margin-left:.12rem; vertical-align:baseline; }
+    .warmup-disclosure summary { display:inline; cursor:pointer; color:var(--acid); font-weight:800; list-style:none; text-decoration:underline; text-underline-offset:2px; }
+    .warmup-disclosure summary::-webkit-details-marker { display:none; }
+    .warmup-explanation { position:absolute; z-index:20; top:1.35em; right:0; display:block; width:max-content; max-width:min(270px,75vw); padding:.55rem .65rem; border:1px solid var(--acid); border-radius:3px; background:#11160f; color:var(--ink); font-size:.8rem; font-weight:normal; text-transform:none; letter-spacing:normal; white-space:normal; line-height:1.4; box-shadow:0 3px 12px rgba(0,0,0,.4); }
+    .score-note { color:var(--muted); max-width:900px; }
+    .score-controls {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(180px,1fr));
+      gap:.8rem;
+      margin:1.35rem 0 1.5rem;
+      padding:1rem;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.018);
+    }
+    .score-control { display:flex; flex-direction:column; gap:.35rem; }
+    .score-control label {
+      color:var(--acid);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .score-control select {
+      width:100%;
+      border:1px solid var(--line);
+      background:#11160f;
+      color:var(--ink);
+      padding:.62rem .7rem;
+      font:inherit;
+    }
+    .team-grid { display:grid; gap:1.25rem; }
+    .team-card {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.015);
+      overflow:visible;
+    }
+    .team-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:1rem;
+      padding:1rem 1.1rem;
+      border-bottom:1px solid var(--line);
+      background:rgba(168,198,108,.05);
+    }
+    .team-head h3 {
+      margin:0;
+      color:var(--acid);
+      font-size:1.02rem;
+      letter-spacing:.055em;
+      text-transform:uppercase;
+    }
+    .team-totals { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.45rem; }
+    .score-chip {
+      display:inline-flex;
+      gap:.35rem;
+      align-items:baseline;
+      padding:.3rem .55rem;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:.78rem;
+      white-space:nowrap;
+    }
+    .score-chip strong { color:var(--ink); font-size:1rem; }
+    .scores-table { width:100%; border-collapse:collapse; }
+    .scores-table th {
+      text-align:left;
+      color:var(--acid);
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      font-size:.75rem;
+      padding:.7rem .85rem;
+      border-bottom:1px solid var(--line);
+    }
+    .scores-table td {
+      padding:.78rem .85rem;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      vertical-align:top;
+    }
+    .scores-table tr:last-child td { border-bottom:0; }
+    .scores-table .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .scores-table .player-name { color:var(--ink); font-weight:800; }
+    .role { color:var(--muted); font-size:.9rem; }
+    .audit-state {
+      display:inline-block;
+      padding:.18rem .42rem;
+      border:1px solid var(--line);
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .audit-state.audited { color:var(--acid); border-color:rgba(168,198,108,.55); }
+    .math details { margin:0; }
+    .math summary {
+      cursor:pointer;
+      color:var(--acid);
+      font-weight:800;
+      list-style-position:outside;
+    }
+    .math details[open] summary { margin-bottom:.4rem; }
+    .math-detail { max-width:680px; line-height:1.45; }
+    .individual-wrap { display:none; }
+    .individual-wrap.active, .team-wrap.active { display:block; }
+    .team-wrap:not(.active) { display:none; }
+    .leaderboard-title { margin:.3rem 0 .7rem; color:var(--acid); }
+    .visitor-room { margin:3rem 0 1rem; padding:1.25rem 1.4rem; border:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .visitor-room h2 { margin-top:0; color:var(--acid); }
+    .visitor-room p { margin:.45rem 0 1rem; color:var(--muted); }
+    .visitor-list { margin:0; padding-left:1.35rem; }
+    .visitor-list li { margin:.45rem 0; color:var(--ink); font-weight:700; }
+    .visitor-note { margin-top:1rem !important; font-size:.95rem; }
+    @media (max-width:850px) {
+      .score-controls { grid-template-columns:1fr; }
+      .team-head { flex-direction:column; }
+      .team-totals { justify-content:flex-start; }
+      .scores-table { display:block; overflow-x:auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Primary">
+        <a class="brand" href="index.html">Halloween Horror Movie Marathon Madness</a>
+        <div class="navlinks">
+          <a href="rules.html">Rules</a>
+          <a href="scoring.html">Scoring</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="warmups.html">Warm-Ups</a>
+          <a href="live-scores.html" aria-current="page">Live Scores</a>
+          <a href="nurse-nevermore.html">Nurse Nevermore</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="kicker">2026 · The Madness Runs the Asylum</p>
+    <h1 class="page-title">Live Scores</h1>
+    <p class="subhead">Week 3 scores begin at zero and update as summaries are reviewed.</p>
+
+    <section class="about">
+      <h2>Current Scores</h2>
+      <p class="score-note">Week 3 shows weekly points and Week 3 Overall, including any Week 3 overall-only bonuses. Cumulative game scores stay internal until audited standings are posted on Facebook.</p>
+      <p class="score-note" id="warmup-note"><strong>Prior weeks and banked warm-up scores are excluded from Week 3 figures.</strong></p>
+
+      <div class="score-controls" aria-label="Live score display options">
+        <div class="score-control">
+          <label for="score-view">View</label>
+          <select id="score-view">
+            <option value="team">By Team</option>
+            <option value="individual">Individual Leaderboard</option>
+          </select>
+        </div>
+        <div class="score-control" id="team-sort-control">
+          <label for="team-sort">Team Order</label>
+          <select id="team-sort">
+            <option value="alpha">Alphabetical</option>
+            <option value="week3" selected>Week 3 High to Low</option>
+            <option value="overall">Overall High to Low</option>
+          </select>
+        </div>
+        <div class="score-control">
+          <label for="player-sort">Player Order</label>
+          <select id="player-sort">
+            <option value="alpha">Alphabetical</option>
+            <option value="week3">Week 3 High to Low</option>
+            <option value="overall">Overall High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="team-wrap active" id="team-view">
+        <div class="team-grid" id="team-grid"></div>
+      </div>
+
+      <div class="individual-wrap" id="individual-view">
+        <h3 class="leaderboard-title">Individual Leaderboard</h3>
+        <table class="scores-table">
+          <thead>
+            <tr>
+              <th>Maniac</th>
+              <th>Team</th>
+              <th>Role</th>
+              <th class="num">Week 3</th>
+              <th class="num">Week 3 Overall</th>
+              <th>Math / Status</th>
+            </tr>
+          </thead>
+          <tbody id="individual-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="visitor-room" aria-labelledby="visitor-room-title">
+      <p class="kicker">Waiting Area</p>
+      <h2 id="visitor-room-title">Visitor Room · Wait List</h2>
+      <p>These patients are keeping track of their watches in case a bed opens up.</p>
+      <ol class="visitor-list">
+        <li>Kyle West</li>
+        <li>Jamie Clemens-Lond</li>
+      </ol>
+      <p class="visitor-note">If a roster spot opens, their Madness watches will come with them.</p>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Halloween Horror Movie Marathon Madness · 2026</div></footer>
+
+  <script>
+    (() => {
+      const players = [
+        {
+                "name": "Lynniall Johnson",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Judge",
+                "week3": 428.5,
+                "overall": 460.5,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "428.5",
+                "week3Detail": "Metalocalypse S1E7-E8: +1 point. Streetfood Cinema Halloween / A Nightmare on Elm Street (1984): +1 point. Schitt's Creek S4 (2018): -3 points. The Terror binge 1/3 complete: 24 weekly +6 overall. AHS Asylum binge 2/3 complete: 52 weekly +8 overall. Week 3 Binge Challenge complete: 32 weekly +13 overall. Week 3 Prescription complete: 46 weekly. Week 3 Double Dose complete: 15 weekly +5 overall. Rec Room Recovery complete: 12 weekly."
+        },
+        {
+                "name": "Erica Andrus",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Captain",
+                "week3": 143,
+                "overall": 163,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "143 + 20 overall-only = 163",
+                "week3Detail": "Howl-O-Scream Busch Gardens (2026) +6; Gothika (2003) 6; Sweeney Todd (2007) 6 via straitjacket ATB; HHN Unmasking the Horror Tour (2026) 21; Mortem Manor +2; Double Dosed completion +5 overall; Week 3 Prescription completion +5 overall; 5150 Kaiju completion +10 overall."
+        },
+        {
+                "name": "Alexa Starr",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 16,
+                "overall": 16,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "16",
+                "week3Detail": "American Horror Story: Asylum (2012), S2E1–E4: 4 points per episode under the Week 3 Binge Challenge = 16 Week 3 points."
+        },
+        {
+                "name": "Shaun Berkey",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 129,
+                "overall": 129,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "129",
+                "week3Detail": "Ted Lasso: For the Children +2.5; Burn Notice: Past & Future Tense +3; From Dusk Till Dawn 2: Texas Blood Money +4; Nash Bridges: Skirt Chasers +3; Nash Bridges: The Javelin Catcher +3; Sisters +3; Smallville: Crusade +2; The Famous Adventures of Mr. Magoo: Mr. Magoo’s Doctor Frankenstein +0.5; Highlander: The Modern Prometheus +1; Stranger Things: The Lost Sister +3; Wrong Turn +1; Frankenstein Live Play +3; Ghosts: Polar Opposites +0.5; The 100: The Face Behind the Glass +1; Station Eleven: Dr. Chaudhary +3; Oscar +4; Down a Dark Hall +3; Pretty Lethal +1; The Boys: Teenage Kix +3; Runaways: Left-Hand Path +1; Runaways: Devil’s Torture Chamber -1"
+        },
+        {
+                "name": "Kimberly Duvall",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 27.5,
+                "overall": 27.5,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "27.5",
+                "week3Detail": "Halloween III: Season of the Witch (1982) +4; A Cure for Wellness (2016) +1."
+        },
+        {
+                "name": "Crystal Sharie",
+                "team": "TEAM DARKPLACE DIS-ORDERLIES",
+                "role": "Player",
+                "week3": 121,
+                "overall": 126,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "121 weekly + 5 overall-only = 126",
+                "week3Detail": "Outrageous Pumpkins S3 (2022): +2 points. Lake Placid (1999): +2 points. Friday the 13th Part V: A New Beginning (1985): +1 point. It Lives Again (1978): +1 point. Mansquito (2005): +1 point. Week 3 Prescription complete: 25 weekly +5 overall-only. Outrageous Pumpkins: awaiting clarification on two additional reported episodes."
+        },
+        {
+                "name": "Gnat Marie",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Judge",
+                "week3": 190,
+                "overall": 222,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "190 + 32 overall-only = 222",
+                "week3Detail": "The Terror: Devil in Silver (2026) +6 overall; American Horror Story: Asylum (2012) +8 overall; Ratched (2020) +3 overall; Full Week 3 Binge completion +10 overall; Double Dosed completion +5 overall."
+        },
+        {
+                "name": "Winslow Leach",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Captain",
+                "week3": 311,
+                "overall": 358,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "311 + 47 overall-only = 358",
+                "week3Detail": "Son of Monsterpalooza −70 | Human Experiments +5 | Double Dosed +5"
+        },
+        {
+                "name": "Kathleen Gibney",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 8,
+                "overall": 8,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "8",
+                "week3Detail": "Love at First Bite (1979) +4."
+        },
+        {
+                "name": "Chris Gusta",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 145,
+                "overall": 156,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "145",
+                "week3Detail": "Week 3 Prescription completed: 25 weekly points + 5 completion bonus overall. Rec Room Recovery completed: 12 weekly points. No individual title score adjustments."
+        },
+        {
+                "name": "Dan Cossette",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 83,
+                "overall": 99,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "83 + 16 overall-only = 99",
+                "week3Detail": "5150 Kaiju Challenge completed: +10 overall. The Terror: Devil in Silver season completed: +6 overall. Carrie S1E1–E4: +1. The Omen: +1. The Exorcist: +3."
+        },
+        {
+                "name": "Harriett Branch",
+                "team": "TEAM RUBBER ROOMIES",
+                "role": "Player",
+                "week3": 106,
+                "overall": 117,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "106 + 11 overall-only = 117",
+                "week3Detail": "Ratched (2020) +3 overall; American Horror Story: Asylum (2012) +8 overall."
+        },
+        {
+                "name": "Lisa Harshman Weaver",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Judge",
+                "week3": 307,
+                "overall": 354,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "307 + 47 overall-only = 354",
+                "week3Detail": "Flesh for Frankenstein (1973) +1; The Colour of Magic (2008) +4; The Worst Witch (1986) +2; Metalocalypse (2006–2010) −2.5; The Wild Thornberrys (2000–2003) +3; Week 3 Prescription completion +5 overall; Double Dosed completion +5 overall; 5150 Kaiju completion +10 overall; Ratched (2020) completion +3 overall; American Horror Story: Asylum (2012) completion +8 overall; The Terror: Devil in Silver (2026) completion +6 overall; Full Week 3 Binge completion +10 overall; Final audited Week 3 adjustment +34.5 overall."
+        },
+        {
+                "name": "Elizabeth Katheryn Gray",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Captain",
+                "week3": 125.5,
+                "overall": 140.5,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "125.5 + 15 overall-only = 140.5",
+                "week3Detail": "Double Dosed completion +5 overall; 5150 Kaiju completion +10 overall."
+        },
+        {
+                "name": "Zee Campbell",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 192,
+                "overall": 239,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "192 + 47 overall-only = 239",
+                "week3Detail": "AHS: Asylum completion +8 overall; Ratched completion +3 overall; The Terror: Devil in Silver completion +6 overall; Full Week 3 Binge completion +10 overall; Week 3 Prescription completion +5 overall; Double Dosed completion +5 overall; 5150 All 1957 Monster Movies completion +10 overall."
+        },
+        {
+                "name": "Kemarie Graves",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 181,
+                "overall": 218,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "181 + 37 overall-only = 218",
+                "week3Detail": "Adjustments: The Exorcist III (1990): 6 weekly points restored after omission from the initial audit. Stan Against Evil S3E2: The Hex Files (2018) +0.5 for autopsy. 1957 Kaiju Invasion complete: 25 weekly. Week 3 Prescription complete: 25 weekly +5 overall. Double Dosed complete: 15 weekly +5 overall. Ratched S1 complete: 32 weekly +3 overall. AHS: Asylum S2 complete: 52 weekly +8 overall. The Terror: Devil in Silver S3 complete: 24 weekly +6 overall. Full Week 3 Binge Challenge complete: +10 overall. Stan Against Evil S3E3 and What We Do in the Shadows S4E3 verified at 0.5 each. Final audited Week 3: 181 weekly +37 overall-only = 218 total."
+        },
+        {
+                "name": "Giovanni Deldio",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 38.5,
+                "overall": 38.5,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "38.5",
+                "week3Detail": "Halloween: The Curse of Michael Myers (1995) +1. Halloween (2007) +2. Crystal Lake S1E1–E2 (2026) +4."
+        },
+        {
+                "name": "Cathleen Marshall",
+                "team": "TEAM TARYN'S BEAUTIFUL BADDIES",
+                "role": "Player",
+                "week3": 144,
+                "overall": 153,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "144 + 9 overall-only = 153",
+                "week3Detail": "Expedition X: Ghosts of Eloise Asylum (2023) 4 each; Expedition X: The Madhouse (2025) 4; Swan Song (2021) 6; Child\u0027s Play 2 (1990) 6; Cult of Chucky (2017) 6; Ratched (2020) +3 overall; The Terror: Devil in Silver (2026) +6 overall; Crystal Lake S1E1 (2026) 2; Crystal Lake S1E2 (2026) 4."
+        },
+        {
+                "name": "Chris Qualls",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Judge",
+                "week3": 221,
+                "overall": 253,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "221 + 32 overall-only = 253",
+                "week3Detail": "Ratched (2020) completion +3 overall; American Horror Story: Asylum (2012) completion +8 overall; The Terror: Devil in Silver (2026) completion +6 overall; Full Week 3 Binge completion +10 overall; Double Dosed completion +5 overall; Final audited Week 3 adjustment +15 overall."
+        },
+        {
+                "name": "Adam Artruc",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Captain",
+                "week3": 140,
+                "overall": 163,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "140 weekly + 23 overall-only = 163",
+                "week3Detail": "Crystal Lake S1E1 (2026): +1. Rec Room Recovery: +3. 5150 Kaiju Invasion: +7. Double Dosed: +3. AHS: Asylum: +8 overall. 5150 Kaiju Invasion: +10 overall. Double Dosed: +5 overall."
+        },
+        {
+                "name": "Renee Hatten",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 38,
+                "overall": 38,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "38",
+                "week3Detail": "District 9 (2009): +3; American Horror Story: Asylum S2E9–E13 (2012–2013): +15; American Horror Story: Freak Show S4E3–E4 (2014): +2; American Horror Story: Apocalypse S8E1 & S8E9 (2018): +1; American Horror Story: Coven S3E1, S3E12 & S3E13 (2013–2014): previously credited in Week 2, duplicate claims excluded pending clarification."
+        },
+        {
+                "name": "Áine M. Coyotl",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 173.5,
+                "overall": 200.5,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "173.5",
+                "week3Detail": "Week 3 Binge Challenge completed 27/27 episodes: American Horror Story: Asylum S2 (13 episodes × 4 = 52 weekly points, +8 overall completion bonus); The Terror: Devil in Silver S3 (6 episodes × 4 = 24 weekly points, +6 overall completion bonus); Ratched S1 (8 episodes × 4 = 32 weekly points, +3 overall completion bonus); Full Binge Challenge completion +10 overall bonus. Total challenge award: 108 weekly points +27 overall completion bonus points."
+        },
+        {
+                "name": "Clair Hooker",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 190,
+                "overall": 237,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "190 + 47 overall-only = 237",
+                "week3Detail": "AUDITED WEEK 3: 190 weekly points +47 overall-only bonuses =237 Week 3 Overall. Overall-only bonuses: Double Dose +5; Week 3 Prescription +5; Ratched S1 completion +3; American Horror Story: Asylum S2 completion +8; The Terror: Devil in Silver S3 completion +6; full 27-episode Binge Challenge +10; 1957 Kaiju Invasion completion +10."
+        },
+        {
+                "name": "Jenni Johnson",
+                "team": "TEAM EYES OF PATTY MULLEN",
+                "role": "Player",
+                "week3": 84,
+                "overall": 97,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "84 + 13 overall-only = 97",
+                "week3Detail": "Double Dosed complete: 15 Week 3 points +5 overall completion bonus. American Horror Story: Asylum S2 binge complete: 52 Week 3 points +8 overall completion bonus, 1/3 of the Week Three Binge Challenge."
+        },
+        {
+                "name": "Andrasta Iceni",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Judge",
+                "week3": 243,
+                "overall": 254,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "243 + 11 overall-only = 254",
+                "week3Detail": "Bedlam (1946) -1; The Craft (1996) -1; The Terror: Devil in Silver (2026) +6 overall; Double Dosed completion +5 overall."
+        },
+        {
+                "name": "Newt White",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Captain",
+                "week3": 423.5,
+                "overall": 482,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "423.5",
+                "week3Detail": "CHALLENGE AWARDS: weekly prescription all three = 25 weekly + 5 overall; Double Dose = 15 weekly + 5 overall; 5150 Kaiju complete = 30 weekly + 10 overall; Rec Room Recovery = 12 weekly; Observation Ward 24/24 = 11.5 overall; complete 27-episode Week 3 Binge = 108 weekly + 27 overall; The Dead Pit mascot = 8 weekly; The Devils theatrical screening = 10 weekly; Sleeping Beauties = 12 weekly. CORRECTIONS: Sweet Deceit 1×4 “Movie Set Morgue”: −0.5; The Simpsons 11×4 “Treehouse of Horror X”: +0.5; Crystal Lake 1×2 “Part II”: +1; The Twilight Zone 1×17 “Welcome to Winfield / Quarantine”: +1."
+        },
+        {
+                "name": "Sean Gleeson",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 165,
+                "overall": 165,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "165",
+                "week3Detail": "Avatar: Seven Havens S1E4–E6: +0.5. Crystal Lake S1E1: +1. Return to Oz: +1. Evil Dead Burn: +4."
+        },
+        {
+                "name": "Laura Sue",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 93,
+                "overall": 104,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "93 + 11 overall-only = 104",
+                "week3Detail": "The Terror: Devil in Silver binge = 24 weekly + 6 overall; Rec Room Recovery = 12 weekly; Double Dose = 15 weekly + 5 overall; The Awful Dr. Orlof (1962): +9 weekly."
+        },
+        {
+                "name": "Alec Pridgen",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 34,
+                "overall": 34,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Math": "34",
+                "week3Detail": "THE SIMPSONS: TREEHOUSE OF HORROR XXXV (2024) -0.5. THE SIMPSONS: TREEHOUSE OF HORROR XXXVI (2025) -0.5. CRYSTAL LAKE: PART II (2026) +3. THIS ISLAND EARTH (1955) +1."
+        },
+        {
+                "name": "Diana Price",
+                "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
+                "role": "Player",
+                "week3": 200,
+                "overall": 243.5,
+                "week3Audited": true,
+                "week3Auditing": false,
+                "week3Finalizing": false,
+                "week3Math": "200 + 43.5 overall-only = 243.5",
+                "week3Detail": "The Cell (2000) +5; The Midnight Club (2022), S1E1–E10 +23; Observation Ward completion +11.5 overall; Double Dosed completion +5 overall; Ratched completion +3 overall; The Terror: Devil in Silver completion +6 overall; American Horror Story: Asylum completion +8 overall; Full Week 3 Binge completion +10 overall; Final audited Week 3 adjustment +35.5."
+        }
+];
+
+      const viewSelect = document.getElementById('score-view');
+      const teamSort = document.getElementById('team-sort');
+      const playerSort = document.getElementById('player-sort');
+      const teamSortControl = document.getElementById('team-sort-control');
+      const teamView = document.getElementById('team-view');
+      const individualView = document.getElementById('individual-view');
+      const teamGrid = document.getElementById('team-grid');
+      const individualBody = document.getElementById('individual-body');
+
+      const alpha = (a,b,key="name") => a[key].localeCompare(b[key], undefined, {sensitivity:"base"});
+      const sortPlayers = list => {
+        const mode = playerSort.value;
+        return [...list].sort((a,b) => {
+          if (mode === "week3") return b.week3 - a.week3 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week3 - a.week3 || alpha(a,b);
+          return alpha(a,b);
+        });
+      };
+
+      const teamStats = () => {
+        const map = new Map();
+        players.forEach(player => {
+          if (!map.has(player.team)) map.set(player.team, {name:player.team, week3:0, overall:0, players:[]});
+          const team = map.get(player.team);
+          team.week3 += player.week3;
+          team.overall += player.overall;
+          team.players.push(player);
+        });
+        const teams = [...map.values()];
+        const mode = teamSort.value;
+        teams.sort((a,b) => {
+          if (mode === "week3") return b.week3 - a.week3 || b.overall - a.overall || alpha(a,b);
+          if (mode === "overall") return b.overall - a.overall || b.week3 - a.week3 || alpha(a,b);
+          return alpha(a,b);
+        });
+        return teams;
+      };
+
+      const mathCell = player => {
+        if (player.week3Finalizing) return '<span class="audit-state">Finalizing</span>';
+        if (player.week3Auditing) return '<span class="audit-state">Now auditing</span>';
+        if (!player.week3Audited) return '<span class="audit-state">Not audited yet</span>';
+        if (player.week3Detail) return `<details class="audit-notes"><summary><span class="audit-state audited">Audited</span></summary><p>${player.week3Detail}</p></details>`;
+        return '<span class="audit-state audited">Audited</span>';
+      };
+
+      const playerRow = (player, includeTeam=false) => `
+        <tr>
+          <td><span class="player-name">${player.name}</span></td>
+          ${includeTeam ? `<td>${player.team.replace(/^TEAM /,'')}</td>` : ''}
+          <td><span class="role">${player.role}</span></td>
+          <td class="num">${player.week3}</td>
+          <td class="num">${player.overall}</td>
+          <td>${mathCell(player)}</td>
+        </tr>`;
+
+      const renderTeams = () => {
+        teamGrid.innerHTML = teamStats().map(team => `
+          <section class="team-card" data-week3="${team.week3}" data-overall="${team.overall}">
+            <div class="team-head">
+              <h3>${team.name}</h3>
+              <div class="team-totals">
+                <span class="score-chip">Week 3 <strong>${team.week3}</strong></span>
+                <span class="score-chip">Week 3 Overall <strong>${team.overall}</strong></span>
+              </div>
+            </div>
+            <table class="scores-table">
+              <thead>
+                <tr>
+                  <th>Maniac</th>
+                  <th>Role</th>
+                  <th class="num">Week 3</th>
+                  <th class="num">Week 3 Overall</th>
+                  <th>Math / Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sortPlayers(team.players).map(player => playerRow(player)).join('')}
+              </tbody>
+            </table>
+          </section>`).join('');
+      };
+
+      const renderIndividuals = () => {
+        individualBody.innerHTML = sortPlayers(players).map(player => playerRow(player, true)).join('');
+      };
+
+      const render = () => {
+        const individual = viewSelect.value === 'individual';
+        teamView.classList.toggle('active', !individual);
+        individualView.classList.toggle('active', individual);
+        teamSortControl.style.display = individual ? 'none' : 'flex';
+        renderTeams();
+        renderIndividuals();
+      };
+
+      [viewSelect, teamSort, playerSort].forEach(control => control.addEventListener('change', render));
+      render();
+    })();
+  </script>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ce1052a07f9b48a684633f1fd419a40d"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
+<!-- deployment refresh: 2026-10-05 -->
+<!-- deployment refresh: 2026-10-06 retry -->
+<!-- deployment refresh: 2026-10-16 Sean Week 3 -->
+<!-- 2026-10-20 Newt Week 3 audit sync: Treehouse of Horror XI confirmed 0.5 internally; submitted 330 remains displayed; auditing in progress. -->
+<!-- 2026-10-20 Newt audit checkpoint: Pirates of Dark Water S2E3 The Beast and the Bell verified 3 points; internal Week 3 now 333; submitted 330 remains displayed pending completed audit. -->
+<!-- 2026-10-20 Newt audit checkpoint: Pirates of Dark Water S2E4 Panacea verified 3; internal Week 3 now 336 and Week 3 overall 389.5; submitted 330 and 383.5 remain displayed during audit. -->
+<!-- Adam Week 1 audit complete: 2026-10-08 -->
