@@ -134,7 +134,7 @@
           </div>
         </article>
         <article class="prescription-card">
-          <img src="https://steelbooklife.com/cdn/shop/files/IMG_0030_WC43093.jpg?v=1759053038" alt="Dracula: Dead and Loving It (1995) original theatrical poster with Leslie Nielsen in a vampire cape" loading="lazy" referrerpolicy="no-referrer">
+          <img src="https://tr.web.img2.acsta.net/pictures/bzp/06/97540.jpg" alt="Dracula: Dead and Loving It (1995) theatrical poster featuring Leslie Nielsen as Dracula" data-fallback-src="https://flxt.tmsimg.com/assets/p17489_p_v8_ah.jpg" data-second-fallback-src="https://www.impawards.com/1995/posters/dracula_dead_and_loving_it.jpg" loading="lazy" referrerpolicy="no-referrer">
           <div class="prescription-card-body">
             <p class="rx-number">TREATMENT #2</p>
             <h3>DRACULA: DEAD AND LOVING IT (1995)</h3>
@@ -289,6 +289,21 @@
       };
       refresh();
       setInterval(refresh, 1000);
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const poster = document.querySelector('#malpractice-monday img[data-fallback-src]');
+      if (!poster) return;
+      let attempt = 0;
+      poster.addEventListener('error', () => {
+        if (attempt === 0) { attempt++; poster.src = poster.dataset.fallbackSrc; }
+        else if (attempt === 1) { attempt++; poster.src = poster.dataset.secondFallbackSrc; }
+      });
+      if (poster.complete && poster.naturalWidth === 0) {
+        poster.dispatchEvent(new Event('error'));
+      }
     })();
   </script>
 
