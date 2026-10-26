@@ -115,6 +115,60 @@
     <p class="kicker">2026 · Year 18</p>
     <h1 class="page-title">Challenges</h1>
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
+
+    <section class="notice compact-notice" id="malpractice-monday">
+      <p class="kicker">ACTIVE NOW · WEEK FIVE POP-UP CHALLENGE · CLOSES HALLOWEEN, OCTOBER 31</p>
+      <h2>💉 MALPRACTICE MONDAY!</h2>
+      <p><strong>ATTN: ALL PATIENTS!</strong></p>
+      <p>WHOEVER LEFT A COPY OF THE PATIENT BILL OF RIGHTS IN THE REC ROOM IS GOING TO REGRET IT.</p>
+      <p>NOW EVERYBODY'S REFUSING MEDICATION, COMPLAINING ABOUT THEIR TREATMENT, AND DEMANDING TO SPEAK TO AN ACTUAL DOCTOR.</p>
+      <p>NURSE NEVERMORE HAS HAD JUST ABOUT ENOUGH OF YOUR BULLSHIT.</p>
+      <p>SHE'S DIAGNOSED THE ENTIRE WARD WITH A SEVERE CASE OF INDEPENDENT THINKING AND HAS ORDERED THREE EXPERIMENTAL TREATMENTS TO CORRECT THE PROBLEM.</p>
+      <div class="prescription-grid" aria-label="Malpractice Monday treatments">
+        <article class="prescription-card">
+          <img src="https://m.media-amazon.com/images/M/MV5BZjBiZGFkZjItYWMzOS00M2NjLWI3NWItNjJkZWE1OWRjMWNjXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg" alt="Horror Hospital (1973) original movie poster featuring Michael Gough and a red background" loading="eager" referrerpolicy="no-referrer">
+          <div class="prescription-card-body">
+            <p class="rx-number">TREATMENT #1</p>
+            <h3>HORROR HOSPITAL (1973)</h3>
+            <p>A LITTLE MIND CONTROL SHOULD MAKE YOU MORE COOPERATIVE.</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://steelbooklife.com/cdn/shop/files/IMG_0030_WC43093.jpg?v=1759053038" alt="Dracula: Dead and Loving It (1995) original theatrical poster with Leslie Nielsen in a vampire cape" loading="lazy" referrerpolicy="no-referrer">
+          <div class="prescription-card-body">
+            <p class="rx-number">TREATMENT #2</p>
+            <h3>DRACULA: DEAD AND LOVING IT (1995)</h3>
+            <p>HYPNOSIS AND STRAITJACKETS FOR THOSE OF YOU STILL PUTTING UP A FIGHT.</p>
+          </div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/531aaf6b-f03b-4cd5-85f6-ffe09d9b2943/600x900" alt="Ken Russell's The Fall of the Louse of Usher (2002) film poster with two figures in a flower-lined coffin" loading="lazy" referrerpolicy="no-referrer">
+          <div class="prescription-card-body">
+            <p class="rx-number">TREATMENT #3</p>
+            <h3>THE FALL OF THE LOUSE OF USHER (2002)</h3>
+            <p>AND IF YOU'RE STILL CAUSING TROUBLE, WE'LL SEE WHAT A FEW VOLTS CAN DO.</p>
+          </div>
+        </article>
+      </div>
+      <p><strong>YOUR MALPRACTICE MONDAY POINTS:</strong></p>
+      <div class="score-grid" aria-label="Malpractice Monday point tiers">
+        <div class="score-card"><span class="score-number">10</span><h3>1 TREATMENT</h3><p>10 WEEKLY POINTS</p></div>
+        <div class="score-card"><span class="score-number">20</span><h3>2 TREATMENTS</h3><p>20 WEEKLY POINTS</p></div>
+        <div class="score-card"><span class="score-number">30</span><h3>ALL 3 TREATMENTS</h3><p>30 WEEKLY POINTS</p></div>
+      </div>
+      <p><strong>COMPLETE ALL 3 TREATMENTS AND RECEIVE AN ADDITIONAL +10 COMPLETION BONUS INTO YOUR OVERALL SCORE!</strong></p>
+      <p><strong>THAT'S 40 POINTS TOTAL IF YOU COMPLETE ALL THREE!</strong></p>
+      <p><strong>MALPRACTICE MONDAY BEGINS NOW!</strong></p>
+      <p>YOU HAVE UNTIL <strong>SATURDAY, OCTOBER 31, AT 11:59 PM IN YOUR LOCAL TIME ZONE</strong> TO COMPLETE YOUR TREATMENTS. INCLUDE THEM IN YOUR WEEK 5 SUMMARY.</p>
+      <p>NURSE NEVERMORE WOULD LIKE TO REMIND YOU THAT REFUSING TREATMENT IS A SYMPTOM OF YOUR CONDITION.</p>
+      <p>SHE WOULD ALSO LIKE HER COPY OF THE PATIENT BILL OF RIGHTS BACK.</p>
+      <p><strong>SHE'S RUNNING LOW ON TOILET PAPER.</strong></p>
+      <div class="countdown-panel" role="timer" aria-live="off">
+        <span class="countdown-label">MALPRACTICE MONDAY DEADLINE · YOUR LOCAL TIME</span>
+        <span id="malpractice-monday-countdown" class="countdown-value">calculating…</span>
+      </div>
+    </section>
+
         <section class="notice compact-notice" id="week-five-prescription">
       <p class="kicker">ACTIVE NOW · WEEK FIVE · FINAL HALLOWEEN PRESCRIPTION · CLOSES OCTOBER 31</p>
       <h2>💊 WEEK 5 · FINAL PRESCRIPTION</h2>
@@ -213,6 +267,26 @@
         const seconds = Math.floor((diff % 60000) / 1000);
         clock.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
       }
+      refresh();
+      setInterval(refresh, 1000);
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const clock = document.getElementById('malpractice-monday-countdown');
+      if (!clock) return;
+      const deadline = new Date(2026, 9, 31, 23, 59, 59).getTime();
+      const refresh = () => {
+        const diff = deadline - Date.now();
+        if (diff <= 0) { clock.textContent = 'MALPRACTICE MONDAY CLOSED'; return; }
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        clock.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      };
       refresh();
       setInterval(refresh, 1000);
     })();
