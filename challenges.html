@@ -44,6 +44,37 @@
       font-weight:900;
       font-size:1.15rem;
     }
+
+    /* Week Five: three escalating Double Dosed rounds */
+    .triple-dose-round {
+      margin:1.65rem 0;
+      padding:1.3rem 1.4rem 1.5rem;
+      border:1px solid rgba(168,198,108,.46);
+      border-left:4px solid var(--acid);
+      border-radius:8px;
+      background:rgba(0,0,0,.16);
+    }
+    .triple-dose-round h3 {
+      margin:.7rem 0 1rem;
+      color:var(--acid);
+      font-size:1.45rem;
+      letter-spacing:.025em;
+    }
+    .triple-dose-round .double-dose-grid {
+      margin:1rem auto .25rem;
+    }
+    .triple-dose-round .prescription-card img {
+      object-fit:contain;
+      background:#080a08;
+    }
+    .triple-dose-round .dose-premise {
+      font-weight:700;
+      line-height:1.6;
+    }
+    @media (max-width:760px) {
+      .triple-dose-round { padding:1.05rem .8rem 1.1rem; }
+      .triple-dose-round h3 { font-size:1.25rem; }
+    }
     .double-dose-grid {
       grid-template-columns:repeat(2,minmax(0,1fr));
       max-width:780px;
@@ -115,6 +146,70 @@
     <p class="kicker">2026 · Year 18</p>
     <h1 class="page-title">Challenges</h1>
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
+
+
+    <section class="notice compact-notice" id="week-five-double-dosed">
+      <p class="kicker">ACTIVE NOW · WEEK FIVE · DOUBLE DOSED · CLOSES HALLOWEEN, OCTOBER 31</p>
+      <h2>💉 DOUBLE DOSED! 💉</h2>
+      <section class="triple-dose-round" aria-labelledby="double-dosed-first-title">
+        <p class="dose-premise">OH NO. NURSE NEVERMORE WAS TOO BUSY READING A TRASHY ROMANCE NOVEL BEHIND THE NURSES' STATION THAT SHE FORGOT SHE'D ALREADY COMPLETED HER MEDICATION ROUNDS AND ACCIDENTALLY DOUBLE DOSED THE ENTIRE WARD!</p>
+        <p><strong>THE PATIENT HAS BEEN PRESCRIBED:</strong></p>
+        <h3 id="double-dosed-first-title">DOUBLE DOSED!</h3>
+        <div class="prescription-grid double-dose-grid" aria-label="DOUBLE DOSED! film pair">
+          <article class="prescription-card">
+            <img src="https://silverscreenreflex.files.wordpress.com/2022/11/original_1958_mgm_richard_gordon_theatrical_poster_art_fiend_without_a_face.jpg" alt="Original 1958 theatrical poster for Fiend Without a Face" loading="eager" referrerpolicy="no-referrer">
+            <div class="prescription-card-body"><h3>FIEND WITHOUT A FACE (1958)</h3></div>
+          </article>
+          <article class="prescription-card">
+            <img src="https://m.media-amazon.com/images/M/MV5BOTY1YjdmYmYtYWE5NC00MjcyLTg2YTktYjUwMjliYWVlYWZmXkEyXkFqcGc%40._V1_.jpg" alt="1958 The Haunted Strangler theatrical poster featuring Boris Karloff" loading="lazy" referrerpolicy="no-referrer">
+            <div class="prescription-card-body"><h3>THE HAUNTED STRANGLER (1958)</h3><p><em>AKA GRIP OF THE STRANGLER</em></p></div>
+          </article>
+        </div>
+      </section>
+      <section class="triple-dose-round" aria-labelledby="double-dosed-second-title">
+        <p class="dose-premise">OH NO. NURSE NEVERMORE WAS SO BUSY FEEDING THE PATIENTS' LETTERS HOME INTO THE BASEMENT INCINERATOR THAT SHE FORGOT SHE'D ALREADY COMPLETED HER MEDICATION ROUNDS AND &quot;ACCIDENTALLY&quot; DOUBLE DOSED THE ENTIRE WARD AGAIN!</p>
+        
+        <h3 id="double-dosed-second-title">DOUBLE DOUBLE DOSED!</h3>
+        <div class="prescription-grid double-dose-grid" aria-label="DOUBLE DOUBLE DOSED! film pair">
+          <article class="prescription-card">
+            <img src="https://www.motelx.org/uploads/library/images/bc111ae1cae27e817fedba10de208c21.jpg" alt="Original Hypno-Vista Horrors of the Black Museum 1959 film poster" loading="eager" referrerpolicy="no-referrer">
+            <div class="prescription-card-body"><h3>HORRORS OF THE BLACK MUSEUM (1959)</h3></div>
+          </article>
+          <article class="prescription-card">
+            <img src="https://japanposter.co.uk/cdn/shop/files/IMG_8134_5a94c563-f184-4de8-831a-14ef8c6ebe48.jpg?v=1747199903" alt="1966 Japanese theatrical poster for The Face of Another" loading="lazy" referrerpolicy="no-referrer">
+            <div class="prescription-card-body"><h3>THE FACE OF ANOTHER (1966)</h3></div>
+          </article>
+        </div>
+      </section>
+      <section class="triple-dose-round" aria-labelledby="double-dosed-third-title">
+        <p class="dose-premise">OH NO. NURSE NEVERMORE WAS SO BUSY REHEARSING HER TESTIMONY FOR AN INVESTIGATION INTO A PATIENT'S MYSTERIOUS DISAPPEARANCE THAT SHE FORGOT SHE'D ALREADY COMPLETED HER MEDICATION ROUNDS AND &quot;ACCIDENTALLY&quot; DOUBLE DOSED THE ENTIRE WARD FOR A THIRD TIME!</p>
+        
+        <h3 id="double-dosed-third-title">DOUBLE DOUBLE DOUBLE DOSED!</h3>
+        <div class="prescription-grid double-dose-grid" aria-label="DOUBLE DOUBLE DOUBLE DOSED! film pair">
+          <article class="prescription-card">
+            <img src="https://www.kinoart.net/kinoart2018/bilder/2003/2003012592607_supersize.jpg" alt="1933 original German poster for The Testament of Dr. Mabuse" loading="eager" referrerpolicy="no-referrer">
+            <div class="prescription-card-body"><h3>THE TESTAMENT OF DR. MABUSE (1933)</h3></div>
+          </article>
+          <article class="prescription-card">
+            <img src="https://miro.medium.com/v2/resize%3Afit%3A1400/1%2A_O5czadTnIoofW7EZ1Ua9Q.jpeg" alt="Vintage 1970 Equinox horror film poster featuring giant monsters" loading="lazy" referrerpolicy="no-referrer">
+            <div class="prescription-card-body"><h3>EQUINOX (1970)</h3></div>
+          </article>
+        </div>
+      </section>
+      <h3>YOUR DOSAGE:</h3>
+      <div class="score-grid" aria-label="Double Dosed challenge point tiers">
+        <div class="score-card"><span class="score-number">15</span><h3>COMPLETE 2 FILMS</h3><p>15 POINTS</p></div>
+        <div class="score-card"><span class="score-number">30</span><h3>COMPLETE 4 FILMS</h3><p>30 POINTS</p></div>
+        <div class="score-card"><span class="score-number">50</span><h3>COMPLETE ALL 6 FILMS</h3><p>50 POINTS</p></div>
+      </div>
+      <p>POINT TOTALS ARE NOT CUMULATIVE. EACH LEVEL REPLACES THE PREVIOUS ONE. COMPLETE THE FILMS IN THE ORDER PRESCRIBED.</p>
+      <p>YOUR ROUNDS OF TREATMENT MUST BE COMPLETED BY <strong>SATURDAY, OCTOBER 31 AT 11:59 PM IN YOUR TIME ZONE.</strong></p>
+      <p>REPORT YOUR COMPLETED ROUNDS OF TREATMENT IN YOUR WEEKLY SUMMARY.</p>
+      <div class="countdown-panel" role="timer" aria-live="off">
+        <span class="countdown-label">DOUBLE DOSED DEADLINE · YOUR LOCAL TIME</span>
+        <span id="week-five-double-dosed-countdown" class="countdown-value">calculating…</span>
+      </div>
+    </section>
 
     <section class="notice compact-notice" id="malpractice-monday">
       <p class="kicker">ACTIVE NOW · WEEK FIVE POP-UP CHALLENGE · CLOSES HALLOWEEN, OCTOBER 31</p>
@@ -304,6 +399,27 @@
       if (poster.complete && poster.naturalWidth === 0) {
         poster.dispatchEvent(new Event('error'));
       }
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const clock = document.getElementById('week-five-double-dosed-countdown');
+      if (!clock) return;
+      // October 31, 2026 at 11:59 PM in each visitor's local time zone.
+      const deadline = new Date(2026, 9, 31, 23, 59, 59).getTime();
+      const refresh = () => {
+        const diff = deadline - Date.now();
+        if (diff <= 0) { clock.textContent = 'DOUBLE DOSED CLOSED'; return; }
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        clock.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      };
+      refresh();
+      setInterval(refresh, 1000);
     })();
   </script>
 
