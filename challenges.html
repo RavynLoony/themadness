@@ -159,6 +159,11 @@
 <p><strong>HOW TO CLAIM:</strong> Comment on the Facebook challenge post and tag Ravyn Jazper-Hawke and Elizabeth Katheryn Gray. You MUST COMMENT with the LAST FILM WATCHED BEFORE YOUR RELEASE.</p>
 <p><strong>MUST BE INCLUDED IN YOUR WEEK FIVE AND FINAL SUMMARY!</strong></p>
 <p><strong>RELEASE:</strong> SUNRISE SUNDAY, NOVEMBER 1, 2026, in all time zones.</p>
+<div class="countdown-panel" role="timer" aria-live="off">
+  <span class="countdown-label">IMMEDIATE 5150 RELEASE COUNTDOWN · YOUR LOCAL TIME</span>
+  <span id="immediate-5150-countdown" class="countdown-value">calculating…</span>
+  <p>Counting down to 6:00 AM on Sunday, November 1, as an approximate local sunrise. Actual sunrise varies by location.</p>
+</div>
 </section>
     <section class="notice compact-notice" id="week-five-double-dosed">
       <p class="kicker">ACTIVE NOW · WEEK FIVE · DOUBLE DOSED · CLOSES HALLOWEEN, OCTOBER 31</p>
@@ -424,6 +429,25 @@
       const refresh = () => {
         const diff = deadline - Date.now();
         if (diff <= 0) { clock.textContent = 'DOUBLE DOSED CLOSED'; return; }
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        clock.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      };
+      refresh();
+      setInterval(refresh, 1000);
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const clock = document.getElementById('immediate-5150-countdown');
+      if (!clock) return;
+      const deadline = new Date(2026, 10, 1, 6, 0, 0).getTime();
+      const refresh = () => {
+        const diff = deadline - Date.now();
+        if (diff <= 0) { clock.textContent = 'EVALUATION COMPLETE · RELEASE TIME'; return; }
         const days = Math.floor(diff / 86400000);
         const hours = Math.floor((diff % 86400000) / 3600000);
         const minutes = Math.floor((diff % 3600000) / 60000);
