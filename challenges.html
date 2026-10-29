@@ -228,6 +228,44 @@
       </div>
     </section>
 
+
+    <section class="notice compact-notice" id="patrick-stewart-memorial">
+      <p class="kicker">SPECIAL R.I.P. PRESCRIPTION · PATRICK STEWART MEMORIAL · FINAL GRACE PERIOD</p>
+      <h2>💉⚰️ ATTENTION ALL PATIENTS! SPECIAL R.I.P. PRESCRIPTION! ⚰️💉</h2>
+      <p><strong>WELL, SHIT. WE'VE LOST ANOTHER ONE.</strong></p>
+      <p>SIR PATRICK STEWART (1940–2026) HAS PASSED AWAY, AND NURSE NEVERMORE HAS DECIDED THAT THE BEST WAY TO HONOR HIM IS WITH A LITTLE MEDICAL MALPRACTICE!</p>
+      <p>WE ALL KNOW HIM AS CAPTAIN PICARD AND PROFESSOR XAVIER, BUT STEWART ALSO PLAYED SOME TRULY DISTURBING CHARACTERS. TWO OF THEM WOULD FIT RIGHT IN WITH OUR ASYLUM STAFF. WHICH IS PROBABLY NOT SOMETHING WE SHOULD BE PROUD OF.</p>
+      <p><strong>SO, IN HIS MEMORY, WE'RE OFFERING A SPECIAL R.I.P. DOUBLE FEATURE!</strong></p>
+      <div class="prescription-grid double-dose-grid" aria-label="Patrick Stewart memorial double feature">
+        <article class="prescription-card">
+          <img src="https://static.cinemagia.ro/img/db/movie/00/06/85/conspiracy-theory-653469l.jpg" alt="Conspiracy Theory (1997) theatrical poster" loading="lazy">
+          <div class="prescription-card-body"><h3>🧠 CONSPIRACY THEORY (1997)</h3><p>2 HOURS, 15 MINUTES</p></div>
+        </article>
+        <article class="prescription-card">
+          <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak%3D/v3/t/assets/p8781_p_v8_aa.jpg" alt="The Doctor and the Devils (1985) theatrical poster" loading="lazy">
+          <div class="prescription-card-body"><h3>🫀 THE DOCTOR AND THE DEVILS (1985)</h3><p>1 HOUR, 33 MINUTES</p></div>
+        </article>
+      </div>
+      <h3>💊 YOUR SPECIAL R.I.P. PRESCRIPTION:</h3>
+      <div class="score-grid">
+        <div class="score-card"><span class="score-number">10</span><h3>WATCH ONE FILM</h3><p>10 WEEKLY POINTS</p></div>
+        <div class="score-card"><span class="score-number">25</span><h3>WATCH BOTH FILMS</h3><p>25 WEEKLY POINTS + 5 OVERALL BONUS POINTS</p></div>
+        <div class="score-card"><span class="score-number">30</span><h3>COMPLETE THE DOUBLE FEATURE</h3><p>30 POINTS TOTAL</p></div>
+      </div>
+      <p>BOTH FILMS ARE SPECIAL R.I.P. ATBs FOR THIS CHALLENGE ONLY. PATRICK STEWART IS NOT BEING ADDED TO OUR PERMANENT R.I.P. ATB LIST (<em>this</em> year).</p>
+      <p><strong>SPECIAL CHALLENGE SCORING REPLACES THE REGULAR FILM POINTS.</strong></p>
+      <h3>⚠️ AND NOW, A REMINDER ABOUT YOUR FINAL DISCHARGE!</h3>
+      <p>THE MADNESS OFFICIALLY ENDS AT SUNRISE ON SUNDAY, NOVEMBER 1ST, BUT YOU HAVE A <strong>THREE-DAY GRACE PERIOD</strong> TO TURN IN YOUR FINAL SUMMARY!</p>
+      <p><strong>FINAL DEADLINE: WEDNESDAY, NOVEMBER 4TH AT 11:59 PM, YOUR LOCAL TIME!</strong></p>
+      <p>YOU CAN CONTINUE ADDING ACCEPTED WATCHES DURING THE GRACE PERIOD, INCLUDING THIS SPECIAL DOUBLE FEATURE.</p>
+      <p>BUT ONCE YOU SUBMIT YOUR FINAL SUMMARY, YOUR MADNESS IS OVER! NO GOING BACK TO ADD ANOTHER FILM, EVEN IF YOU REMEMBER SOMETHING YOU FORGOT.</p>
+      <p><strong>SO MAKE SURE YOUR CHART IS COMPLETE BEFORE YOU SIGN YOUR DISCHARGE PAPERS!</strong></p>
+      <p>REST IN PEACE, SIR PATRICK STEWART. THANK YOU FOR THE YEARS OF WONDERFUL PERFORMANCES, AND FOR GIVING US A COUPLE OF DOCTORS WHO REALLY SHOULDN'T BE PRACTICING MEDICINE. 🖤⚰️</p>
+      <div class="countdown-panel" role="timer" aria-live="off">
+        <span class="countdown-label">FINAL SUMMARY DEADLINE · NOVEMBER 4, 11:59 PM · YOUR LOCAL TIME</span>
+        <span id="patrick-stewart-countdown" class="countdown-value">calculating…</span>
+      </div>
+    </section>
     <section class="notice compact-notice" id="malpractice-monday">
       <p class="kicker">ACTIVE NOW · WEEK FIVE POP-UP CHALLENGE · CLOSES HALLOWEEN, OCTOBER 31</p>
       <h2>💉 MALPRACTICE MONDAY!</h2>
@@ -460,5 +498,24 @@
   </script>
 
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ce1052a07f9b48a684633f1fd419a40d"}'></script><!-- End Cloudflare Web Analytics -->
+
+  <script>
+    (() => {
+      const clock = document.getElementById('patrick-stewart-countdown');
+      if (!clock) return;
+      const deadline = new Date(2026, 10, 4, 23, 59, 59).getTime();
+      const refresh = () => {
+        const diff = deadline - Date.now();
+        if (diff <= 0) { clock.textContent = 'FINAL SUMMARY DEADLINE HAS PASSED'; return; }
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        clock.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      };
+      refresh();
+      setInterval(refresh, 1000);
+    })();
+  </script>
 </body>
 </html>
