@@ -197,6 +197,11 @@
       <p><strong>⚠️ IMPORTANT:</strong> Each episode contains multiple cartoon segments. You must watch every segment of an episode to receive credit for that episode.</p>
       <p><strong>⏰ DEADLINE:</strong> COMPLETE YOUR REC ROOM RECOVERY WATCHES BY <strong>SUNRISE SUNDAY, NOVEMBER 1, 2026, IN YOUR LOCAL TIME ZONE.</strong></p>
       <p><strong>YOU MUST INCLUDE THIS CHALLENGE AND YOUR COMPLETED EPISODES IN YOUR WEEK FIVE SUMMARY.</strong></p>
+      <div class="countdown-panel" role="timer" aria-live="off">
+        <span class="countdown-label">FINAL RECALL · COUNTDOWN TO SUNRISE · YOUR LOCAL TIME</span>
+        <span id="final-recall-countdown" class="countdown-value">calculating…</span>
+        <p>Counting down to 6:00 AM on Sunday, November 1, as an approximate local sunrise. Actual sunrise varies by location.</p>
+      </div>
       <h3>📋 FINAL RECOVERY NOTES:</h3>
       <p>This is <strong>NURSE NEVERMORE'S FINAL CHALLENGE OF THE 2026 MADNESS!</strong></p>
       <p>After five weeks of treatments, experiments, and deeply suspicious medical bills, the asylum is finally preparing to discharge its patients.</p>
@@ -527,6 +532,26 @@
       const refresh = () => {
         const diff = deadline - Date.now();
         if (diff <= 0) { clock.textContent = 'EVALUATION COMPLETE · RELEASE TIME'; return; }
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        clock.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+      };
+      refresh();
+      setInterval(refresh, 1000);
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const clock = document.getElementById('final-recall-countdown');
+      if (!clock) return;
+      // Approximate local sunrise on November 1, 2026; actual sunrise varies by location.
+      const deadline = new Date(2026, 10, 1, 6, 0, 0).getTime();
+      const refresh = () => {
+        const diff = deadline - Date.now();
+        if (diff <= 0) { clock.textContent = 'FINAL RECALL CLOSED'; return; }
         const days = Math.floor(diff / 86400000);
         const hours = Math.floor((diff % 86400000) / 3600000);
         const minutes = Math.floor((diff % 3600000) / 60000);
