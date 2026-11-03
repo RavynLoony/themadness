@@ -148,6 +148,43 @@
     <p class="subhead">Current prescriptions, special assignments, binges and other ways to earn Madness points.</p>
 
 
+
+    <section class="notice compact-notice" id="godzilla-day-final-followup">
+      <p class="kicker">ACTIVE NOW · FINAL GRACE PERIOD · GODZILLA DAY · EXPIRES NOVEMBER 5 AT 12:01 AM</p>
+      <h2>🦖 GODZILLA DAY! FINAL 5150 FOLLOW-UP EVALUATION</h2>
+      <figure style="margin:1.1rem auto 1.3rem;max-width:765px">
+        <img src="assets/godzilla-day-poster.avif" width="765" height="401" alt="Godzilla Minus Zero: Godzilla amid smoke and falling debris, with the Godzilla Minus Zero logo" style="width:100%;height:auto;display:block;border-radius:9px;border:1px solid var(--line)">
+        <figcaption style="font-size:.78rem;color:var(--muted);padding:.5rem 0">Godzilla Minus Zero · challenge artwork provided by Elizabeth Katheryn Gray</figcaption>
+      </figure>
+      <p><strong>MANIACS, WELCOME TO GODZILLA DAY!!!</strong></p>
+      <p><strong>FOLLOW-UP EVALUATION. READ THIS FULLY, AS THE RULES HAVE CHANGED!</strong></p>
+      <p>Now that you have been <strong>RELEASED</strong>, this is your follow-up evaluation. We want to see whether you have <strong>ADJUSTED TO THE KAIJU MENACE.</strong></p>
+      <p><strong>WATCH: GODZILLA MINUS ZERO.</strong></p>
+      <p><strong>SPECIAL SCORING: ALL POINTS GO INTO YOUR OVERALL TOTAL ONLY.</strong> Claim the <strong>highest single tier</strong> you qualify for. Tiers do not stack.</p>
+      <div class="score-grid" aria-label="Godzilla Day overall-only special scoring">
+        <div class="score-card"><span class="score-number">20</span><h3>COMPLETED FINAL 5150</h3><p>All five films of Who Is the Real King?</p></div>
+        <div class="score-card"><span class="score-number">15</span><h3>PARTIAL FINAL 5150</h3><p>Completed two or more Final 5150 films</p></div>
+        <div class="score-card"><span class="score-number">15</span><h3>COMPLETED ASYLUM BINGE</h3><p>Full Asylum Binge completion</p></div>
+        <div class="score-card"><span class="score-number">10</span><h3>ALL OTHER MANIACS</h3><p>Watch Godzilla Minus Zero</p></div>
+      </div>
+      <div class="rule-callout">
+        <strong>HOW TO CLAIM:</strong> Comment on Elizabeth's original Godzilla Day challenge post and follow the instructions there.
+        If you already submitted Week Five, DM
+        <a href="https://www.facebook.com/groups/115986881793259/user/849530006/">Elizabeth Katheryn Gray</a>
+        and <a href="https://www.facebook.com/groups/115986881793259/user/1436941716/">Ravyn Jazper-Hawke</a>
+        so the award can be added to your <strong>OVERALL</strong>.
+        If your Week Five summary has not been submitted, include the watch and your eligible tier in that summary.
+      </div>
+      <p><strong>ALREADY WATCHED IT UNDER A GAG ORDER?</strong> That watch counts.</p>
+      <p><strong>ALREADY LISTED IT ON A SUMMARY?</strong> Only the <strong>difference</strong> between points previously awarded and your qualifying special tier will be added to your overall total. Do not double-count.</p>
+      <p><strong>FINAL DEADLINE:</strong> Thursday, <strong>November 5, 2026, at 12:01 AM</strong> (your local time). Your <strong>Week Five summary must also be turned in by the end of the grace period</strong>, or this special does not count.</p>
+      <p><strong>THIS FOLLOW-UP DOES NOT COUNT TOWARD THE GENERAL RELEASE.</strong></p>
+      <div class="countdown-panel" role="timer" aria-live="off">
+        <span class="countdown-label">GODZILLA DAY FINAL FOLLOW-UP · YOUR LOCAL TIME</span>
+        <span id="godzilla-day-followup-countdown" class="countdown-value">calculating…</span>
+      </div>
+    </section>
+
     <section class="notice compact-notice" id="week-five-double-dosed">
       <p class="kicker">ACTIVE NOW · WEEK FIVE · DOUBLE DOSED · CLOSES HALLOWEEN, OCTOBER 31</p>
       <h2>💉 DOUBLE DOSED! 💉</h2>
@@ -584,6 +621,25 @@
       };
       refresh();
       setInterval(refresh, 1000);
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const clock = document.getElementById('godzilla-day-followup-countdown');
+      if (!clock) return;
+      const deadline = new Date(2026, 10, 5, 0, 1, 0).getTime();
+      const update = () => {
+        const diff = deadline - Date.now();
+        if (diff <= 0) { clock.textContent = 'GODZILLA DAY FOLLOW-UP CLOSED'; return; }
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        clock.textContent = `${days}d ${String(hours).padStart(2,'0')}h ${String(minutes).padStart(2,'0')}m ${String(seconds).padStart(2,'0')}s`;
+      };
+      update();
+      setInterval(update, 1000);
     })();
   </script>
 </body>
