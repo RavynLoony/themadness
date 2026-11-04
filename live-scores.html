@@ -563,13 +563,13 @@
                 "name": "Alec Pridgen",
                 "team": "TEAM WINDCLIFFE GRIPPY SOCK HOTEL AND CASINO",
                 "role": "Player",
-                "week5": 0,
-                "overall": 0,
+                "week5": 36.5,
+                "overall": 36.5,
                 "week5Audited": false,
-                "week5Auditing": true,
-                "week5Finalizing": false,
-                "week5Math": "",
-                "week5Detail": ""
+                "week5Auditing": false,
+                "week5Finalizing": true,
+                "week5Math": "13 Week 5 watches; 36.5 weekly and overall, provisional pending a possible psychiatric evaluation bonus on Don\u0027t Be Afraid of the Dark (1973).",
+                "week5Detail": "Crystal Lake S1E6 +1; Scary Movie (1991) -1; Crystal Lake S1E8 +1; Night of the Demons 2 -1; Don\u0027t Be Afraid of the Dark (1973) -1."
         },
         {
                 "name": "Diana Price",
@@ -624,7 +624,7 @@
       };
 
       const mathCell = player => {
-        if (player.week5Finalizing) return '<span class="audit-state">Finalizing</span>';
+        if (player.week5Finalizing) return player.week5Detail ? `<details class="audit-notes"><summary><span class="audit-state">Finalizing</span></summary><p>${player.week5Detail}</p></details>` : '<span class="audit-state">Finalizing</span>';
         if (player.week5Auditing) return '<span class="audit-state">Now auditing</span>';
         if (!player.week5Audited) return '<span class="audit-state">Not submitted</span>';
         if (player.week5Detail) return `<details class="audit-notes"><summary><span class="audit-state audited">Audited</span></summary><p>${player.week5Detail}</p></details>`;
