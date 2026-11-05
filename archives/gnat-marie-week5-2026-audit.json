@@ -1,0 +1,288 @@
+{
+  "name": "Gnat Marie",
+  "team": "TEAM RUBBER ROOMIES",
+  "role": "Judge",
+  "period": "Madness 2026 Week 5",
+  "audit_status": "AUDITED",
+  "source": "User uploaded Madness 2026 Week 5.doc, 14 pages",
+  "audit_approved_by": "Nurse Nevermore",
+  "last_update": "2026-11-05",
+  "reported_total": 288,
+  "itemized_claimed_total": 290,
+  "corrections": [
+    {
+      "label": "Original itemized arithmetic",
+      "points": 2,
+      "type": "bookkeeping reference, not added to scored title entries"
+    },
+    {
+      "label": "The Wild Thornberrys S4E11 duplicate",
+      "points": -3,
+      "type": "weekly"
+    },
+    {
+      "label": "Aliens (1986) bonus family correction",
+      "points": -0.5,
+      "type": "weekly"
+    }
+  ],
+  "overall_only_completion_awards": [
+    {
+      "label": "Malpractice Monday",
+      "points": 10
+    },
+    {
+      "label": "Patrick Stewart Memorial",
+      "points": 5
+    },
+    {
+      "label": "Rec Room Recovery",
+      "points": 4
+    },
+    {
+      "label": "Final Prescription",
+      "points": 5
+    }
+  ],
+  "weekly": 267.5,
+  "overall": 291.5,
+  "approved_week5_note": "Summary arithmetic +2; The Wild Thornberrys (2002) S4E11 -3; Aliens (1986) -0.5; Malpractice Monday completion +10 overall only; Patrick Stewart Memorial completion +5 overall only; Rec Room Recovery completion +4 overall only; Final Prescription completion +5 overall only.",
+  "special_rulings": [
+    "Final Prescription 40 weekly +5 overall approved despite fourth title The Frighteners being watched Nov 3 after Oct 31 challenge deadline",
+    "In Search of Darkness II accepted at 7.5 as claimed; potential RIP archival evidence may be separately adjudicated later",
+    "All film/episode entries retained in source order; null claimed_points indicates a package component with points claimed at completion, not an omitted title."
+  ],
+  "entries": [
+    {
+      "order": 1,
+      "date": "2026-10-25",
+      "title": "The Wild Thornberrys S4E1–4",
+      "claimed_points": 12,
+      "notes": "RIP ATB Tim Curry; 4 × 3"
+    },
+    {
+      "order": 2,
+      "date": "2026-10-25",
+      "title": "The Twilight Zone S1E36: A World of His Own",
+      "claimed_points": 0.5,
+      "notes": "30-minute TV slot"
+    },
+    {
+      "order": 3,
+      "date": "2026-10-25",
+      "title": "A Page of Madness (1926)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 4,
+      "date": "2026-10-25",
+      "title": "Ghostbusters II (1989)",
+      "claimed_points": null,
+      "notes": "Reported 'points upon completion'; Final Prescription component"
+    },
+    {
+      "order": 5,
+      "date": "2026-10-26",
+      "title": "The Wild Thornberrys S4E5–11",
+      "claimed_points": 21,
+      "notes": "RIP ATB Tim Curry; 7 × 3"
+    },
+    {
+      "order": 6,
+      "date": "2026-10-26",
+      "title": "Dracula: Dead and Loving It (1995)",
+      "claimed_points": null,
+      "notes": "Final Prescription / Malpractice Monday film; package award, no separate points"
+    },
+    {
+      "order": 7,
+      "date": "2026-10-26",
+      "title": "Horror Hospital (1973)",
+      "claimed_points": null,
+      "notes": "Malpractice Monday film; package award, no separate points"
+    },
+    {
+      "order": 8,
+      "date": "2026-10-27",
+      "title": "The Wild Thornberrys S4E11–13",
+      "claimed_points": 9,
+      "notes": "Duplicate S4E11 also claimed on Oct 26; accepted 2 unique episodes = 6; deduct 3"
+    },
+    {
+      "order": 9,
+      "date": "2026-10-27",
+      "title": "Killers (1997)",
+      "claimed_points": 6,
+      "notes": "Asylum Asylum binge ATB"
+    },
+    {
+      "order": 10,
+      "date": "2026-10-27",
+      "title": "Phantom of the Paradise (1974)",
+      "claimed_points": 6,
+      "notes": "Gerrit Graham RIP ATB"
+    },
+    {
+      "order": 11,
+      "date": "2026-10-27",
+      "title": "The Fall of the Louse of Usher (2002)",
+      "claimed_points": 40,
+      "notes": "Malpractice Monday 30 weekly + 10 overall completion for all 3 films"
+    },
+    {
+      "order": 12,
+      "date": "2026-10-28",
+      "title": "Coco (2017)",
+      "claimed_points": 2,
+      "notes": "2 as claimed, watched at urgent care; no medical setting bonus from viewing location"
+    },
+    {
+      "order": 13,
+      "date": "2026-10-29",
+      "title": "The Wild Thornberrys S4E14–16",
+      "claimed_points": 9,
+      "notes": "RIP ATB Tim Curry; 3 × 3"
+    },
+    {
+      "order": 14,
+      "date": "2026-10-29",
+      "title": "The Void (2016)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 15,
+      "date": "2026-10-29",
+      "title": "Shin Godzilla (2016)",
+      "claimed_points": 6,
+      "notes": "5150 one-film tier"
+    },
+    {
+      "order": 16,
+      "date": "2026-10-29",
+      "title": "Scary Stories to Tell in the Dark (2019)",
+      "claimed_points": null,
+      "notes": "Final Prescription component"
+    },
+    {
+      "order": 17,
+      "date": "2026-10-29",
+      "title": "Conspiracy Theory (1997)",
+      "claimed_points": null,
+      "notes": "Patrick Stewart double-feature component"
+    },
+    {
+      "order": 18,
+      "date": "2026-10-29",
+      "title": "The Doctor and the Devils (1985)",
+      "claimed_points": 30,
+      "notes": "Patrick Stewart memorial double feature: 25 weekly + 5 overall completion"
+    },
+    {
+      "order": 19,
+      "date": "2026-10-30",
+      "title": "Shock (1977)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 20,
+      "date": "2026-10-30",
+      "title": "Blood Song (1982)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 21,
+      "date": "2026-10-30",
+      "title": "The Cabinet of Dr. Caligari (1920)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 22,
+      "date": "2026-10-30",
+      "title": "Madhouse (1981)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 23,
+      "date": "2026-10-30",
+      "title": "Unsane (2018)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 24,
+      "date": "2026-10-30",
+      "title": "The Addams Family (2019)",
+      "claimed_points": null,
+      "notes": "Final Prescription component"
+    },
+    {
+      "order": 25,
+      "date": "2026-10-31",
+      "title": "Rec Room Recovery: Courage the Cowardly Dog S1E4; Adventure Time S3E13; The Powerpuff Girls S1E3; Dexter's Laboratory S2E7",
+      "claimed_points": 20,
+      "notes": "Four-part completed package, 16 weekly + 4 overall completion"
+    },
+    {
+      "order": 26,
+      "date": "2026-11-01",
+      "title": "In Search of Darkness II (2020)",
+      "claimed_points": 7.5,
+      "notes": "Accepted as claimed: 4.5 base + 3 ordinary medical bonuses. Possible archival RIP issue reserved for later; no additional ATB now"
+    },
+    {
+      "order": 27,
+      "date": "2026-11-01",
+      "title": "Aliens (1986)",
+      "claimed_points": 5.5,
+      "notes": "Claimed 5.5; audited 5, deduction 0.5, medical charts and specimens share Element 3"
+    },
+    {
+      "order": 28,
+      "date": "2026-11-01",
+      "title": "The Sender (1982)",
+      "claimed_points": 6,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 29,
+      "date": "2026-11-01",
+      "title": "Jack of All Trades S1E11 (2000)",
+      "claimed_points": 3,
+      "notes": "Bruce Campbell grandfathered undead RIP ATB"
+    },
+    {
+      "order": 30,
+      "date": "2026-11-02",
+      "title": "The Wild Thornberrys S4E17–21",
+      "claimed_points": 15,
+      "notes": "RIP ATB Tim Curry; 5 × 3"
+    },
+    {
+      "order": 31,
+      "date": "2026-11-03",
+      "title": "Frances (1982)",
+      "claimed_points": 7.5,
+      "notes": "Observation Ward ATB"
+    },
+    {
+      "order": 32,
+      "date": "2026-11-03",
+      "title": "Outside event: I voted!",
+      "claimed_points": 2,
+      "notes": "Accepted two-point claim by Nurse Nevermore"
+    },
+    {
+      "order": 33,
+      "date": "2026-11-03",
+      "title": "The Frighteners (1996)",
+      "claimed_points": 40,
+      "notes": "Final Prescription package 40 weekly + 5 overall completion. Nurse Nevermore expressly approved Nov 3 deadline exception"
+    }
+  ]
+}
