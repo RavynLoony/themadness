@@ -24,6 +24,16 @@
       "label": "Aliens (1986) bonus family correction",
       "points": -0.5,
       "type": "weekly"
+    },
+    {
+      "label": "In Search of Darkness II (2020) Bruce Campbell RIP ATB; previous 7.5 to 13.5",
+      "points": 6,
+      "type": "weekly"
+    },
+    {
+      "label": "Fangoria Chainsaw Awards partial broadcast viewing",
+      "points": 0.5,
+      "type": "weekly"
     }
   ],
   "overall_only_completion_awards": [
@@ -42,15 +52,20 @@
     {
       "label": "Final Prescription",
       "points": 5
+    },
+    {
+      "label": "Fangoria Chainsaw Awards group watch",
+      "points": 12
     }
   ],
-  "weekly": 267.5,
-  "overall": 291.5,
-  "approved_week5_note": "Summary arithmetic +2; The Wild Thornberrys (2002) S4E11 -3; Aliens (1986) -0.5; Malpractice Monday completion +10 overall only; Patrick Stewart Memorial completion +5 overall only; Rec Room Recovery completion +4 overall only; Final Prescription completion +5 overall only.",
+  "weekly": 274,
+  "overall": 310,
+  "approved_week5_note": "Summary arithmetic +2; The Wild Thornberrys (2002) S4E11 -3; Aliens (1986) -0.5; Malpractice Monday completion +10 overall only; Patrick Stewart Memorial completion +5 overall only; Rec Room Recovery completion +4 overall only; Final Prescription completion +5 overall only; In Search of Darkness II (2020) +6; Fangoria Chainsaw Awards (2026) +0.5 weekly, +12 overall.",
   "special_rulings": [
     "Final Prescription 40 weekly +5 overall approved despite fourth title The Frighteners being watched Nov 3 after Oct 31 challenge deadline",
     "In Search of Darkness II accepted at 7.5 as claimed; potential RIP archival evidence may be separately adjudicated later",
-    "All film/episode entries retained in source order; null claimed_points indicates a package component with points claimed at completion, not an omitted title."
+    "All film/episode entries retained in source order; null claimed_points indicates a package component with points claimed at completion, not an omitted title.",
+    "Fangoria group-watch attendance confirmed by Nurse Nevermore, about 7 PM arrival, same duration as Winslow. Partial program +0.5 weekly, group bonus +12 overall."
   ],
   "entries": [
     {
@@ -233,7 +248,8 @@
       "date": "2026-11-01",
       "title": "In Search of Darkness II (2020)",
       "claimed_points": 7.5,
-      "notes": "Accepted as claimed: 4.5 base + 3 ordinary medical bonuses. Possible archival RIP issue reserved for later; no additional ATB now"
+      "notes": "2026-11-05 ruling: Bruce Campbell RIP ATB honored; 4:23 base 4.5 x 3 = 13.5; correction +6 from previously audited 7.5.",
+      "audited_points": 13.5
     },
     {
       "order": 27,
@@ -283,6 +299,15 @@
       "title": "The Frighteners (1996)",
       "claimed_points": 40,
       "notes": "Final Prescription package 40 weekly + 5 overall completion. Nurse Nevermore expressly approved Nov 3 deadline exception"
+    },
+    {
+      "order": 34,
+      "date": "2026-10-25",
+      "title": "Fangoria Chainsaw Awards (2026), group watch; joined about 7 PM",
+      "claimed_points": null,
+      "audited_points": 0.5,
+      "overall_only_points": 12,
+      "notes": "Nurse Nevermore confirms attendance and same partial duration as Winslow; 0.5 weekly for viewed portion, +12 overall-only group watch bonus. Added after initial audit."
     }
   ]
 }
