@@ -129,6 +129,35 @@
       .team-totals { justify-content:flex-start; }
       .scores-table { display:block; overflow-x:auto; }
     }
+  
+    /* FINAL 2026 GAME RESULTS. Week Five audit board remains intact below. */
+    .game-results { margin:2.7rem 0 0; padding:clamp(1rem,3vw,2rem); border:1px solid var(--line); border-left:3px solid var(--acid); background:var(--panel); }
+    .game-results h2 { font-size:clamp(1.8rem,4vw,3rem); color:var(--ink); line-height:1.1; margin:.1rem 0 .6rem; }
+    .game-results h3 { margin:2rem 0 .6rem; font-size:1.45rem; color:var(--acid); }
+    .game-intro { color:var(--muted); max-width:920px; margin:.75rem 0 1rem; }
+    .game-champs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.4rem 0 1.5rem; }
+    .game-champ { border:1px solid var(--line); background:rgba(168,198,108,.045); padding:1.15rem; min-width:0; }
+    .game-champ .type { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--acid); font-weight:bold; }
+    .game-champ .champ-name { display:block; font-size:1.25rem; font-weight:bold; margin:.28rem 0; line-height:1.2; }
+    .game-champ .champ-score { display:block; font-size:clamp(1.8rem,4vw,2.65rem); color:var(--ink); font-weight:bold; font-variant-numeric:tabular-nums; line-height:1.25; }
+    .game-champ .champ-math { display:block; color:var(--muted); font-size:.88rem; }
+    .game-scroll { overflow-x:auto; max-width:100%; border:1px solid var(--line); }
+    .game-table { width:100%; border-collapse:collapse; font-size:.9rem; }
+    .game-table thead { background:#20291b; }
+    .game-table th { text-align:left; padding:.75rem .6rem; font-size:.75rem; letter-spacing:.045em; text-transform:uppercase; color:var(--acid); white-space:nowrap; border-bottom:1px solid var(--line); }
+    .game-table td { padding:.7rem .6rem; color:var(--ink); border-bottom:1px solid var(--line); vertical-align:top; line-height:1.35; }
+    .game-table tbody tr:last-child td { border-bottom:0; }
+    .game-table tbody tr:nth-child(even) { background:rgba(255,255,255,.025); }
+    .game-table .score { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .game-table .final-score { color:var(--acid); font-weight:bold; }
+    .game-table .game-rank { color:var(--muted); width:2.5rem; }
+    .game-table .person-col { min-width:170px; font-weight:bold; }
+    .game-table .team-col { min-width:210px; font-weight:bold; }
+    .game-caption { color:var(--muted); font-size:.85rem; margin:.55rem 0 1rem; }
+    .game-footnote { color:var(--muted); font-size:.9rem; margin:1rem 0 0; }
+    .game-note { margin-top:1.25rem; padding:.85rem 1rem; background:rgba(168,198,108,.04); border-left:2px solid var(--line); color:var(--muted); font-size:.92rem; }
+    @media(max-width:700px) { .game-champs {grid-template-columns:1fr;} .game-results {margin-top:1.5rem;} .game-table {font-size:.85rem;} .game-table td,.game-table th {padding:.55rem .45rem;} }
+
   </style>
   <!-- Week 5 Sean Gleeson audit deployment refresh: 290.5 weekly and overall. -->
 </head>
@@ -151,12 +180,81 @@
 
   <main class="wrap">
     <p class="kicker">2026 · The Madness Runs the Asylum</p>
-    <h1 class="page-title">Live Scores</h1>
-    <p class="subhead">Week 5 final summaries are now being audited. Every patient starts at 0 until their Week 5 submission is received.</p>
+    <h1 class="page-title">Final Results</h1>
+    <p class="subhead">The five-week Madness is complete. Explore the final individual and team standings, then review the Week Five audit breakdown below.</p>
+
+
+    <!-- FINAL GAME RESULTS 2026: source-backed scores, approved warm-up restoration. -->
+    <section class="game-results" id="game-results" aria-labelledby="game-results-heading">
+      <p class="kicker">The Madness Runs the Asylum · Final standings</p>
+      <h2 id="game-results-heading">🏆 GAME RESULTS</h2>
+      <p class="game-intro">All five weeks. All 30 patients. Individual and team championships. Banked warm-up points are restored <strong>once</strong> to the full-game overall totals, not to individual weeks.</p>
+      <div class="game-champs">
+        <div class="game-champ"><span class="type">🏆 Individual champion</span><span class="champ-name">Lynniall Johnson</span><span class="champ-score">2,572</span><span class="champ-math">2,314 five-week game + 258 warm-ups</span></div>
+        <div class="game-champ"><span class="type">🏆 Team champions</span><span class="champ-name">Windcliffe Grippy Sock Hotel &amp; Casino</span><span class="champ-score">6,226.5</span><span class="champ-math">5,810.5 five-week game + 416 warm-ups</span></div>
+      </div>
+      <h3>Weekly winners</h3>
+      <div class="game-scroll"><table class="game-table">
+        <thead><tr><th scope="col">Week</th><th scope="col">Individual winner</th><th scope="col">Team winner</th></tr></thead>
+        <tbody><tr><td><strong>Week 1</strong></td><td>Shaun Berkey · <strong>456.5</strong></td><td>Darkplace Dis-Orderlies · <strong>1,111.5</strong></td></tr>
+<tr><td><strong>Week 2</strong></td><td>Lynniall Johnson · <strong>453.5</strong></td><td>Darkplace Dis-Orderlies · <strong>910.5</strong></td></tr>
+<tr><td><strong>Week 3</strong></td><td>Lynniall Johnson · <strong>428.5</strong></td><td>Windcliffe Grippy Sock Hotel &amp; Casino · <strong>1,158.5</strong></td></tr>
+<tr><td><strong>Week 4</strong></td><td>Lynniall Johnson · <strong>437</strong></td><td>Windcliffe Grippy Sock Hotel &amp; Casino · <strong>1,093</strong></td></tr>
+<tr><td><strong>Week 5</strong></td><td>Newt White · <strong>501</strong></td><td>Windcliffe Grippy Sock Hotel &amp; Casino · <strong>1,317</strong></td></tr></tbody>
+      </table></div>
+      <h3>Final team standings</h3>
+      <div class="game-scroll"><table class="game-table">
+        <thead><tr><th scope="col">Rank</th><th scope="col">Team</th><th scope="col" class="score">Game</th><th scope="col" class="score">Warm-ups</th><th scope="col" class="score">Final</th></tr></thead>
+        <tbody><tr><td class="game-rank">1</td><td class="team-col">Windcliffe Grippy Sock Hotel &amp; Casino</td><td class="score">5,810.5</td><td class="score">416</td><td class="score final-score">6,226.5</td></tr>
+<tr><td class="game-rank">2</td><td class="team-col">Darkplace Dis-Orderlies</td><td class="score">5,170.5</td><td class="score">691.5</td><td class="score final-score">5,862</td></tr>
+<tr><td class="game-rank">3</td><td class="team-col">Taryn's Beautiful Baddies</td><td class="score">4,819</td><td class="score">861</td><td class="score final-score">5,680</td></tr>
+<tr><td class="game-rank">4</td><td class="team-col">Rubber Roomies</td><td class="score">4,501</td><td class="score">748</td><td class="score final-score">5,249</td></tr>
+<tr><td class="game-rank">5</td><td class="team-col">Eyes of Patty Mullen</td><td class="score">3,575</td><td class="score">633</td><td class="score final-score">4,208</td></tr></tbody>
+      </table></div>
+      <h3>Complete individual standings</h3>
+      <p class="game-caption">W1–W5 show weekly points only. <strong>Game</strong> includes those five weeks plus any overall-only awards. <strong>Final = Game + Warm-ups.</strong> Ranked by final overall score.</p>
+      <div class="game-scroll"><table class="game-table">
+        <thead><tr><th scope="col">#</th><th scope="col">Patient</th><th scope="col" class="score">W1</th><th scope="col" class="score">W2</th><th scope="col" class="score">W3</th><th scope="col" class="score">W4</th><th scope="col" class="score">W5</th><th scope="col" class="score">Game</th><th scope="col" class="score">Warm</th><th scope="col" class="score">Final</th></tr></thead>
+        <tbody><tr><td class="game-rank">1</td><td class="person-col">Lynniall Johnson</td><td class="score">411.5</td><td class="score">453.5</td><td class="score">428.5</td><td class="score">437</td><td class="score">481</td><td class="score">2,314</td><td class="score">258</td><td class="score final-score">2,572</td></tr>
+<tr><td class="game-rank">2</td><td class="person-col">Winslow Leach</td><td class="score">381</td><td class="score">354</td><td class="score">311</td><td class="score">325.5</td><td class="score">445.5</td><td class="score">2,046.5</td><td class="score">279</td><td class="score final-score">2,325.5</td></tr>
+<tr><td class="game-rank">3</td><td class="person-col">Newt White</td><td class="score">341</td><td class="score">318</td><td class="score">423.5</td><td class="score">316.5</td><td class="score">501</td><td class="score">2,086.5</td><td class="score">222</td><td class="score final-score">2,308.5</td></tr>
+<tr><td class="game-rank">4</td><td class="person-col">Lisa Harshman Weaver</td><td class="score">265</td><td class="score">252</td><td class="score">307</td><td class="score">215</td><td class="score">345.5</td><td class="score">1,527</td><td class="score">246</td><td class="score final-score">1,773</td></tr>
+<tr><td class="game-rank">5</td><td class="person-col">Gnat Marie</td><td class="score">215.5</td><td class="score">217</td><td class="score">190</td><td class="score">155.5</td><td class="score">274</td><td class="score">1,155</td><td class="score">284</td><td class="score final-score">1,439</td></tr>
+<tr><td class="game-rank">6</td><td class="person-col">Shaun Berkey</td><td class="score">456.5</td><td class="score">201</td><td class="score">129</td><td class="score">179.5</td><td class="score">284.5</td><td class="score">1,252.5</td><td class="score">2</td><td class="score final-score">1,254.5</td></tr>
+<tr><td class="game-rank">7</td><td class="person-col">Cathleen Marshall</td><td class="score">130.5</td><td class="score">174.5</td><td class="score">144</td><td class="score">152.5</td><td class="score">329</td><td class="score">1,005.5</td><td class="score">227</td><td class="score final-score">1,232.5</td></tr>
+<tr><td class="game-rank">8</td><td class="person-col">Andrasta Iceni</td><td class="score">187</td><td class="score">193.5</td><td class="score">243</td><td class="score">218</td><td class="score">228</td><td class="score">1,100.5</td><td class="score">97</td><td class="score final-score">1,197.5</td></tr>
+<tr><td class="game-rank">9</td><td class="person-col">Clair Hooker</td><td class="score">94</td><td class="score">159</td><td class="score">190</td><td class="score">220</td><td class="score">173.5</td><td class="score">948.5</td><td class="score">205</td><td class="score final-score">1,153.5</td></tr>
+<tr><td class="game-rank">10</td><td class="person-col">Diana Price</td><td class="score">222.5</td><td class="score">147.5</td><td class="score">200</td><td class="score">150</td><td class="score">191</td><td class="score">1,014.5</td><td class="score">33</td><td class="score final-score">1,047.5</td></tr>
+<tr><td class="game-rank">11</td><td class="person-col">Erica Andrus</td><td class="score">130.5</td><td class="score">98</td><td class="score">143</td><td class="score">165.5</td><td class="score">58</td><td class="score">724</td><td class="score">295.5</td><td class="score final-score">1,019.5</td></tr>
+<tr><td class="game-rank">12</td><td class="person-col">Kemarie Graves</td><td class="score">93.5</td><td class="score">203</td><td class="score">181</td><td class="score">145</td><td class="score">145.5</td><td class="score">842</td><td class="score">126</td><td class="score final-score">968</td></tr>
+<tr><td class="game-rank">13</td><td class="person-col">Chris Qualls</td><td class="score">50</td><td class="score">142.5</td><td class="score">221</td><td class="score">166</td><td class="score">116.5</td><td class="score">749.5</td><td class="score">176</td><td class="score final-score">925.5</td></tr>
+<tr><td class="game-rank">14</td><td class="person-col">Adam Artruc</td><td class="score">155</td><td class="score">108</td><td class="score">140</td><td class="score">235</td><td class="score">127</td><td class="score">798</td><td class="score">85</td><td class="score final-score">883</td></tr>
+<tr><td class="game-rank">15</td><td class="person-col">Zee Campbell</td><td class="score">35</td><td class="score">20</td><td class="score">192</td><td class="score">99</td><td class="score">237</td><td class="score">694</td><td class="score">169</td><td class="score final-score">863</td></tr>
+<tr><td class="game-rank">16</td><td class="person-col">Sean Gleeson</td><td class="score">62.5</td><td class="score">32.5</td><td class="score">165</td><td class="score">254</td><td class="score">292.5</td><td class="score">806.5</td><td class="score">25</td><td class="score final-score">831.5</td></tr>
+<tr><td class="game-rank">17</td><td class="person-col">Crystal Sharie</td><td class="score">72.5</td><td class="score">110</td><td class="score">121</td><td class="score">110</td><td class="score">205.5</td><td class="score">643</td><td class="score">59</td><td class="score final-score">702</td></tr>
+<tr><td class="game-rank">18</td><td class="person-col">Chris Gusta</td><td class="score">129</td><td class="score">126</td><td class="score">145</td><td class="score">107.5</td><td class="score">95.5</td><td class="score">630.5</td><td class="score">27</td><td class="score final-score">657.5</td></tr>
+<tr><td class="game-rank">19</td><td class="person-col">Laura Sue</td><td class="score">132.5</td><td class="score">165.5</td><td class="score">93</td><td class="score">97</td><td class="score">67</td><td class="score">597.5</td><td class="score">39</td><td class="score final-score">636.5</td></tr>
+<tr><td class="game-rank">20</td><td class="person-col">Elizabeth Katheryn Gray</td><td class="score">65</td><td class="score">98.5</td><td class="score">125.5</td><td class="score">125.5</td><td class="score">55.5</td><td class="score">532</td><td class="score">76</td><td class="score final-score">608</td></tr>
+<tr><td class="game-rank">21</td><td class="person-col">Áine M. Coyotl</td><td class="score">97</td><td class="score">150</td><td class="score">173.5</td><td class="score">0</td><td class="score">60</td><td class="score">517.5</td><td class="score">77</td><td class="score final-score">594.5</td></tr>
+<tr><td class="game-rank">22</td><td class="person-col">Harriett Branch</td><td class="score">54.5</td><td class="score">86</td><td class="score">106</td><td class="score">45.5</td><td class="score">47.5</td><td class="score">360.5</td><td class="score">134</td><td class="score final-score">494.5</td></tr>
+<tr><td class="game-rank">23</td><td class="person-col">Jenni Johnson</td><td class="score">55.5</td><td class="score">24</td><td class="score">84</td><td class="score">51.5</td><td class="score">89</td><td class="score">322</td><td class="score">27</td><td class="score final-score">349</td></tr>
+<tr><td class="game-rank">24</td><td class="person-col">Renee Hatten</td><td class="score">53.5</td><td class="score">70</td><td class="score">38</td><td class="score">33</td><td class="score">35</td><td class="score">239.5</td><td class="score">63</td><td class="score final-score">302.5</td></tr>
+<tr><td class="game-rank">25</td><td class="person-col">Dan Cossette</td><td class="score">21</td><td class="score">40</td><td class="score">83</td><td class="score">48.5</td><td class="score">28.5</td><td class="score">254</td><td class="score">22</td><td class="score final-score">276</td></tr>
+<tr><td class="game-rank">26</td><td class="person-col">Giovanni Deldio</td><td class="score">39</td><td class="score">32.5</td><td class="score">38.5</td><td class="score">47</td><td class="score">39.5</td><td class="score">218.5</td><td class="score">17</td><td class="score final-score">235.5</td></tr>
+<tr><td class="game-rank">27</td><td class="person-col">Alec Pridgen</td><td class="score">30</td><td class="score">36</td><td class="score">34</td><td class="score">57.5</td><td class="score">37.5</td><td class="score">205</td><td class="score">0</td><td class="score final-score">205</td></tr>
+<tr><td class="game-rank">28</td><td class="person-col">Alexa Starr</td><td class="score">29.5</td><td class="score">33</td><td class="score">16</td><td class="score">35</td><td class="score">0</td><td class="score">117.5</td><td class="score">67</td><td class="score final-score">184.5</td></tr>
+<tr><td class="game-rank">29</td><td class="person-col">Kimberly Duvall</td><td class="score">11</td><td class="score">15</td><td class="score">27.5</td><td class="score">36</td><td class="score">30</td><td class="score">119.5</td><td class="score">10</td><td class="score final-score">129.5</td></tr>
+<tr><td class="game-rank">30</td><td class="person-col">Kathleen Gibney</td><td class="score">0</td><td class="score">25</td><td class="score">8</td><td class="score">9.5</td><td class="score">12</td><td class="score">54.5</td><td class="score">2</td><td class="score final-score">56.5</td></tr></tbody>
+      </table></div>
+      <p class="game-footnote">Every player appears once, on their assigned team. Weekly prizes are decided by that week's points; final champions are decided by the five-week game total with banked warm-ups restored.</p>
+      <p class="game-note"><strong>Audit notes:</strong> Chris Q.'s previously approved Week Three +15 overall-only points have been restored to his cumulative total. Áine's unsupported duplicate +5 carryover was removed without affecting her legitimate photo award. Both corrections are reflected in the standings above.</p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
 
     <section class="about">
-      <h2>Current Scores</h2>
-      <p class="score-note">Week 5 shows weekly points and Week 5 Overall, including any Week 5 overall-only bonuses. Cumulative game scores stay internal until audited standings are posted on Facebook.</p>
+      <h2>Week Five Audit Scoreboard</h2>
+      <p class="score-note">Week 5 shows weekly points and Week 5 Overall, including any Week 5 overall-only bonuses. The five-week cumulative totals and restored warm-ups appear in GAME RESULTS above.</p>
       <p class="score-note" id="warmup-note"><strong>Prior weeks and banked warm-up scores are excluded from Week 5 figures.</strong></p>
 
       <div class="score-controls" aria-label="Live score display options">
